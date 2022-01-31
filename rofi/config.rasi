@@ -1,0 +1,10 @@
+configuration {
+ modi: "window,drun,ssh,combi";
+ font: "hack 10";
+ combi-modi: "window,drun,ssh";
+ }
+//@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+//@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+//@theme "/usr/share/rofi/themes/slate.rasi"
+//@theme "/usr/share/rofi/themes/slate.rasi"
+@theme "/usr/share/rofi/themes/slate.rasi"
