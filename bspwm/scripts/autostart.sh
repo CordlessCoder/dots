@@ -35,7 +35,7 @@ xsetroot -cursor_name left_ptr
 
 # Desktop effects
 pkill picom
-picom -f --experimental-backends &
+picom -f &
 
 # redshift
 #pkill -f '^redshift'
@@ -55,23 +55,15 @@ run dunst
 
 # polybars
 pkill -f '^polybar'
-run polybar main_bar &
-run polybar main_bar_left &
+polybar main_bar &
+polybar main_bar_left &
 
-run xdo lower -N "Polybar"
-run xdo above -N "Polybar" -t $(xdo id -N Bspwm -n root)
+xdo lower -N "Polybar"
+xdo above -N "Polybar" -t $(xdo id -N Bspwm -n root)
 
 # lock screen
-run xset s 360
-run xss-lock -n $HOME/.config/sxhkd/lock.sh
-
-
-
-xinput set-prop 'Glorious Model D' 'libinput Accel Speed' -.7
-sleep 5
-xinput set-prop 'Glorious Model D' 'libinput Accel Speed' -.7
-sleep 5
-xinput set-prop 'Glorious Model D' 'libinput Accel Speed' -.7
+#run xss-lock -- xsecurelock
+xinput set-prop 'Glorious Model D' 'libinput Accel Speed' -.7 &
 # Enable numlock on login
 # Required numlockx to be installed
 # run numlockx
@@ -87,5 +79,5 @@ xinput set-prop 'Glorious Model D' 'libinput Accel Speed' -.7
 #run wallpaper
 
 #run float_focus
-run xdo lower -N "Polybar"
-run xdo above -N "Polybar" -t $(xdo id -N Bspwm -n root)
+xdo lower -N "Polybar"
+xdo above -N "Polybar" -t $(xdo id -N Bspwm -n root)
