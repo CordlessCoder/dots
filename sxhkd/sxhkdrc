@@ -17,7 +17,7 @@ alt + Tab
 	bspc node -f next.local.window
 
 super + n
-    xcolor | xclip
+    xcolor --scale 4 -f HEX! | xclip -selection c
 
 super + space
 	python $HOME/.config/sxhkd/change_layout.py
@@ -142,4 +142,4 @@ super + alt + shift + {h,j,k,l}
 
 # move a floating window
 super + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
+	bspc node -v {-40 0,0 40,0 -40,40 0}

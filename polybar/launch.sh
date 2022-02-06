@@ -6,11 +6,15 @@ killall -q polybar
 # polybar-msg cmd quit
 
 # Launch bar1 and bar2
-echo "---" | tee -a /tmp/polybar1.log
-polybar main_bar 2>&1 | tee -a /tmp/polybar1.log & disown
-polybar main_bar_left 2>&1 | tee -a /tmp/polybar2.log & disown
-
+if type "xrandr"; then
+  for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+    MONITOR=$m polybar --reload main_bar &
+  done
+else
+  polybar --reload main_bar &
+fi
+echo "Bars launched..."
+sleep 1
 xdo lower -N "Polybar"
 xdo above -N "Polybar" -t $(xdo id -N Bspwm -n root)
 
-echo "Bars launched..."

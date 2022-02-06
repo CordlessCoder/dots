@@ -1,6 +1,6 @@
 [colors]
-background = #821b1923
-background-alt = #81575268
+background = #492f43
+background-alt = #604260
 foreground = #c6aae8
 foreground-alt = #bee4ed
 
@@ -18,7 +18,7 @@ line-size = 2
 line-color = ${colors.foreground}
 
 border-size = 4
-border-color = #80575268
+border-color = #6b4c68
 padding-left = 2
 padding-right = 2
 
@@ -68,9 +68,10 @@ label = %title:0:30:...%
 
 [module/filesystem]
 type = internal/fs
-interval = 25
-
+interval = 5
 mount-0 = /
+label-foreground=#BEE4ED
+format-underline = #BEE4ED
 
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
@@ -262,22 +263,67 @@ menu-3-0-exec = sudo systemctl suspend
 menu-4-0 = log off
 menu-4-0-exec = sudo loginctl terminate-user roman
 
+[module/nvidia-temp]
+type = custom/script
+exec = ~/.config/polybar/scripts/nvidia-temp.sh
+interval = .5
+base-temperature=30
+warn-temperature=80
+label-foreground=#c6aae8
+format-underline = #c6aae8
+
+[module/nvidia-util]
+type = custom/script
+exec = ~/.config/polybar/scripts/nvidia-util.sh
+interval = .5
+base-temperature=30
+warn-temperature=80
+label-foreground=#BEE4ED
+format-underline = #BEE4ED
+
+[module/nvidia-mem]
+type = custom/script
+exec = ~/.config/polybar/scripts/nvidia-mem.sh
+interval = .5
+base-temperature=30
+warn-temperature=80
+label-foreground=#c6aae8
+format-underline = #c6aae8
+
+
 
 [module/cpu]
 type = internal/cpu
-interval = 2
-format-prefix = " "
+interval = .5
+#format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #c6aae8
+label-foreground=#BEE4ED
+format-underline = #BEE4ED
 label = %percentage:2%%
 
 [module/memory]
 type = internal/memory
-interval = 2
-format-prefix = " "
+interval = .5
+#format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #e49cb3
+format-underline = #c6aae8
+
 label = %percentage_used%%
+
+[module/temperature]
+type = internal/temperature
+base-temperature=30
+warn-temperature=80
+format = <ramp> <label>
+label = %temperature-c%
+label-warn-foreground=#f00
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+format-underline = #c6aae8
+
+ramp-foreground = ${colors.three}
+hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input
 
 
 [module/ewmh]
@@ -287,7 +333,7 @@ pin-workspaces = true
 enable-click = true
 enable-scroll = true
 
-label-active = %name%
+label-active = [%name%]
 label-active-foreground = ${colors.foreground}
 label-active-underline = ${colors.foreground}
 label-active-background = ${colors.background}
@@ -303,18 +349,10 @@ screenchange-reload = true
 margin-top = 0
 margin-bottom = 2
 
-[bar/main_bar_left]
-inherit = bar/master
-monitor = DP-0
-modules-left = ewmh
-modules-center = date
-modules-right = cpu memory filesystem pulseaudio powermenu
-tray-position = right
-
 [bar/main_bar]
 inherit = bar/master
-monitor = DP-2
+monitor = ${env:MONITOR:}
 modules-left = ewmh
 modules-center = date
-modules-right = cpu memory filesystem pulseaudio powermenu
+modules-right = nvidia-mem nvidia-util nvidia-temp temperature cpu memory filesystem pulseaudio powermenu
 tray-position = right
