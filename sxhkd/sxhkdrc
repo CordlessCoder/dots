@@ -19,8 +19,8 @@ alt + Tab
 super + n
     xcolor --scale 4 -f HEX! | xclip -selection c
 
-super + space
-	python $HOME/.config/sxhkd/change_layout.py
+#super + space
+#	python $HOME/.config/sxhkd/change_layout.py
 super + r
 	bspc node @parent -R 90
 
