@@ -33,6 +33,7 @@ bspc rule -a GLava state=floating manage=off
 
 
 #bspc config external_rules_command ~/.config/bspwm/scripts/external_rules.sh
+setxkbmap -option 'grp:win_space_toggle' -layout us,ua,ru
 
 bspc rule -a pavucontrol state=floating
 #picom -f &
