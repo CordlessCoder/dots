@@ -1,8 +1,8 @@
 #!/bin/sh
-temp=$(python ~/.config/polybar/scripts/nvidia-temp.py)
+temp=$(cat /tmp/.nvidia_temp)
 
 if [ "$temp" != "" ]; then
     echo "$temp"
 else
-    echo "NVIDIA GPU/PROPRIATARY DRIVERS NOT FOUND"
+    python ~/.config/polybar/scripts/nvidia-temp.py &
 fi

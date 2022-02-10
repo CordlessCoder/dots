@@ -19,8 +19,8 @@ alt + Tab
 super + n
     xcolor --scale 4 -f HEX! | xclip -selection c
 
-#super + space
-#	python $HOME/.config/sxhkd/change_layout.py
+super + space
+	python $HOME/.config/sxhkd/change_layout.py
 super + r
 	bspc node @parent -R 90
 
@@ -36,7 +36,7 @@ ctrl + super + alt + l
 #
 # bspwm hotkeys
 #
-super + alt + {plus, equals}
+super + alt + {plus, equal}
 	bspc config window_gap (expr (bspc config window_gap) + 4)
 
 super + alt + minus
@@ -46,9 +46,6 @@ super + alt + minus
 super + alt + {q,r}
 	bspc {quit,wm -r}
 
-# close and kill
-super + {_,shift + }w
-	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
 super + m

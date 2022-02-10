@@ -33,7 +33,15 @@ bspc rule -a GLava state=floating manage=off
 
 
 #bspc config external_rules_command ~/.config/bspwm/scripts/external_rules.sh
-setxkbmap -option 'grp:win_space_toggle' -layout us,ua,ru
+kill $(pgrep -f nvidia-mem.py)
+kill $(pgrep -f nvidia-temp.py)
+rm -rf /tmp/.current_layout
+touch /tmp/.current_layout
+rm -rf /tmp/.nvidia_mem
+touch /tmp/.nvidia_mem
+rm -rf /tmp/.nvidia_temp
+touch /tmp/.nvidia_temp
+setxkbmap -option caps:none -layout us
 
 bspc rule -a pavucontrol state=floating
 #picom -f &

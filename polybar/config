@@ -233,7 +233,7 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = 
+label-open = Power
 label-open-foreground = ${colors.foreground-alt}
 label-close =  cancel
 label-close-foreground = ${colors.foreground-alt}
@@ -275,7 +275,7 @@ format-underline = #c6aae8
 [module/nvidia-util]
 type = custom/script
 exec = ~/.config/polybar/scripts/nvidia-util.sh
-interval = .5
+interval = 1
 base-temperature=30
 warn-temperature=80
 label-foreground=#BEE4ED
@@ -290,11 +290,16 @@ warn-temperature=80
 label-foreground=#c6aae8
 format-underline = #c6aae8
 
-
+[module/layout]
+type = custom/script
+exec = ~/.config/polybar/scripts/layout.sh
+interval = .1
+label-foreground=#c6aae8
+format-underline = #c6aae8
 
 [module/cpu]
 type = internal/cpu
-interval = .5
+interval = 1
 #format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 label-foreground=#BEE4ED
@@ -303,7 +308,7 @@ label = %percentage:2%%
 
 [module/memory]
 type = internal/memory
-interval = .5
+interval = 1
 #format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #c6aae8
@@ -354,5 +359,5 @@ inherit = bar/master
 monitor = ${env:MONITOR:}
 modules-left = ewmh
 modules-center = date
-modules-right = nvidia-mem nvidia-util nvidia-temp temperature cpu memory filesystem pulseaudio powermenu
+modules-right = nvidia-mem nvidia-util nvidia-temp temperature cpu memory filesystem layout pulseaudio powermenu
 tray-position = right
