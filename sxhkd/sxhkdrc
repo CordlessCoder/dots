@@ -4,12 +4,14 @@
 
 # terminal emulator
 super + Return
-	urxvtc
+	socat -u OPEN:/dev/null UNIX-CONNECT:/home/roman/.urxvt/urxvtd-ArchMaykr && python .config/sxhkd/change_layout.py us; urxvtc || urxvtd &
+	sh -c "python .config/sxhkd/change_layout.py us; urxvtc"
 alt + ctrl + t
-	urxvtc
+	socat -u OPEN:/dev/null UNIX-CONNECT:/home/roman/.urxvt/urxvtd-ArchMaykr && python .config/sxhkd/change_layout.py us; urxvtc || urxvtd &
+	sh -c "python .config/sxhkd/change_layout.py us; urxvtc"
 # program launcher
 alt + space
-	rofi -show drun -show-icons
+	bash -c "python .config/sxhkd/change_layout.py us; rofi -show drun -show-icons"
 super + e
     thunar
 

@@ -47,7 +47,7 @@ pkill urxvtd
 run urxvtd
 # dunst
 pkill dunst
-run dunst
+#run dunst
 
 # glava
 #pkill -f 'GLava^'
@@ -66,14 +66,6 @@ run xss-lock -n $HOME/.config/sxhkd/lock.sh
 
 
 
-xinput set-prop 'Glorious Model O Wireless' 'libinput Accel Speed' -.7
-xinput set-prop 'Glorious Model D' 'libinput Accel Speed' -.7
-sleep 5
-xinput set-prop 'Glorious Model D' 'libinput Accel Speed' -.7
-xinput set-prop 'Glorious Model O Wireless' 'libinput Accel Speed' -.7
-sleep 5
-xinput set-prop 'Glorious Model D' 'libinput Accel Speed' -.7
-xinput set-prop 'Glorious Model O Wireless' 'libinput Accel Speed' -.7
 # Enable numlock on login
 # Required numlockx to be installed
 # run numlockx
