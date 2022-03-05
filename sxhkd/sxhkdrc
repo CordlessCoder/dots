@@ -4,16 +4,19 @@
 
 # terminal emulator
 super + Return
-	socat -u OPEN:/dev/null UNIX-CONNECT:/home/roman/.urxvt/urxvtd-ArchMaykr && python .config/sxhkd/change_layout.py us; urxvtc || urxvtd &
+	socat -u OPEN:/dev/null UNIX-CONNECT:/home/roman/.urxvt/urxvtd-ArchMaykr && python .config/sxhkd/change_layout.py us; urxvtc || urxvtd -q -o -f &
 	sh -c "python .config/sxhkd/change_layout.py us; urxvtc"
 alt + ctrl + t
-	socat -u OPEN:/dev/null UNIX-CONNECT:/home/roman/.urxvt/urxvtd-ArchMaykr && python .config/sxhkd/change_layout.py us; urxvtc || urxvtd &
+	socat -u OPEN:/dev/null UNIX-CONNECT:/home/roman/.urxvt/urxvtd-ArchMaykr && python .config/sxhkd/change_layout.py us; urxvtc || urxvtd -q -o -f &
 	sh -c "python .config/sxhkd/change_layout.py us; urxvtc"
 # program launcher
 alt + space
-	bash -c "python .config/sxhkd/change_layout.py us; rofi -show drun -show-icons"
+	bash -c "python .config/sxhkd/change_layout.py us; rofi -show drun -show-icons &" &
 super + e
-    thunar
+    thunar &
+
+super + {_,shift + }c
+	fish {~/.config/sxhkd/VSCode.fish &, ~/.config/sxhkd/Google-Chrome.fish &}
 
 alt + Tab
 	bspc node -f next.local.window
@@ -22,9 +25,9 @@ super + n
     xcolor --scale 4 -f HEX! | xclip -selection c
 
 super + space
-	python $HOME/.config/sxhkd/change_layout.py
+	python $HOME/.config/sxhkd/change_layout.py &
 super + r
-	bspc node @parent -R 90
+	bspc node @parent -R 90 &
 
 
 # make sxhkd reload its configuration files:
@@ -39,10 +42,10 @@ ctrl + super + alt + l
 # bspwm hotkeys
 #
 super + alt + {plus, equal}
-	bspc config window_gap (expr (bspc config window_gap) + 4)
+	bspc config window_gap (expr (bspc config window_gap) + 2)
 
 super + alt + minus
-	bspc config window_gap (expr (bspc config window_gap) - 4)
+	bspc config window_gap (expr (bspc config window_gap) - 2)
 
 # quit/restart bspwm
 super + alt + {q,r}
@@ -86,8 +89,6 @@ super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous window in the current desktop
-super + {_,shift + }c
-	bspc node -f {next,prev}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}

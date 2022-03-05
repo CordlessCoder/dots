@@ -1,6 +1,8 @@
 #! /bin/sh
 
+killall sxhkd
 pgrep -x sxhkd > /dev/null || sxhkd &
+
 
 . ~/.config/bspwm/scripts/autostart.sh &
 

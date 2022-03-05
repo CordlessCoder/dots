@@ -34,8 +34,7 @@ xsetroot -cursor_name left_ptr
 # fi
 
 # Desktop effects
-pkill picom
-picom --experimental-backends &
+pkill picom || picom --experimental-backends &
 
 # redshift
 #pkill -f '^redshift'
@@ -43,8 +42,7 @@ picom --experimental-backends &
 
 # sxhkd
 #run sxhkd
-pkill urxvtd
-run urxvtd
+socat -u OPEN:/dev/null UNIX-CONNECT:/home/roman/.urxvt/urxvtd-ArchMaykr || urxvtd -q -o -f &
 # dunst
 pkill dunst
 #run dunst
@@ -57,8 +55,21 @@ pkill dunst
 pkill -f '^polybar'
 $HOME/.config/polybar/launch.sh
 
+bspc config ignore_ewmh_struts true
+sh $HOME/.config/polybar/tinybar.sh &
+sh $HOME/.config/polybar/resourcebar.sh &
+sleep 1
+
 run xdo lower -N "Polybar"
 run xdo above -N "Polybar" -t $(xdo id -N Bspwm -n root)
+xdo raise -a "Polybar tray window"
+xdo raise $(xdotool search --onlyvisible --name "^polybar-resources_*")
+xdo raise -a "Polybar tray window"
+xdo hide -a "Polybar tray window"
+xdo hide $(xdotool search --onlyvisible --name "^polybar-tray_" || echo "none")
+xdo raise $(xdotool search --onlyvisible --name "^polybar-resources_*")
+xdo raise $(xdotool search --onlyvisible --name "^polybar-resources_*")
+xdo hide $(xdotool search --onlyvisible --name "^polybar-resources_*" || echo "none")
 
 # lock screen
 run xset s 360
@@ -81,5 +92,3 @@ run xss-lock -n $HOME/.config/sxhkd/lock.sh
 #run wallpaper
 
 #run float_focus
-run xdo lower -N "Polybar"
-run xdo above -N "Polybar" -t $(xdo id -N Bspwm -n root)
