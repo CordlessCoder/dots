@@ -9,7 +9,8 @@ killall -q polybar
 if type "xrandr"; then
   for m in $(bspc query -M --names); do
     pos=$(expr $(echo $(xrandr --listactivemonitors | grep $m | cut -d"/" -f1 | cut -d" " -f4) \* .98 | bc | cut -d"." -f1) + $(xrandr --listactivemonitors | grep $m | cut -d"/" -f3 | cut -d"+" -f2))
-    MONITOR=$m POSITION=$pos polybar --reload main_bar &
+    posrel=$(echo $(xrandr --listactivemonitors | grep $m | cut -d"/" -f1 | cut -d" " -f4) \* .98 | bc | cut -d"." -f1)
+    MONITOR=$m POSITION=$pos POSREL=$posrel polybar --reload main_bar &
   done
 else
   polybar --reload main_bar &

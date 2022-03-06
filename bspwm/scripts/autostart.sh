@@ -55,25 +55,29 @@ pkill dunst
 pkill -f '^polybar'
 $HOME/.config/polybar/launch.sh
 
+sleep .1
 bspc config ignore_ewmh_struts true
 sh $HOME/.config/polybar/tinybar.sh &
-sh $HOME/.config/polybar/resourcebar.sh &
-sleep 1
+#sh $HOME/.config/polybar/resourcebar.sh &
+sleep .5
 
 run xdo lower -N "Polybar"
 run xdo above -N "Polybar" -t $(xdo id -N Bspwm -n root)
 xdo raise -a "Polybar tray window"
-xdo raise $(xdotool search --onlyvisible --name "^polybar-resources_*")
+#xdo raise $(xdotool search --onlyvisible --name "^polybar-resources_*")
+xdo raise -a "Polybar tray window"
+xdo raise -a "Polybar tray window"
 xdo raise -a "Polybar tray window"
 xdo hide -a "Polybar tray window"
 xdo hide $(xdotool search --onlyvisible --name "^polybar-tray_" || echo "none")
-xdo raise $(xdotool search --onlyvisible --name "^polybar-resources_*")
-xdo raise $(xdotool search --onlyvisible --name "^polybar-resources_*")
-xdo hide $(xdotool search --onlyvisible --name "^polybar-resources_*" || echo "none")
+#xdo raise $(xdotool search --onlyvisible --name "^polybar-resources_*")
+#xdo raise $(xdotool search --onlyvisible --name "^polybar-resources_*")
+#xdo hide $(xdotool search --onlyvisible --name "^polybar-resources_*" || echo "none")
 
 # lock screen
 run xset s 360
 run xss-lock -n $HOME/.config/sxhkd/lock.sh
+xdo raise -a "Polybar tray window"
 
 
 
