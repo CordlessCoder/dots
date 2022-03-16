@@ -2,7 +2,7 @@
 
 
 Comes with: 
-- **babybars**.! \
+- **babybars**! (sooo cute) \
 ![babybars](https://raw.githubusercontent.com/cordlesscoder/dots/main/babybar.png)
 - Great multi-monitor support. \
 ![multimonitor workspaces, per monitor EVERYTHING](https://raw.githubusercontent.com/cordlesscoder/dots/main/Multimon.png)
