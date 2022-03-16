@@ -1,6 +1,3 @@
-<style>
-red { color: #f7768e }
-</style>
 # me dots
 
 
@@ -16,4 +13,4 @@ All the included wallpapers are made my by me aswell.
 
 
 ---
-<h1><red>I use arch, btw.</red></h1>
+<h1><span style="color:#f7768e">I use arch, btw.</span></h1>
