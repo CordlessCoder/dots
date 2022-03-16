@@ -8,7 +8,7 @@ killall -q polybar
 # Launch bar1 and bar2
 if type "xrandr"; then
   for m in $(bspc query -M --names); do
-    pos=$(expr $(echo $(xrandr --listactivemonitors | grep $m | cut -d"/" -f1 | cut -d" " -f4) \* .98 | bc | cut -d"." -f1) + $(xrandr --listactivemonitors | grep $m | cut -d"/" -f3 | cut -d"+" -f2))
+    pos=$(expr $(echo $(xrandr --listactivemonitors | grep $m | cut -d"/" -f1 | cut -d" " -f4) \* .99 | bc | cut -d"." -f1) + $(xrandr --listactivemonitors | grep $m | cut -d"/" -f3 | cut -d"+" -f2))
     posrel=$(echo $(xrandr --listactivemonitors | grep $m | cut -d"/" -f1 | cut -d" " -f4) \* .98 | bc | cut -d"." -f1)
     MONITOR=$m POSITION=$pos POSREL=$posrel polybar --reload main_bar &
   done

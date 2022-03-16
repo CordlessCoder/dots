@@ -18,14 +18,14 @@ super + e
 super + {_,shift + }c
 	fish {~/.config/sxhkd/VSCode.fish &, ~/.config/sxhkd/Google-Chrome.fish &}
 
-alt + Tab
-	bspc node -f next.local.window
+alt + {_, shift} + Tab
+	bspc node -f {next,last}.local.window
 
 super + n
-    xcolor --scale 4 -f HEX! | xclip -selection c
+    xcolor -f HEX! --scale 4 -s clipboard
 
 super + space
-	python $HOME/.config/sxhkd/change_layout.py &
+	python $HOME/.config/sxhkd/change_layout.py & xdo lower -N "Polybar" &
 super + r
 	bspc node @parent -R 90 &
 
@@ -95,8 +95,8 @@ super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
-super + {grave,Tab}
-	bspc {node,desktop} -f last
+super + {_,shift} + Tab
+	bspc desktop -f {last,next}
 
 # focus the older or newer node in the focus history
 super + {o,i}

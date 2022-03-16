@@ -96,3 +96,6 @@ xdo raise -a "Polybar tray window"
 #run wallpaper
 
 #run float_focus
+
+# PROFILE
+
