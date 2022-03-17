@@ -49,8 +49,6 @@ setxkbmap -option caps:none -layout us
 
 bspc rule -a pavucontrol state=floating
 #picom -f &
-pkill feh
-feh --bg-fill $HOME/Desktop/Wallpaper_normal.png &
 #$HOME/.config/polybar/launch.sh &
 
 #xinput set-prop 'Glorious Model D' 'libinput Accel Speed' -.7 &

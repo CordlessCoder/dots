@@ -6,8 +6,8 @@ Comes with:
 ![babybars](https://raw.githubusercontent.com/cordlesscoder/dots/main/babybar.png)
 - Great multi-monitor support. \
 ![multimonitor workspaces, per monitor EVERYTHING](https://raw.githubusercontent.com/cordlesscoder/dots/main/Multimon.png)
-
-All the included wallpapers are made my by me aswell.
+- Custom startup animation and wallpapers made in Blender
+[![My startup animation](doc/screenshot_youtube.PNG)](https://www.youtube.com/watch?v=c0_C5-zk8po "Weird, innit?")
 
 
 ---

@@ -59,8 +59,7 @@ sleep .1
 bspc config ignore_ewmh_struts true
 sh $HOME/.config/polybar/tinybar.sh &
 #sh $HOME/.config/polybar/resourcebar.sh &
-sleep .5
-
+sleep .2
 run xdo lower -N "Polybar"
 run xdo above -N "Polybar" -t $(xdo id -N Bspwm -n root)
 xdo raise -a "Polybar tray window"
@@ -69,6 +68,7 @@ xdo raise -a "Polybar tray window"
 xdo raise -a "Polybar tray window"
 xdo raise -a "Polybar tray window"
 xdo hide -a "Polybar tray window"
+sleep .1
 xdo hide $(xdotool search --onlyvisible --name "^polybar-tray_" || echo "none")
 #xdo raise $(xdotool search --onlyvisible --name "^polybar-resources_*")
 #xdo raise $(xdotool search --onlyvisible --name "^polybar-resources_*")
@@ -79,17 +79,18 @@ run xset s 360
 run xss-lock -n $HOME/.config/sxhkd/lock.sh
 xdo raise -a "Polybar tray window"
 
-
+fish .config/bspwm/scripts/startani.fish
+feh --bg-fill $HOME/dots/Wallpapers/Wallpaper_square_TokyoNight.png
 
 # Enable numlock on login
 # Required numlockx to be installed
 # run numlockx
-
 # Network manager tray icon
 # run nm-applet
 
 # Kill redshift processes
 # pkill redshift
+
 
 # Wallpaper
 # (Already set to run in rc.lua)
