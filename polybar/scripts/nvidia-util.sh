@@ -1,8 +1,10 @@
 #!/bin/sh
-temp=$(python ~/.config/polybar/scripts/nvidia-util.py)
+temp=$(echo $(nvidia-smi -q -d UTILIZATION -i 0 | cut -d"
+" -f11 | cut -d":" -f2 | cut -d" " -f2)%
+)
 
 if [ "$temp" != "" ]; then
     echo "$temp"
 else
-    echo "NVIDIA GPU/PROPRIATARY DRIVERS NOT FOUND"
+    echo "None"
 fi

@@ -35,6 +35,7 @@ xsetroot -cursor_name left_ptr
 
 # Desktop effects
 pkill picom || picom --experimental-backends &
+setxkbmap -option caps:none -layout us
 
 # redshift
 #pkill -f '^redshift'
@@ -45,7 +46,7 @@ pkill picom || picom --experimental-backends &
 socat -u OPEN:/dev/null UNIX-CONNECT:/home/roman/.urxvt/urxvtd-ArchMaykr || urxvtd -q -o -f &
 # dunst
 pkill dunst
-#run dunst
+run dunst
 
 # glava
 #pkill -f 'GLava^'

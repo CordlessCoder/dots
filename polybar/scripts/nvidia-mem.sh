@@ -1,8 +1,11 @@
 #!/bin/sh
-mem=$(cat /tmp/.nvidia_mem)
+mem=$(echo $(nvidia-smi -q -d MEMORY -i 0 | cut -d"
+" -f13 | cut -d":" -f2 | cut -d" " -f2) \* 100 / $(nvidia-smi -q -d MEMORY -i 0 | cut -d"
+" -f11 | cut -d":" -f2 | cut -d" " -f2) | bc
+)%
 
 if [ "$mem" != "" ]; then
     echo "$mem"
 else
-    python ~/.config/polybar/scripts/nvidia-mem.py &
+    echo "None"
 fi
