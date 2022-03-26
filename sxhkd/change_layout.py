@@ -57,4 +57,4 @@ except IndexError:
         else:
             os.system("setxkbmap -layout us")
             current.write("us")
-os.system("polybar-msg hook layout 1")
+os.system("polybar-msg action \#layout.next")
