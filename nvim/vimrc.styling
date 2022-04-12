@@ -1,0 +1,23 @@
+" Basics
+set autoread
+
+" Themes and styling
+" let base16colorspace=256
+let g:enable_bold_font=1
+"let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+
+set termguicolors
+let g:tokyonight_style = "storm"
+let g:tokyonight_italic_functions = 1
+let g:tokyonight_transparent = 0
+
+let g:tokyonight_colors = {
+  \ 'bg': '#1c1d21',
+\ }
+
+colorscheme tokyonight
+
+set cursorline
+
+
+" highlight ColorColumn ctermbg=0

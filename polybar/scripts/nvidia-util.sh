@@ -1,10 +1,14 @@
-#!/bin/sh
-temp=$(echo $(nvidia-smi -q -d UTILIZATION -i 0 | cut -d"
-" -f11 | cut -d":" -f2 | cut -d" " -f2)%
-)
-
-if [ "$temp" != "" ]; then
-    echo "$temp"
+#!/bin/bash
+if command -v nvidia-smi &> /dev/null
+then
+    while true
+    util=$(nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits)%
+    do echo "$util";
+    sleep .5;
+    done
 else
-    echo "None"
+    while true;
+    do echo "";
+    sleep 1000;
+    done
 fi

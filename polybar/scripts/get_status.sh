@@ -37,15 +37,15 @@ get_info() {
     if [ "$2" != "icon" ]; then
         artist=$(extract_meta artist)
         [ -z "$artist" ] && artist=$(extract_meta albumArtist)
+        echo "%{F#C0CAF5}$(echo $title | cut -c -40)"
 
         if [ -n "$artist" ]; then
             album=$(extract_meta album)
-            [ -n "$album" ] && echo -n " %{F#7DCFFF} $(echo $album | cut -c -20) "
+            [ -n "$album" ] && echo -n "  $(echo $album | cut -c -26) %{F#7DCFFF}"
 
-            echo -n " %{F#7AA2F7}ﴁ %{F#BB9AF7}$(echo $artist | cut -c -26)  "
+            echo -n "%{F#EB6572} %{F#C0CAF5}$(echo $artist | cut -c -26) %{F#7AA2F7}ﴁ "
         fi
 
-        echo "%{F#EB6572}$(echo $title | cut -c -40)"
         return 0
     fi
 }

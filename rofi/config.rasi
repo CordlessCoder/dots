@@ -1,7 +1,8 @@
 configuration {
- modi: "window,drun,ssh,combi";
+ modi: "window,drun,ssh,combi,filebrowser";
  font: "hack 10";
  combi-modi: "window,drun,ssh";
+ terminal: "kitty";
  }
 //@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
 //@theme "/usr/share/rofi/themes/Arc-Dark.rasi"

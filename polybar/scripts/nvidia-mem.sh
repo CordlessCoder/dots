@@ -1,11 +1,14 @@
-#!/bin/sh
-mem=$(echo $(nvidia-smi -q -d MEMORY -i 0 | cut -d"
-" -f13 | cut -d":" -f2 | cut -d" " -f2) \* 100 / $(nvidia-smi -q -d MEMORY -i 0 | cut -d"
-" -f11 | cut -d":" -f2 | cut -d" " -f2) | bc
-)%
-
-if [ "$mem" != "" ]; then
-    echo "$mem"
+#!/bin/bash
+if command -v nvidia-smi &> /dev/null
+then
+    while true
+    mem=$(nvidia-smi --query-gpu=utilization.memory --format=csv,noheader,nounits)%;
+    do echo "$mem";
+    sleep .5;
+    done
 else
-    echo "None"
+    while true;
+    do echo "";
+    sleep 1000;
+    done
 fi

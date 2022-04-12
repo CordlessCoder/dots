@@ -2,26 +2,23 @@
 # wm independent hotkeys
 
 # terminal emulator
+alt + {shift,_} + ctrl + t
+	{alacritty msg create-window > /dev/null || alacritty &, kitty &}
 super + Return
-	socat -u OPEN:/dev/null UNIX-CONNECT:/home/roman/.urxvt/urxvtd-ArchMaykr && python .config/sxhkd/change_layout.py us; urxvtc || urxvtd -q -o -f &
-	sh -c "python .config/sxhkd/change_layout.py us; urxvtc"
-alt + ctrl + t
 	socat -u OPEN:/dev/null UNIX-CONNECT:/home/roman/.urxvt/urxvtd-ArchMaykr && python .config/sxhkd/change_layout.py us; urxvtc || urxvtd -q -o -f &
 	sh -c "python .config/sxhkd/change_layout.py us; urxvtc"
 # program launcher
 alt + space
 	bash -c "python .config/sxhkd/change_layout.py us; rofi -show drun -show-icons &" &
-Print
-	bash -c '$(cd ~/Screenshots && scrot -s -f -z -F "\$a-\$w-\$h-%H:%M:%S_%d-%B,%A.png" -e "xclip -selection clipboard -target image/png -i \$f" &) &'
-super + Print
-	bash -c '$(cd ~/Screenshots && scrot -z -F "\$a-\$w-\$h-%H:%M:%S_%d-%B,%A.png" -e "xclip -selection clipboard -target image/png -i \$f" &) &'
+{_,super} + Print
+	bash -c '$(cd {/tmp,~/Screenshots} && scrot -s -f -z -F "\$a-\$w-\$h-%H:%M:%S_%d-%B,%A.png" -e "xclip -selection clipboard -target image/png -i \$f" &) &'
 
 # file manager
 super + e
     thunar &
 # app hotkeys
-super + {_,shift + }c
-	fish {~/.config/sxhkd/VSCode.fish &, ~/.config/sxhkd/Chromium.fish &}
+super + {_,shift,ctrl} + c
+	fish {~/.config/sxhkd/NeoVim.fish &, ~/.config/sxhkd/Chromium.fish &, ~/.config/sxhkd/VSCode.fish }
 # switching
 alt + {_, shift} + Tab
 	bspc node -f {next,last}.local.window
@@ -45,7 +42,7 @@ super + Escape
 ctrl + shift + {_,super + }q
     bspc node -{c,k}
 ctrl + super + alt + l
-	python $HOME/.config/sxhkd/change_layout.py && $HOME/.config/sxhkd/lock.sh
+	python $HOME/.config/sxhkd/change_layout.py us && $HOME/.config/sxhkd/lock.sh
 #
 # bspwm hotkeys
 #
@@ -68,10 +65,9 @@ super + m
 super + y
 	bspc node -g marked && bspc node newest.marked.local -n newest.!automatic.local
 
-# swap the current node and the biggest window
+# float and resize to mouse selection
 super + g
-	bspc node -s biggest.window
-
+	bash ~/.config/sxhkd/mover.sh
 #
 # state/flags
 #
