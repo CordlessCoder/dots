@@ -35,7 +35,7 @@ xrdb_query()
 xsetroot -cursor_name left_ptr
 
 # Desktop effects
-pkill picom
+run picom
 setxkbmap -option caps:none -layout us
 
 #start the Dunst daemon
