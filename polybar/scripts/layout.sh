@@ -10,7 +10,7 @@ if [ "$layout" != "" ]; then
             echo " $layout "
         fi
     else
-        echo " us "
+        echo "%{F#C0CAF5} us "
     fi
 else
     echo " us "

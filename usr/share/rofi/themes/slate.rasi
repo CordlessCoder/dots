@@ -1,7 +1,7 @@
 * {
-  background-color: #282C33;
-  border-color: #2e343f;
-  text-color: #8ca0aa;
+  background-color: #1a1b26FF;
+  border-color: #414868FF;
+  text-color: #c0caf5FF;
   spacing: 0;
   width: 60%;
   height: 50%;
@@ -18,11 +18,13 @@ prompt {
 }
 
 textbox {
-  background-color: #2e343f;
+  background-color: #414868FF;
   border: 0 0 1px 0;
-  border-color: #282C33;
+  border-color: #414868FF;
   padding: 8px 16px;
 }
+
+
 
 entry {
   padding: 16px;
@@ -41,5 +43,13 @@ element {
 }
 
 element selected {
-  background-color: #2e343f;
+  text-color: #76C2F0;
+  border-color: #414868FF;
+  background-color: #414868;
+}
+
+selected {
+  text-color: #76C2F0;
+  border-color: #414868FF;
+  background-color: #414868;
 }

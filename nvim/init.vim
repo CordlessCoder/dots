@@ -28,9 +28,10 @@ set cursorline
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set expandtab
 set smarttab
 set mouse=a
+set cmdheight=2
+set updatetime=200
 
 " Show invisible chars
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
@@ -48,11 +49,57 @@ map <leader>tp :tabp<cr>
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'mhinz/vim-startify'
+" vim-startify, a fancy start screen for vim.
+let g:startify_files_number = 20
+let g:startify_session_before_save = [ 'silent! tabdo NERDTreeClose' ]
+let g:startify_fortune_use_unicode = 1
+let g:startify_enable_special = 1
+let g:startify_session_sort = 1
+let g:startify_session_persistence = 1
+"let s:startify_ascii_header = [
+ "\ '         //                 /*',
+ "\ '      ,(/(//,               *###',
+ "\ '    ((((((////.             /####%*',
+ "\ ' ,/(((((((/////*            /########',
+ "\ '/*///((((((//////.          *#########/',
+ "\ '//////((((((((((((/         *#########/.',
+ "\ '////////((((((((((((*       *#########/.',
+ "\ '/////////(/(((((((((((      *#########(.',
+ "\ '//////////.,((((((((((/(    *#########(.',
+ "\ '//////////.  /(((((((((((,  *#########(.',
+ "\ '(////////(.    (((((((((((( *#########(.',
+ "\ '(////////(.     ,#((((((((((##########(.',
+ "\ '((//////((.       /#((((((((##%%######(.',
+ "\ '((((((((((.         #(((((((####%%##%#(.',
+ "\ '((((((((((.          ,((((((#####%%%%%(.',
+ "\ ' .#(((((((.            (((((#######%%',
+ "\ '    /(((((.             .(((#%##%%/*',
+ "\ '      ,(((.               /(#%%#',
+ "\ '        ./.                 #*',
+ "\ ]
+"let g:startify_custom_header = startify#pad(split(system('tty-clock'), '\n'))
+"Plug 'glepnir/dashboard-nvim'
+"" Default value is clap
+"let g:dashboard_default_executive = 'fzf'
+""let g:dashboard_custom_footer = ""
+let g:startify_custom_header  = [
+         \ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+         \ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+         \ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+         \ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+         \ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+         \ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+         \ ]
+let g:startify_lists = [
+          \ { 'type': 'files',     'header': ['   Files']            },
+          \ { 'type': 'sessions',  'header': ['   Sessions']       },
+          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+          \ { 'type': 'commands',  'header': ['   Commands']       },
+          \ ]
 Plug 'justinmk/vim-sneak'
 let g:sneak#label = 1
 " vim-sneak for better movement
-Plug 'mhinz/vim-startify'
-" vim-startify, a fancy start screen for vim.
 Plug 'kien/ctrlp.vim'
 " Comment/Uncomment tool
 Plug 'scrooloose/nerdcommenter'
@@ -60,8 +107,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 " A cool status bar
 Plug 'vim-airline/vim-airline'
-" Airline themes
-Plug 'vim-airline/vim-airline-themes'
 " Better syntax-highlighting for filetypes in vim
 Plug 'sheerun/vim-polyglot'
 " Intellisense engine
@@ -79,6 +124,7 @@ Plug 'rhysd/git-messenger.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+
 " Better syntax highlighting for different programming languages
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Distraction-free writing
@@ -91,6 +137,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 " Some fancy nerd icons 
 Plug 'ryanoasis/vim-devicons'
+Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
+"python formatting
 call plug#end()
 
 " Color and syntax highlighting
@@ -117,37 +165,58 @@ let NERDTreeChDirMode=2
 highlight NERDTreeDirSlash guifg=#C0CAF5 ctermfg=white
 set secure
 
-" Clipboard
 set clipboard=unnamed
 " Use OS clipboard
 
-" Airline
-let g:airline_theme='distinguished'
-" User powerline symbols in Airline
+let g:airline_theme = "tokyonight"
+" Use powerline symbols in Airline
 let g:airline_powerline_fonts = 1
 
 
-
 "COC
-" use <tab> for trigger completion and navigate to the next complete item
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 function! s:check_back_space() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " Code action on <leader>a
 vmap <leader>a <Plug>(coc-codeaction-selected)<CR>
 nmap <leader>a <Plug>(coc-codeaction-selected)<CR>
+
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " coc-related configuration
 nmap <silent> gd <Plug>(coc-definition)
@@ -156,24 +225,21 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-autocmd BufNewFile,BufRead *.tpl set filetype=yaml
-
 set spell
 set spelllang=en_us
 
 
 let g:coc_global_extensions = [
-  \ 'coc-spell-checker',
   \ 'coc-prettier',
   \ 'coc-git',
   \ 'coc-tsserver',
   \ 'coc-pyright',
   \ 'coc-markdownlint',
   \ 'coc-json',
-  \ 'coc-html',
-  \ 'coc-css',
-  \ 'coc-clangd',
-  \ 'coc-yaml'
+  \ 'coc-yaml',
+  \ 'coc-pydocstring',
+  \ 'coc-sh',
+  \ 'coc-rust-analyzer'
   \ ]
 
 if (empty($TMUX))

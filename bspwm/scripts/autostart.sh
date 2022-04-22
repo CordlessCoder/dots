@@ -20,7 +20,8 @@ function run {
 
 
 # Parse colors from "~/.Xresources"
-xrdb -override "${HOME}/.Xresources"
+xrdb -override "${HOME}/.Xresources" &
+feh --bg-fill $HOME/Desktop/archlogo_correct.png &
 
 xrdb_query()
 {
@@ -40,9 +41,15 @@ setxkbmap -option caps:none -layout us
 
 #start the Dunst daemon
 run dunst
+
+#start Conky
+run conky -c ~/.conkyrc
+#start GLava
+run glava
 # ##############################################################################
 # #                             AUTOSTART POLYBAR(s)                           #
 # ##############################################################################
+
 
 pkill -f '^polybar'
 $HOME/.config/polybar/launch.sh
@@ -70,7 +77,7 @@ xset s 360
 xss-lock -n $HOME/.config/sxhkd/lock.sh
 xdo raise -a "Polybar tray window"
 
-feh --bg-fill $HOME/Desktop/doasIsay_cor_white.png
+xdo lower -r $(xdotool search --class glava)
 #xdotool search --class 'splash' set_window --overrideredirect 1 windowunmap windowmap
 
 

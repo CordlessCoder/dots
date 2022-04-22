@@ -25,7 +25,11 @@
     "dockerignore",
     "journaling",
     "markdownlint",
-    "signup"
+    "popen",
+    "pydocstring",
+    "pyright",
+    "signup",
+    "statvfs"
   ],
   "cSpell.allowCompoundWords": true,
   "markdownlint.onSave": true,

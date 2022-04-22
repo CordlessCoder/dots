@@ -5,11 +5,10 @@
 alt + {shift,_} + ctrl + t
 	{alacritty msg create-window > /dev/null || alacritty &, kitty &}
 super + Return
-	socat -u OPEN:/dev/null UNIX-CONNECT:/home/roman/.urxvt/urxvtd-ArchMaykr && python .config/sxhkd/change_layout.py us; urxvtc || urxvtd -q -o -f &
-	sh -c "python .config/sxhkd/change_layout.py us; urxvtc"
+	sh -c "python .config/sxhkd/change_layout.py us; kitty &"
 # program launcher
 alt + space
-	bash -c "python .config/sxhkd/change_layout.py us; rofi -show drun -show-icons &" &
+	bash -c "python .config/sxhkd/change_layout.py us; ~/.config/rofi/launchers/launcher_ribbon &" &
 {_,super} + Print
 	bash -c '$(cd {/tmp,~/Screenshots} && scrot -s -f -z -F "\$a-\$w-\$h-%H:%M:%S_%d-%B,%A.png" -e "xclip -selection clipboard -target image/png -i \$f" &) &'
 
@@ -18,7 +17,7 @@ super + e
     thunar &
 # app hotkeys
 super + {_,shift,ctrl} + c
-	fish {~/.config/sxhkd/NeoVim.fish &, ~/.config/sxhkd/Chromium.fish &, ~/.config/sxhkd/VSCode.fish }
+	bash {~/.config/sxhkd/NeoVim.sh &, ~/.config/sxhkd/FirefoxDevEd.sh &, ~/.config/sxhkd/VSCode.sh }
 # switching
 alt + {_, shift} + Tab
 	bspc node -f {next,last}.local.window
@@ -27,7 +26,7 @@ super + {_,shift} + Tab
 
 # color picker
 super + n
-    xcolor -f HEX! --scale 4 -s clipboard
+    xcolor -f HEX! --scale 4 -s primary
 
 # language switching
 super + space
@@ -96,7 +95,7 @@ super + {p,b,comma,period}
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
-	bspc desktop -f {prev,next}.local
+	bspc desktop -f {next,prev}.local
 
 # focus the last node/desktop
 
