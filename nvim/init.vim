@@ -83,6 +83,7 @@ let g:startify_session_persistence = 1
 "" Default value is clap
 "let g:dashboard_default_executive = 'fzf'
 ""let g:dashboard_custom_footer = ""
+let g:python3_host_prog = $HOME . '/.local/venv/nvim/bin/python'
 let g:startify_custom_header  = [
          \ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
          \ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
@@ -251,6 +252,9 @@ if (empty($TMUX))
   endif
 endif
 
+"black shortcuts
+nnoremap <buffer><silent> <c-q> <cmd>call Black()<cr>
+inoremap <buffer><silent> <c-q> <cmd>call Black()<cr>
 " FZF shortcuts
 nnoremap <silent> <Leader>f :Ag<CR>
 

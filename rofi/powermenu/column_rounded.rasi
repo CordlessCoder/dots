@@ -19,7 +19,7 @@ configuration {
 @import "styles/colors.rasi"
 
 window {
-    transparency:                   "real";
+    transparency:                   "none";
     background-color:               @background;
     text-color:                     @foreground;
     border-radius:                  0px;
