@@ -2,3 +2,5 @@
 .bak
 
 ./polybar/scripts/.env
+nvim/plugged
+nvim/plugged/*

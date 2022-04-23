@@ -10,7 +10,12 @@
 # ##############################################################################
 # #                                  FUNCTIONS                                 # 
 # ##############################################################################
-
+function run_bg {
+    if ! pgrep $1 > /dev/null ;
+    then
+        nice -n 19 $@ &
+    fi
+}
 function run {
     if ! pgrep $1 > /dev/null ;
     then
@@ -43,9 +48,9 @@ setxkbmap -option caps:none -layout us
 run dunst
 
 #start Conky
-run conky -c ~/.conkyrc
+run_bg conky -c ~/.conkyrc
 #start GLava
-run glava
+run_bg glava
 # ##############################################################################
 # #                             AUTOSTART POLYBAR(s)                           #
 # ##############################################################################
