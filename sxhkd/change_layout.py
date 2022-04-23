@@ -6,10 +6,13 @@ layouts = ["us", "ru", "ua"]
 
 
 def layout_walk(current, direction):
-    if direction != "last":
-        return layouts[(layouts.index(current) + 1) % len(layouts)]
-    else:
-        return layouts[layouts.index(current) - 1]
+    try:
+        if direction != "last":
+            return layouts[(layouts.index(current) + 1) % len(layouts)]
+        else:
+            return layouts[layouts.index(current) - 1]
+    except ValueError:
+        return layouts[0]
 
 
 try:
@@ -36,7 +39,7 @@ except IndexError:
     current_layout = (
         os.popen("setxkbmap -query", mode="r").read().split("\n")[2].split()[1].strip()
     )
-    with open("/tmp/..current_layout", "w") as display:
+    with open("/tmp/.current_layout", "w") as display:
         layout = str(layout_walk(current_layout, "next"))
         display.write(layout)
         os.system(f"setxkbmap -layout {layout}")
