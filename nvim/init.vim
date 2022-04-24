@@ -226,8 +226,6 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-set spell
-set spelllang=en_us
 
 
 let g:coc_global_extensions = [

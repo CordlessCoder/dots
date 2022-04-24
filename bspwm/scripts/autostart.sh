@@ -50,7 +50,10 @@ run dunst
 #start Conky
 run_bg conky -c ~/.conkyrc
 #start GLava
-run_bg glava
+if ! pgrep glava > /dev/null ;
+    then
+         echo "#C0CAF5" | nice -n 19 glava -i &
+    fi
 # ##############################################################################
 # #                             AUTOSTART POLYBAR(s)                           #
 # ##############################################################################
