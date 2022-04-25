@@ -140,6 +140,8 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
 "python formatting
+Plug 'andweeb/presence.nvim'
+" Discord RPC
 call plug#end()
 
 " Color and syntax highlighting
@@ -267,3 +269,13 @@ let g:vim_markdown_folding_disabled = 1
 " Styling: All styles --------------------------------------------------------
 runtime vimrc.styling
 hi String guifg=#7DCFFF
+
+
+
+let g:presence_auto_update         = 1
+let g:presence_neovim_image_text   = "The Only Real Text Editor"
+let g:presence_main_image          = "neovim"
+let g:presence_enable_line_number  = 1
+let g:presence_blacklist           = []
+let g:presence_buttons             = 1
+let g:presence_file_assets         = {}
