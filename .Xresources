@@ -1,14 +1,12 @@
 URxvt*depth:      32
-URxvt*font:			xft:Hack Nerd Font Mono:pixelsize=14:antialias=true:hinting=true, \
+URxvt*font:			xft:Fira Code Nerd Font:size=13:antialias=true, \
 					xft:DejaVu Sans Mono, \
-					xft:Iosevka Term, \
 					xft:Inconsolata, \
 					xft:Symbols Nerd Font, \
 					xft:FontAwesome, \
 					xft:Unifont
-URxvt*boldFont:		xft:Hack Nerd Font Mono:bold:pixelsize=14:antialias=true:hinting=true, \
+URxvt*boldFont:		xft:Fira Code Nerd Font:bold:size=13:antialias=true, \
 					xft:DejaVu Sans Mono, \
-					xft:Iosevka Term:bold, \
 					xft:Inconsolata, \
 					xft:Symbols Nerd Font, \
 					xft:FontAwesome, \
@@ -74,11 +72,10 @@ URxvt.keysym.Control-Right:  \033[1;5C
 
 
 ! special
-*.cursorColor:  #919191
-*.foreground:    #A9B1D6
-*.background:   #1E1E28
-URxvt.background:   [90]#1E1E28
-*.cursorColor:   #A9B1D6
+*.foreground:    #bdd9e2
+*.background:    #0e0d15
+URxvt.background: [90]#0e0d15
+*.cursorColor:   #E9718A
 *.highlightColor:#3A3F4B
 
 !*fading:                  40
@@ -99,25 +96,25 @@ URxvt.background:   [90]#1E1E28
 
 ! Black colours
 *.color0:        #1A1B26
-*.color8:        #4E5173
+*.color8:        #414868
 ! Red colours
-*.color1:        #F7768E
-*.color9:        #E06C75
+*.color1:        #EB6572
+*.color9:        #F7768E
 ! Yellow colours
-*.color2:        #E0AF68
-*.color10:       #D19A66
+*.color2:        #9ECE6A
+*.color10:       #9ECE6A
 ! Green colours
-*.color3:        #9ECE6A
-*.color11:       #98C379
+*.color3:        #E0AF68
+*.color11:       #E0AF68
 ! Blue colours
 *.color4:        #7AA2F7
-*.color12:       #61AFEF
+*.color12:       #7AA2F7
 ! Magenta (pink, !green) colours
-*.color5:        #9A7ECC
-*.color13:       #C678DD
+*.color5:        #BB9AF7
+*.color13:       #BB9AF7
 ! Cyan (blue + green)
-*.color6:        #4ABAAF
-*.color14:       #56B6C2
+*.color6:        #7DCFFF
+*.color14:       #7DCFFF
 ! White colours
-*.color7:        #ACB0D0
-*.color15:       #ABB2BF
+*.color7:        #C0CAF5
+*.color15:       #A9B1D6

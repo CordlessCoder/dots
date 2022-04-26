@@ -13,7 +13,7 @@
    as a 2D sampler.
    
    See documentation for more details. */
-#request mod radial
+#request mod bbars
 
 /* Window hints */
 #request setfloating  true
@@ -48,7 +48,7 @@
 #request settitle "GLava"
 
 /* Window geometry (x, y, width, height) */
-#request setgeometry 2560 0 2560 1440
+#request setgeometry 0 0 1920 1080
 
 /* Window background color (RGB format).
    Does not work with `setopacity "xroot"` */
@@ -68,7 +68,8 @@
    will do nothing, but you can use "!+" and "!-" to stack on top
    or below other windows.
 */
-#request setxwintype "desktop"
+#request setxwintype "!-"
+
 
 /* (X11 only) EWMH Window state atoms (multiple can be specified).
    Possible values are:
@@ -96,7 +97,7 @@
    the GLava window. Useful when you want to interact with other
    desktop windows (icons, menus, desktop shells). Enabled by
    default when GLava itself is a desktop window. */
-#request setclickthrough true
+#request setclickthrough false
 
 /* Audio source
 
@@ -112,7 +113,7 @@
 /* Buffer swap interval (vsync), set to '0' to prevent
    waiting for refresh, '1' (or more) to wait for the specified
    amount of frames. */
-#request setswap 1
+#request setswap 0
 
 /* Linear interpolation for audio data frames. Drastically
    improves smoothness with configurations that yield low UPS
@@ -132,7 +133,7 @@
 
 /* Frame limiter, set to the frames per second (FPS) desired or
    simply set to zero (or lower) to disable the frame limiter. */
-#request setframerate 120
+#request setframerate 144
 
 /* Suspends rendering if a fullscreen window is focused while
    GLava is still visible (ie. on another monitor). This prevents
@@ -141,7 +142,7 @@
 
    If GLava is minimized or completely obscured, it will not
    render regardless of this option. */
-#request setfullscreencheck false
+#request setfullscreencheck true
 
 /* Enable/disable printing framerate every second. 'FPS' stands
    for 'Frames Per Second', and 'UPS' stands for 'Updates Per
