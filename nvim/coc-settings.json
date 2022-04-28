@@ -28,6 +28,7 @@
     "popen",
     "pydocstring",
     "pyright",
+    "setxkbmap",
     "signup",
     "statvfs"
   ],

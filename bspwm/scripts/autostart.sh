@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # ---
 # Use "run program" to run it only if it is not already running
+# Use "run_bg program" to run it with low priority, only if it is not already running
 # Use "program &" to run it regardless
 # ---
 # NOTE: This script runs with every restart of BSPWM[Binary Space Partitioning Window Manager]
@@ -52,7 +53,7 @@ run_bg conky -c ~/.conkyrc
 #start GLava
 if ! pgrep glava > /dev/null ;
     then
-         echo "#C0CAF5" | nice -n 19 glava -i &
+         python ~/Player_Colorizer.py | nice -n 19 glava -i &
     fi
 # ##############################################################################
 # #                             AUTOSTART POLYBAR(s)                           #

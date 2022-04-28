@@ -11,13 +11,13 @@
 /* Outline width (in pixels, set to 0 to disable outline drawing) */
 #define BAR_OUTLINE_WIDTH 0
 /* Amplify magnitude of the results each bar displays */
-#define AMPLIFY 150
+#define AMPLIFY 600
 /* Whether the current settings use the alpha channel;
    enabling this is required for alpha to function
    correctly on X11 with `"native"` transparency. */
 #define USE_ALPHA 1
 /* How strong the gradient changes */
-#define GRADIENT 100
+#define GRADIENT 1000
 /* Bar color changes with height */
 #define GRADIENT0
 /* Bar color */
