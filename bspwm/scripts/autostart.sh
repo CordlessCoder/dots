@@ -53,7 +53,7 @@ run_bg conky -c ~/.conkyrc
 #start GLava
 if ! pgrep glava > /dev/null ;
     then
-         python ~/Player_Colorizer.py | nice -n 19 glava -i &
+         python ~/.config/glava/Player_Colorizer.py | nice -n 19 glava -i &
     fi
 # ##############################################################################
 # #                             AUTOSTART POLYBAR(s)                           #
