@@ -1,0 +1,50 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "json",
+    "markdown",
+    "go",
+    "python",
+    "javascriptreact",
+    "javascript",
+    "css",
+    "html",
+    "c",
+    "cpp",
+    "py",
+    "yaml"
+  ],
+  "cSpell.userWords": [
+    "APAC",
+    "BSPWM",
+    "Bahareh",
+    "Kubernetes",
+    "Kvantum",
+    "Microservice",
+    "Nika",
+    "Nord",
+    "Octa",
+    "Ramezanpour",
+    "Xorg",
+    "dockerignore",
+    "journaling",
+    "markdownlint",
+    "popen",
+    "pydocstring",
+    "pyright",
+    "setxkbmap",
+    "signup",
+    "statvfs"
+  ],
+  "cSpell.allowCompoundWords": true,
+  "markdownlint.onSave": true,
+  "markdownlint.config": {
+    "MD013": false
+  },
+  "prettier.singleQuote": false,
+  "go.tags": {
+    "transform": "camelcase"
+  },
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": ["--config max-line-length=120"],
+  "python.formatting.provider": "black"
+}

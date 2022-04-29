@@ -1,6 +1,6 @@
 .env
 .bak
 
-./polybar/scripts/.env
-nvim/plugged
-nvim/plugged/*
+.config/polybar/scripts/.env
+.config/nvim/plugged
+.config/nvim/plugged/*
