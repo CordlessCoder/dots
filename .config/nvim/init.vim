@@ -48,7 +48,7 @@ map <leader>tn :tabn<cr>
 map <leader>tp :tabp<cr>
 
 call plug#begin('~/.config/nvim/plugged')
-
+let g:mkdp_echo_preview_url = 1
 Plug 'mhinz/vim-startify'
 " vim-startify, a fancy start screen for vim.
 let g:startify_files_number = 20
@@ -133,7 +133,7 @@ Plug 'junegunn/goyo.vim'
 " Markdown
 Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 " TokyoNight theme
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 " Some fancy nerd icons 
@@ -265,7 +265,7 @@ let g:goyo_width = 250
 let g:goyo_height = 250
 map <C-g> :Goyo<CR>
 " Vim Markdown
-let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_folding_disabled = 0
 " Styling: All styles --------------------------------------------------------
 runtime vimrc.styling
 hi String guifg=#7DCFFF
