@@ -1,4 +1,4 @@
-# My BSPWM Config
+# me dotfiles
 
 # Installation(no guide here)
 
@@ -6,7 +6,7 @@ First of all, make sure that you have a fresh, functional frontal cortex on-hand
 
 1. Run `git clone https://github.com/CordlessCoder/dots` in a directory you do not value.
 2. `cd dots` to acquire the great understanding of the lore of Kingdom Hearts.
-3. 3. Copy of the files from `.config` into `~/.config/`... Who could have seen this coming???????
+3. Copy of the files from `.config` into `~/.config/`... Who could have seen this coming???????
 4. Copy all the files from `_HOME` into `~/`
 5. Read all of the keybinds, and the entirety of the Bible, you'll need that knowledge.
 6. Log into BSPWM, using your preferred method. (If you ever dare to use startx/xinit, I will find **and** follow you _on twitter_)
@@ -152,7 +152,7 @@ This configuration comes with a long list of those, some of which are shown in t
 9. Log out and back in/reload Xorg in another way(a crash will do)
 10. Emerge from this experience, a devout buddhist.(OPTIONAL)
 
-<details><summary> What the hell is Kvantum and where do I buy it? </summary>
+### What the hell is Kvantum and do I have to pay for it?
 
 - Install `Kvantum`
 - Download a QT5 theme from either KDE store or the AUR
@@ -163,8 +163,7 @@ This configuration comes with a long list of those, some of which are shown in t
 - Launch Kvantum and select QT5 theme you just extracted, then spend 20 minutes looking at built-in themes because you're indecisive
 - Finally set the theme in Kvantum
 - Feel immense pride for the sheer dissapointment your parents have just endured
-</details>
-<hr>
+
 </details>
 <details><summary> How do I make GTK apps not look bad??????????? </summary>
 
