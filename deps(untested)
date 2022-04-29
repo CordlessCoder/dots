@@ -1,6 +1,0 @@
-fish kitty nerd-fonts-fira-code adobe-source-code-pro-fonts otf-raleway ttf-ubuntu-font-family nerd-fonts-fantasque-sans-mono cantarell-fonts oxygen-cursors xdo xdotool wmctrl slop polybar picom-jonaburg-fix glava rofi sxhkd scrot feh dunst conky playerctl xorg-xprop i3lock-color xclip xcolor
-
-##############
-# NeoVim deps#
-##############
-vim-plug npm go
