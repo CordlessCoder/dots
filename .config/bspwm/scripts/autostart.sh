@@ -27,7 +27,7 @@ function run {
 
 # Parse colors from "~/.Xresources"
 xrdb -override "${HOME}/.Xresources" &
-feh --bg-fill $HOME/Desktop/archlogo_correct.png &
+feh --bg-fill ~/.config/bspwm/wallpaper.png &
 
 xrdb_query()
 {
