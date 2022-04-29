@@ -160,5 +160,7 @@ This configuration comes with a long list of those, some of which are shown in t
 3. Enjoy your epic and original Gruvbox theme
 </details>
 
+# Wallpapers. We have those.
+
 <h1><span style="color:#f7768e">I use arch, btw.</span></h1>
 I also don't have lungs
