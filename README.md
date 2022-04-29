@@ -1,5 +1,18 @@
 # My BSPWM Config
 
+# Installation(no guide here)
+
+First of all, make sure that you have a fresh, functional frontal cortex on-hand. Save as much as you can and steal from your family, if you want to. A compter may also be required, but starting with the frontal cortex is always a great idea. In case you're reading this and do not have a frontal cortex, get help, slowly.
+
+1. Run `git clone https://github.com/CordlessCoder/dots` in a directory you do not value.
+2. `cd dots` to acquire the great understanding of the lore of Kingdom Hearts.
+3. 3. Copy of the files from `.config` into `~/.config/`... Who could have seen this coming???????
+4. Copy all the files from `_HOME` into `~/`
+5. Read all of the keybinds, and the entirety of the Bible, you'll need that knowledge.
+6. Log into BSPWM, using your preferred method. (If you ever dare to use startx/xinit, I will find **and** follow you _on twitter_)
+7. Discard the frontal cortex in a safe manner immediately, as to minimize the chance of developing the frightening realization that I am indeed in your walls.
+8. Enjoy your newfound interest in using your computer, the 1950s way.
+
 ## Keybinds
 
 This configuration comes with a long list of those, some of which are shown in the conky widget as a reminder. Here are ALL of them for some reason(you need to expand the list to see them, that's how secretive I am)
@@ -26,7 +39,7 @@ This configuration comes with a long list of those, some of which are shown in t
 | Meta+R                      | Rotates windows 90 degrees around the parent window                |
 | Meta+Y                      | Send the focused node to the (newest) preselection                 |
 | Meta+**T**                  | Set the node state to **tiled**                                    |
-| Meta**+Shift+T**            | ^ but to **pseudo_tiled**                                          |
+| Meta+**Shift+T**            | ^ but to **pseudo_tiled**                                          |
 | Meta+**S**                  | ^ but to **floating(stacked)**                                     |
 | Meta+**F**                  | ^ but to **fullscreen**                                            |
 | Meta+Ctrl+M                 | Set the focused node's flags to **marked**                         |
@@ -160,7 +173,5 @@ This configuration comes with a long list of those, some of which are shown in t
 3. Enjoy your epic and original Gruvbox theme
 </details>
 
-# Wallpapers. We have those.
-
 <h1><span style="color:#f7768e">I use arch, btw.</span></h1>
-I also don't have lungs
+I don't have lungs. At least that I know of.
