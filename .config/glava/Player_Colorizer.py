@@ -11,6 +11,8 @@ image_url = ""
 
 out = sys.stdout
 
+out.write("#C0CAF5")
+out.flush()
 while True:
     new_image_url = (
         os.popen("playerctl metadata mpris:artUrl 2>/dev/null")

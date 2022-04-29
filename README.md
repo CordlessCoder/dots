@@ -1,5 +1,18 @@
 # me dotfiles
 
+### These dotfiles include:
+
+<img align="right" src="https://raw.githubusercontent.com/CordlessCoder/dots/main/screenshot.png">
+
+- A constantly declining mental state.[looking for therapists nearby ready to work]
+- experimental and objectively overengineered configs.[it's a good thing I swear]
+- tons of questionable choices
+- conky[inherited from DtOS]
+- the work of my entire life[very close to the end]
+- g a p[10 px]
+- colors
+- [music integration](https://www.youtube.com/watch?v=OHK2zh7Bu54)
+
 # Installation(no guide here)
 
 First of all, make sure that you have a fresh, functional frontal cortex on-hand. Save as much as you can and steal from your family, if you want to. A compter may also be required, but starting with the frontal cortex is always a great idea. In case you're reading this and do not have a frontal cortex, get help, slowly.
@@ -99,7 +112,7 @@ This configuration comes with a long list of those, some of which are shown in t
 - wmctrl
 - slop
 - polybar
-- picom-jonaburg-fix
+- picom-jonaburg-fix(stability, performance and buttery smooth animations)
 - rofi
 - sxhkd
 - scrot
@@ -171,6 +184,8 @@ This configuration comes with a long list of those, some of which are shown in t
 2. Customize(using LXAppearance)
 3. Enjoy your epic and original Gruvbox theme
 </details>
+
+Huge thanks to [@a1fishie](https://github.com/a1fishie)
 
 <h1><span style="color:#f7768e">I use arch, btw.</span></h1>
 I don't have lungs. At least that I know of.
