@@ -147,6 +147,10 @@ This configuration comes with a long list of those, some of which are shown in t
 
 # Troubleshooting
 
+### Why is there no visualiser????? YOU PROMISED A VISUALISER, alternatively > Why is the bottom half of the desktop black?
+
+That is most likely because **GLava**, the visualiser isn't set to use the correct geometry. To fix that, find the `setgeometry` setting in `~/.config/glava/rc.glsl` and set it to be correct for your monitor setup(Ex. `#request setgeometry 0 580 1920 500` for 1080x1920).
+
 <details><summary>How do I make QT5 apps not look bad?????????????????</summary>
 
 1. Install QT5CT
@@ -186,6 +190,8 @@ This configuration comes with a long list of those, some of which are shown in t
 </details>
 
 Huge thanks to [@a1fishie](https://github.com/a1fishie)
+
+If you have an issue with configuration, installation or are suffering from severe depression, feel free to use the Issue function on GitHub.
 
 <h1><span style="color:#f7768e">I use arch, btw.</span></h1>
 I don't have lungs. At least that I know of.
