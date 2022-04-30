@@ -66,7 +66,7 @@ This configuration comes with a long list of those, some of which are shown in t
 | Meta+`,`[**comma**]         | Focus the node for the path jump of **second**                     |
 | Meta+`.`[**period**]        | ^ same but to the **first**                                        |
 | Meta+`[`[**left bracket**]  | focus the **next** workspace of the current monitor                |
-| Meta+`[`[**right bracket**] | ^ but the **previous**                                             |
+| Meta+`]`[**right bracket**] | ^ but the **previous**                                             |
 | Meta+**O**                  | Focus the **older** node in the node history                       |
 | Meta+**I**                  | ^ but the **newer**                                                |
 | Meta+[1-9,0]                | Focus the given workspace                                          |
