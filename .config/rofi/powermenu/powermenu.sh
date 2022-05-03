@@ -26,12 +26,13 @@ dir="$HOME/.config/rofi/powermenu"
 #sed -i -e "s/@import .*/@import \"$color\"/g" $dir/styles/colors.rasi
 
 # comment these lines to disable random style
-#themes=($(ls -p --hide="powermenu.sh" --hide="styles" --hide="confirm.rasi" --hide="message.rasi" $dir | grep -e "column"))
-#theme="${themes[$(( $RANDOM % 4 ))]}"
+#themes=($(ls -p --hide="powermenu.sh" --hide="styles" --hide="confirm.rasi" --hide="message.rasi" $dir | grep -e "_"))
+#theme="${themes[$(( $RANDOM % 24 ))]}"
+#echo $theme
 
 uptime=$(uptime -p | sed -e 's/up //g')
 
-rofi_command="rofi -theme $dir/$theme"
+rofi_command="rofi -theme $dir/$theme $1"
 
 # Options
 shutdown=""

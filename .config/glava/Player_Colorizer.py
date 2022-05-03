@@ -6,13 +6,19 @@ import urllib.request
 from colorthief import ColorThief
 import time
 import sys
+from colorsys import rgb_to_hsv
+
+
+def colorsel(r, g, b):
+    temp = rgb_to_hsv(r / 255, g / 255, b / 255)
+    return temp[1] * 0.8 + temp[2]
+
 
 image_url = ""
 
 out = sys.stdout
 
-out.write("#C0CAF5")
-out.flush()
+
 while True:
     new_image_url = (
         os.popen("playerctl metadata mpris:artUrl 2>/dev/null")
@@ -24,10 +30,16 @@ while True:
         if new_image_url.split(":///")[0].strip() == "file":
             direct_path = new_image_url.replace("file://", "")
             image = direct_path
-            image = ColorThief(image).get_color(quality=1)
+            image = max(
+                ColorThief(image).get_palette(color_count=4, quality=2),
+                key=lambda x: colorsel(x[0], x[1], x[2]),
+            )
         else:
             urllib.request.urlretrieve(new_image_url, ".playthumb")
-            image = ColorThief(".playthumb").get_color(quality=1)
+            image = max(
+                ColorThief(".playthumb").get_palette(color_count=4, quality=2),
+                key=lambda x: colorsel(x[0], x[1], x[2]),
+            )
         image = "#{:02x}{:02x}{:02x}".format(image[0], image[1], image[2])
         # image = f"{image[0]}, {image[1]}, {image[2]}, 255"
         # print(f"{image}")

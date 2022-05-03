@@ -86,12 +86,12 @@
    if you are trying to get GLava to behave as a desktop widget
    and your WM is not correctly responding to the "desktop" value
    for `setxwintype`.
-*/
+
 #request addxwinstate "sticky"
 #request addxwinstate "skip_taskbar"
 #request addxwinstate "skip_pager"
 #request addxwinstate "below"
-#request addxwinstate "pinned"
+#request addxwinstate "pinned" */
 
 /* (X11 only) Use the XShape extension to support clicking through
    the GLava window. Useful when you want to interact with other
@@ -129,7 +129,7 @@
    
    This will delay data output by one update frame, so it can
    desync audio with visual effects on low UPS configs. */
-#request setinterpolate true
+#request setinterpolate false
 
 /* Frame limiter, set to the frames per second (FPS) desired or
    simply set to zero (or lower) to disable the frame limiter. */
@@ -188,7 +188,7 @@
 
    This value has a _massive_ effect on FFT performance and
    quality for some modules. */
-#request setbufsize 2048
+#request setbufsize 1024
 
 /* PulseAudio sample rate. Lower values can add 'gravity' to
    FFT output, but can also reduce accuracy. Most hardware

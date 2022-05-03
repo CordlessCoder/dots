@@ -108,6 +108,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 " A cool status bar
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " Better syntax-highlighting for filetypes in vim
 Plug 'sheerun/vim-polyglot'
 " Intellisense engine
@@ -124,6 +125,7 @@ Plug 'rhysd/git-messenger.vim'
 " Fuzzy search capability
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'github/copilot.vim'
 
 
 " Better syntax highlighting for different programming languages
@@ -171,8 +173,9 @@ set secure
 set clipboard=unnamed
 " Use OS clipboard
 
-let g:airline_theme = "tokyonight"
+let g:airline_skip_empty_sections = 1
 " Use powerline symbols in Airline
+let g:airline_theme = 'hybrid'
 let g:airline_powerline_fonts = 1
 
 
