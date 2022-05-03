@@ -126,6 +126,7 @@ Plug 'rhysd/git-messenger.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'github/copilot.vim'
+Plug 'elkowar/yuck.vim'
 
 
 " Better syntax highlighting for different programming languages
