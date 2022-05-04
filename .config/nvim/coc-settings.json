@@ -25,6 +25,8 @@
     "Octa",
     "Ramezanpour",
     "Xorg",
+    "colorsel",
+    "colorsys",
     "dockerignore",
     "journaling",
     "markdownlint",

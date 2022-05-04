@@ -34,10 +34,10 @@
               Has very little performance impact.
     
    "none"   - Disable window opacity completely. */
-#request setopacity "xroot"
+#request setopacity "none"
 
 /* Whether to mirror left and right audio input channels from PulseAudio.*/
-#request setmirror true
+#request setmirror false
 
 /* OpenGL context and GLSL shader versions, do not change unless
    you *absolutely* know what you are doing. */
@@ -48,11 +48,11 @@
 #request settitle "GLava"
 
 /* Window geometry (x, y, width, height) */
-#request setgeometry 2560 940 2560 500
+#request setgeometry 2577 200 492 1100
 
 /* Window background color (RGB format).
    Does not work with `setopacity "xroot"` */
-#request setbg 00000000
+#request setbg 1A1B26
 
 /* (X11 only) EWMH Window type. Possible values are:
    
@@ -68,7 +68,7 @@
    will do nothing, but you can use "!+" and "!-" to stack on top
    or below other windows.
 */
-#request setxwintype "!-"
+#request setxwintype "dock"
 
 
 /* (X11 only) EWMH Window state atoms (multiple can be specified).

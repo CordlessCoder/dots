@@ -49,12 +49,17 @@ setxkbmap -option caps:none -layout us
 run_bg dunst
 
 #start Conky
-run_bg conky -c ~/.conkyrc
+if ! test $(pgrep conky | wc -l) -gt 1; then
+        killall conky
+        nice -n 19 conky -c ~/.conkyrc &
+        nice -n 19 conky -c ~/.conkyglava &
+    fi
+
 #start GLava
 if ! pgrep glava > /dev/null ;
     then
-         python ~/.config/glava/Player_Colorizer.py | nice -n 19 glava -i &
-    fi
+         python ~/.config/glava/Player_Colorizer.py | tee /tmp/.color | nice -n 19 glava -i &
+fi
 # ##############################################################################
 # #                             AUTOSTART POLYBAR(s)                           #
 # ##############################################################################
@@ -82,11 +87,12 @@ xdo hide $(xdotool search --onlyvisible --name "^polybar-tray_" || echo "none")
 #xdo hide $(xdotool search --onlyvisible --name "^polybar-resources_*" || echo "none")
 
 # lock screen
-xset s 360
+xset s 900
 xss-lock -n $HOME/.config/sxhkd/lock.sh
 xdo raise -a "Polybar tray window"
 
 xdo lower -r $(xdotool search --class glava)
+xdo lower -r $(xdotool search --class conky)
 #xdotool search --class 'splash' set_window --overrideredirect 1 windowunmap windowmap
 
 

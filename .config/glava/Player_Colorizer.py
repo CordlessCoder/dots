@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import os
 from PIL import Image
-import io
 import urllib.request
 from colorthief import ColorThief
 import time
@@ -9,9 +8,9 @@ import sys
 from colorsys import rgb_to_hsv
 
 
-def colorsel(r, g, b):
+def colorsel(r, g, b, significance=0):
     temp = rgb_to_hsv(r / 255, g / 255, b / 255)
-    return temp[1] * 0.8 + temp[2]
+    return (temp[1] * 0.9 + temp[2]) * (10 - significance)
 
 
 image_url = ""
@@ -30,17 +29,15 @@ while True:
         if new_image_url.split(":///")[0].strip() == "file":
             direct_path = new_image_url.replace("file://", "")
             image = direct_path
-            image = max(
-                ColorThief(image).get_palette(color_count=4, quality=2),
-                key=lambda x: colorsel(x[0], x[1], x[2]),
-            )
+            image = ColorThief(image).get_palette(color_count=4, quality=2)
         else:
             urllib.request.urlretrieve(new_image_url, ".playthumb")
-            image = max(
-                ColorThief(".playthumb").get_palette(color_count=4, quality=2),
-                key=lambda x: colorsel(x[0], x[1], x[2]),
-            )
-        image = "#{:02x}{:02x}{:02x}".format(image[0], image[1], image[2])
+            image = ColorThief(".playthumb").get_palette(color_count=4, quality=2)
+        ranked = []
+        for i, x in enumerate(image):
+            ranked.append([i, x[0], x[1], x[2]])
+        image = max(ranked, key=lambda x: colorsel(x[1], x[2], x[3], significance=x[0]))
+        image = "#{:02x}{:02x}{:02x}".format(image[1], image[2], image[3])
         # image = f"{image[0]}, {image[1]}, {image[2]}, 255"
         # print(f"{image}")
         out.write(f"{image}\n")

@@ -47,6 +47,10 @@ map <leader>to :tabonly<cr>
 map <leader>tn :tabn<cr>
 map <leader>tp :tabp<cr>
 
+vmap <Tab> >
+vmap <S-Tab> <
+
+
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'mhinz/vim-startify'
