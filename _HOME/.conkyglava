@@ -75,9 +75,9 @@ conky.config = {
 conky.text = [[
 ${alignc}${color0}${user_names}@${color2}${nodename}${color1}
 ╭────────────────────────────────────────────╮
-│${eval $${${tail /tmp/.color 1 (1)}}} Song:${alignr}${exec   playerctl metadata title  | cut -c -25}${color1} │
-│${eval $${${tail /tmp/.color 1 (1)}}} Album:${alignr}${exec  playerctl metadata album  | cut -c -24}${color1} │
-│${eval $${${tail /tmp/.color 1 (1)}}} Artist:${alignr}${exec playerctl metadata artist | cut -c -23}${color1} │
+│${eval $${${tail /tmp/.color 1 (1)}}} Song: ${alignr}${scroll wait 36 1 ${exec playerctl metadata title}${color1}} │
+│${eval $${${tail /tmp/.color 1 (1)}}} Album: ${alignr}${scroll wait 36 1 ${exec  playerctl metadata album}}${color1} │
+│${eval $${${tail /tmp/.color 1 (1)}}} Artist: ${alignr}${scroll wait 36 1 ${exec playerctl metadata artist}}${color1} │
 ├────────────────────────────────────────────┤
 │                                            │
 │                                            │
