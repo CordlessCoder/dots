@@ -2,7 +2,7 @@
 
 ### These dotfiles include:
 
-<img align="right" src="https://raw.githubusercontent.com/CordlessCoder/dots/82bb19317a8e70b858fe9cf8714de69fcee1e6e5/screenshot.png">
+<img align="right" src="https://raw.githubusercontent.com/CordlessCoder/dots/main/screenshot.png">
 
 - A constantly declining mental state.[looking for therapists nearby ready to work]
 - experimental and objectively overengineered configs.[it's a good thing I swear]
