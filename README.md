@@ -195,5 +195,19 @@ Huge thanks to [@a1fishie](https://github.com/a1fishie)
 
 If you have an issue with configuration, installation or are suffering from severe depression, feel free to use the Issue function on GitHub.
 
+# Wallpapers
+
+You can get any of my custom wallpapers from my [Wallpapers repo](https://github.com/CordlessCoder/Wallpapers)
+
+<details><summary>A preview of the wallpapers themselves(click to expand)</summary>
+
+|                                                                                      stylized                                                                                      |                                                                               plain                                                                               |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|     <img width="1604" alt="Arch stripes, corrupted" src="https://raw.githubusercontent.com/CordlessCoder/Wallpapers/main/Arch_stripes_corrupted.png"> Arch stripes, corrupted      |             <img width="1604" alt="Arch stripes" src="https://raw.githubusercontent.com/CordlessCoder/Wallpapers/main/Arch_stripes.png"> Arch stripes             |
+| <img width="1604" alt="Nord geometric, stylized" src="https://raw.githubusercontent.com/CordlessCoder/Wallpapers/main/Nord_Geometric_1920x1080-8bit.png"> Nord geometric, stylized |          <img width="1604" alt="TokyoNight, cubes." src="https://github.com/CordlessCoder/Wallpapers/raw/main/TokyoNight_Cubes.png"> TokyoNight, cubes.           |
+|             <img width="1604" alt='The "do as I say" meme' src="https://github.com/CordlessCoder/Wallpapers/raw/main/doasIsay_white_final.png"> The "do as I say" meme             | <img width="1604" alt="Arch_minimal_4000x4000.png" src="https://github.com/CordlessCoder/Wallpapers/raw/main/Arch_minimal_4000x4000.png"> Arch, minimal 4000x4000 |
+
+</details>
+
 <h1><span style="color:#f7768e">I use arch, btw.</span></h1>
 I don't have lungs. At least that I know of.
