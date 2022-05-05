@@ -9,7 +9,7 @@ conky.config = {
 	--Various settings
 	background = true, 							-- forked to background
 	double_buffer = true,						-- Use the Xdbe extension? (eliminates flicker)
-	text_buffer_size = 2048,					-- size of buffer for display of content of large variables - default 256
+	text_buffer_size = 256,					-- size of buffer for display of content of large variables - default 256
 	update_interval = 1,						-- update interval
 	imlib_cache_size = 0,                       -- disable image cache to get a new spotify cover per song
 
@@ -20,7 +20,7 @@ conky.config = {
 
     -- Placement (For SINGLE monitor users!)
 	alignment = 'top_left',		            -- top_left,top_middle,top_right,bottom_left,bottom_middle,bottom_right,
-	gap_x = 10,								-- pixels between right or left border
+	gap_x = 5,								-- pixels between right or left border
 	gap_y = 67,								-- pixels between bottom or left border
 
 	--Graphical
@@ -69,12 +69,13 @@ conky.config = {
 	color0 = '#F7768E',
 	color1 = '#414868',
 	color2 = '#C0CAF5',
-	color3 = '#F7768E',
 };
+  --Round corners: ╭╮╰╯
+  --Square corners:┌┐└┘
 
 conky.text = [[
-${alignc}${color0}${user_names}@${color2}${nodename}${color1}
-╭────────────────────────────────────────────╮
+${alignc}${color0}${uid_name 1000}@${color2}${nodename}${color1}
+┌────────────────────────────────────────────┐
 │${eval $${${tail /tmp/.color 1 (1)}}} Song: ${alignr}${scroll wait 36 1 ${exec playerctl metadata title}${color1}} │
 │${eval $${${tail /tmp/.color 1 (1)}}} Album: ${alignr}${scroll wait 36 1 ${exec  playerctl metadata album}}${color1} │
 │${eval $${${tail /tmp/.color 1 (1)}}} Artist: ${alignr}${scroll wait 36 1 ${exec playerctl metadata artist}}${color1} │
@@ -124,5 +125,5 @@ ${alignc}${color0}${user_names}@${color2}${nodename}${color1}
 │                                            │
 │                                            │
 │                                            │
-╰────────────────────────────────────────────╯
+└────────────────────────────────────────────┘
 ]];

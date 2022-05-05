@@ -1,10 +1,10 @@
 
 /* Center line thickness (pixels) */
-#define C_LINE 1
+#define C_LINE 0
 /* Width (in pixels) of each bar */
 #define BAR_WIDTH 8
 /* Width (in pixels) of each bar gap */
-#define BAR_GAP 4
+#define BAR_GAP 3
 /* Outline color */
 //#define BAR_OUTLINE vec4(COLOR.rg * 0.8, COLOR.b * 1.5, COLOR.a)
 //#define BAR_OUTLINE vec4(#76CAF5)

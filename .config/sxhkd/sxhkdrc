@@ -10,7 +10,7 @@ super + Return
 alt + space
 	bash -c "python .config/sxhkd/change_layout.py us; ~/.config/rofi/launchers/launcher_ribbon &" &
 {_,super} + Print
-	bash -c '$(cd {/tmp,~/Screenshots} && name=$(date +"%H:%M:%S_%d_%B") && maim -s -b 4 -c 0.75,0.8,0.96,1 $name && xclip -selection clipboard -target image/png -i $name &) &'
+	bash -c '$(cd {/tmp,~/Screenshots} && name=$(date +"%H:%M:%S_%d_%B") && maim -u -s -b 2 -c 0.75,0.8,0.96,1 $name && xclip -selection clipboard -target image/png -i $name &) &'
 
 # file manager
 super + e

@@ -26,17 +26,17 @@ conky.config = {
 
     -- Placement (For SINGLE monitor users!)
 	alignment = 'top_right',		            -- top_left,top_middle,top_right,bottom_left,bottom_middle,bottom_right,
-	gap_x = 24,								-- pixels between right or left border
-	gap_y = 160,								-- pixels between bottom or left border
+	gap_x = 5,								-- pixels between right or left border
+	gap_y = 43,								-- pixels between bottom or left border
 
     -- Size
-    minimum_height = 200,						-- minimum height of window
-	minimum_width = 380,						-- minimum width of window
-	maximum_width = 460,						-- maximum width of window
+    --minimum_height = 200,						-- minimum height of window
+	--minimum_width = 380,						-- minimum width of window
+	--maximum_width = 460,						-- maximum width of window
 
 	--Graphical
-	border_inner_margin = 5, 					-- margin between border and text
-	border_outer_margin = 5, 					-- margin between border and edge of window
+	border_inner_margin = 0, 					-- margin between border and text
+	border_outer_margin = 0, 					-- margin between border and edge of window
 	border_width = 0, 							-- border width in pixels
 	default_bar_width = 300,					-- default is 0 - full width
 	default_bar_height = 10,					-- default is 6
@@ -54,15 +54,15 @@ conky.config = {
 
 	--Textual
 	format_human_readable = true,				-- KiB, MiB rather then number of bytes
-	font  = 'Source Code Pro:bold:size=18',  	-- the default font used
-	font2 = 'Raleway:bold:size=90',         	-- font for the time
+	font  = 'FiraCode Nerd Font:bold:size=14',  	-- the default font used
+	font2  = 'FiraCode Nerd Font:size=14',  	-- the default font used
 	font3 = 'Ubuntu:size=30',               	-- font for the date
 	font4 = 'Raleway:bold:size=18',              -- font for the keybindings heading
 	max_text_width = 0,							-- 0 will make sure line does not get broken if width too small
 	max_user_text = 16384,						-- max text in conky default 16384
 	override_utf8_locale = true,				-- force UTF8 requires xft
 	short_units = false,							-- shorten units from KiB to k
-	top_name_width = 21,						-- width for $top name value default 15
+	top_name_width = 32,						-- width for $top name value default 15
 	top_name_verbose = false,					-- If true, top name shows the full command line of  each  process - Default value is false.
 	uppercase = false,							-- uppercase or not
 	use_spacer = 'none',						-- adds spaces around certain objects to align - default none
@@ -82,40 +82,75 @@ conky.config = {
 
 	--Colors (Monokai Pro)
 	color0 = '#F7768E',
-	color1 = '#C0CAF5',
-	color2 = '#7DCFFF',
-	color3 = '#F7768E',
+	color1 = '#414868',
+	color2 = '#C0CAF5',
 };
 
+
 conky.text = [[
-${alignc}${color1}${font2}${time %H:%M}${font}
-${voffset 6}${alignc}${color1}${font3}${time %b %d, %Y}${font}${color0}
-${voffset 18}${goto 12}${color3}CPU at ${freq_g}GHz${alignr}$cpu%[${hwmon 1 temp 1}°C]
-${color2}${goto 12}${cpubar 12,0}
-${voffset 5}${goto 12}$font${color1}${top name 1}$alignr$color0${top cpu 1}%
-${goto 12}${color1}${top name 2}$alignr$color0${top cpu 2}%
-${goto 12}${color1}${top name 3}$alignr$color0${top cpu 3}%
-${goto 12}${color1}${top name 4}$alignr$color0${top cpu 4}%
-${goto 12}${color1}${top name 5}$alignr$color0${top cpu 5}%
-${voffset 14}${goto 12}${color3}RAM${alignr}$mem/$memmax
-${color2}${goto 12}${membar 12,0}${color}
-${goto 12}${voffset 5}${color1}${top_mem name 1}$alignr$color0${top_mem mem_res 1}
-${goto 12}${color1}${top_mem name 2}$alignr$color0${top_mem mem_res 2}
-${goto 12}${color1}${top_mem name 3}$alignr$color0${top_mem mem_res 3}
-${goto 12}${color1}${top_mem name 4}$alignr$color0${top_mem mem_res 4}
-${goto 12}${color1}${top_mem name 5}$alignr$color0${top_mem mem_res 5}
-${voffset 18}${color1}${alignc}${font4}BSPWM KEYBINDINGS${font}${color}
-${color1}${hr}${color}
-${color1}[C]+[SHIFT]+Q${alignr}${color2}close window${color}
-${color1}[S]+HJKL${alignr}${color2}move win focus${color}
-${color1}[S]+[SHIFT]+HJKL${alignr}${color2}move window${color}
-${color1}[S]+[1-9,0]${alignr}${color2}switch workspace${color}
-${color1}[S]+[SHIFT]+[1-9,0]${alignr}${color2}send window${color}
-${color1}[S]+G${alignr}${color2}draw resize${color}
-${color1}${hr}${color}
-${color1}[C]+[ALT]+T${alignr}${color2}launch terminal${color}
-${color1}[S]+C${alignr}${color2}open NeoVim${color}
-${color1}[S]+[SHIFT]+C${alignr}${color2}open Firefox${color}
-${color1}[S]+[ALT]+R${alignr}${color2}restart BSPWM${color}
-${color1}[S]+[ALT]+Q${alignr}${color2}quit BSPWM${color}
-]];
+${color1}┌────────────────────────────────────────────┐
+│${color2} Kernel:$color0${alignr}${kernel}${color1}$font │
+│${color2} Uptime:$color0${alignr}${uptime}${color1}$font │
+│${color2} UTC Time:$color0${alignr}${utime}${color1}$font │
+├────────────────────────────────────────────┤
+│${color2} CPU:$color0${alignr}${execi 60 cat /proc/cpuinfo | grep "model name" | head -1 | cut -d":" -f2 | cut -d" " -f-5}${color1}$font │
+│ ${color2}${top name 1}$alignr$color0${top cpu 1}% $font${color1}│
+│ ${color2}${top name 2}$alignr$color0${top cpu 2}% $font${color1}│
+│ ${color2}${top name 3}$alignr$color0${top cpu 3}% $font${color1}│
+│ ${color2}${top name 4}$alignr$color0${top cpu 4}% $font${color1}│
+│ ${color2}${top name 5}$alignr$color0${top cpu 5}% $font${color1}│
+│ ${color2}Load average:$alignr$color0${loadavg} $font${color1}│
+│ ${color2}Temperature:$alignr$color0${hwmon temp 1}°C $font${color1}│
+│ ${color2}Frequency:$alignr$color0${freq_g}GHz $font${color1}│
+├────────────────────────────────────────────┤
+│ ${color2}GPU:$alignr$color0${nvidia modelname} $font${color1}│
+│ ${color2}Utilization:$alignr$color0${nvidia gpuutil}% $font${color1}│
+│ ${color2}VRAM:$alignr$color0${nvidia memused}MiB / ${nvidia memmax}MiB (${nvidia memutil}%) $font${color1}│
+│ ${color2}Temperature:$alignr$color0${nvidia gputemp}°C $font${color1}│
+│ ${color2}Frequency:$alignr$color0${nvidia gpufreqcur}MHz $font${color1}│
+│ ${color2}Fan speed:$alignr$color0${nvidia fanspeed}RPM $font${color1}│
+├────────────────────────────────────────────┤
+│${color2} Resolution:$color0${alignr}${execi 60 xdpyinfo  | grep -oP 'dimensions:\s+\K\S+'}${color1}$font │
+│${color2} Refresh rate:$color0${alignr}${execi 60 xrandr --q12 | grep -A 1 "connected primary" | tail -1 | grep -e "[\[:digit:]\]*.[\[:digit:]\]*\*" -o | cut -d"." -f1}Hz${color1}$font │
+│${color2} Theme:$color0${alignr}${execi 60 gtk-query-settings gtk-theme-name | awk -F '"' '{print $2}'}${color1}$font │
+│${color2} Font:$color0${alignr}${execi 60 gtk-query-settings gtk-font-name | awk -F '"' '{print $2}'}${color1}$font │
+│${color2} WM:$color0${alignr}${execi 60 xprop -id `xprop -root -notype _NET_SUPPORTING_WM_CHECK | awk '{print $5}'` | tail -n 1 | awk '{print toupper($4)}' | tr -d '\"'}${color1}$font │
+│${color2} Shell:$color0${alignr}${execi 60 echo $SHELL | awk -F / 'NF>1{print $NF}'}${color1}$font │
+├────────────────────────────────────────────┤
+│ ${color2}Memory:$alignr$color0${mem} / ${memmax} (${memperc}%) $font${color1}│
+│ ${color2}Disk(/):$alignr$color0${fs_used} / ${fs_size} (${fs_used_perc}%) $font${color1}│
+└────────────────────────────────────────────┘
+]]
+-- ${alignc}$color0${uid_name 1000}@${color2}${nodename}
+--conky.text = [[
+--${alignc}${color1}${font2}${time %H:%M}${font}
+--${voffset 6}${alignc}${color1}${font3}${time %b %d, %Y}${font}${color0}
+--${voffset 18}${goto 12}${color3}CPU at ${freq_g}GHz${alignr}$cpu%[${hwmon 1 temp 1}°C]
+--${color2}${goto 12}${cpubar 12,0}
+--${voffset 5}${goto 12}$font${color1}${top name 1}$alignr$color0${top cpu 1}%
+--${goto 12}${color1}${top name 2}$alignr$color0${top cpu 2}%
+--${goto 12}${color1}${top name 3}$alignr$color0${top cpu 3}%
+--${goto 12}${color1}${top name 4}$alignr$color0${top cpu 4}%
+--${goto 12}${color1}${top name 5}$alignr$color0${top cpu 5}%
+--${voffset 14}${goto 12}${color3}RAM${alignr}$mem/$memmax
+--${color2}${goto 12}${membar 12,0}${color}
+--${goto 12}${voffset 5}${color1}${top_mem name 1}$alignr$color0${top_mem mem_res 1}
+--${goto 12}${color1}${top_mem name 2}$alignr$color0${top_mem mem_res 2}
+--${goto 12}${color1}${top_mem name 3}$alignr$color0${top_mem mem_res 3}
+--${goto 12}${color1}${top_mem name 4}$alignr$color0${top_mem mem_res 4}
+--${goto 12}${color1}${top_mem name 5}$alignr$color0${top_mem mem_res 5}
+--${voffset 18}${color1}${alignc}${font4}BSPWM KEYBINDINGS${font}${color}
+--${color1}${hr}${color}
+--${color1}[C]+[SHIFT]+Q${alignr}${color2}close window${color}
+--${color1}[S]+HJKL${alignr}${color2}move win focus${color}
+--${color1}[S]+[SHIFT]+HJKL${alignr}${color2}move window${color}
+--${color1}[S]+[1-9,0]${alignr}${color2}switch workspace${color}
+--${color1}[S]+[SHIFT]+[1-9,0]${alignr}${color2}send window${color}
+--${color1}[S]+G${alignr}${color2}draw resize${color}
+--${color1}${hr}${color}
+--${color1}[C]+[ALT]+T${alignr}${color2}launch terminal${color}
+--${color1}[S]+C${alignr}${color2}open NeoVim${color}
+--${color1}[S]+[SHIFT]+C${alignr}${color2}open Firefox${color}
+--${color1}[S]+[ALT]+R${alignr}${color2}restart BSPWM${color}
+--${color1}[S]+[ALT]+Q${alignr}${color2}quit BSPWM${color}
+--]];
