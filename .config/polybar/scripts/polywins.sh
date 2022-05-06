@@ -63,7 +63,7 @@ slop_resize() {
 	bspc node "$1" -g hidden=off &
 	bspc node "$1" -g hidden=off &
 	xdo hide "$1" &
-	pos="$(slop -b 3 -c 0.75,0.8,0.96.1 -f 0,%x,%y,%w,%h)"
+	pos="$(slop -b 2 -c 0.75,0.8,0.96.1 -f 0,%x,%y,%w,%h)"
 	xdo show "$1"
 	bspc node "$1" -t floating
 	wmctrl -ir "$1" -e "$pos"

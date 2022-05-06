@@ -1,3 +1,4 @@
+#!/bin/bash
 
 # wm independent hotkeys
 
@@ -26,7 +27,7 @@ super + {_,shift} + Tab
 
 # color picker
 super + n
-    xcolor -f HEX! --scale 4 -s primary
+    xcolor -f HEX! --scale 4 -s clipboard
 
 # language switching
 super + space

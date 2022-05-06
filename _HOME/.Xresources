@@ -95,7 +95,7 @@ URxvt.background: [90]#0e0d15
 ! 7 White     15 White
 
 ! Black colours
-*.color0:        #1A1B26
+*.color0:        #12131D
 *.color8:        #414868
 ! Red colours
 *.color1:        #EB6572

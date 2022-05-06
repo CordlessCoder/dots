@@ -88,7 +88,7 @@ WnckTasklist {
 /* panel-on */
 
 /* menu-on */
-@define-color menu_bg_color #1d202f;
+@define-color menu_bg_color #11111D;
 @define-color menu_fg_color #c0caf5;
 
 GtkTreeMenu.menu,
