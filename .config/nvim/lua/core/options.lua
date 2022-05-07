@@ -38,17 +38,14 @@ opt.shortmess:append "sI"
 opt.signcolumn = "yes"
 opt.splitbelow = true
 opt.splitright = true
-opt.tabstop = 4
+opt.tabstop = 8
 opt.termguicolors = true
 opt.timeoutlen = 400
 opt.undofile = true
-opt.ttyfast = true
-opt.smarttab = true
-opt.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<"
-opt.wildignore = "*.o,*.pyc,*~,*/.git/*"
 
 -- interval for writing swap file to disk, also used by gitsigns
 opt.updatetime = 250
+opt.autochdir = true
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line

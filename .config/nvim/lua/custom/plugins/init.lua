@@ -10,6 +10,7 @@ return {
      config = function()
        require "presence":setup({
          neovim_image_text = "I am still in your walls.",
+         buttons = ({{label = "I stole all of your code.", url = "https://github.com/CordlessCoder/dots"}, {label = "Pipe bomb is attached.", url = "https://github.com/CordlessCoder/Wallpapers"}})
        })
       end
    },
@@ -54,5 +55,11 @@ return {
     config = function()
             require("stabilize").setup()
         end,
-  }
+    },
+    ["jose-elias-alvarez/null-ls.nvim"] = {
+    after = "nvim-lspconfig",
+    config = function()
+       require("custom.plugins.null-ls").setup()
+      end,
+    },
 }
