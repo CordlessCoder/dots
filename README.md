@@ -139,8 +139,7 @@ This configuration comes with a long list of those, some of which are shown in t
 ## Conky Requirements
 
 - conky
-- otf-raleway
-- ttf-ubuntu-font-family
+- nerd-fonts-fira-code
 
 ## Visualiser
 
