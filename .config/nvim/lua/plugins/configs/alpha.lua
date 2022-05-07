@@ -33,13 +33,6 @@ local function button(sc, txt, keybind)
 end
 
 local options = {}
---[[ local ascii = {
-  ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
-  ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
-  ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
-  ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
-  ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
-  ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',} ]]
 
 local ascii = {
    "   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆          ",
@@ -60,7 +53,7 @@ options.header = {
    val = ascii,
    opts = {
       position = "center",
-      hl = "Constant",
+      hl = "AlphaHeader",
    },
 }
 
@@ -83,9 +76,9 @@ options = require("core.utils").load_override(options, "goolord/alpha-nvim")
 
 alpha.setup {
    layout = {
-      { type = "padding", val = 6 },
+      { type = "padding", val = 9 },
       options.header,
-      { type = "padding", val = 1 },
+      { type = "padding", val = 2 },
       options.buttons,
    },
    opts = {},
