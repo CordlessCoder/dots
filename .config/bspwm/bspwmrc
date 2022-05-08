@@ -38,6 +38,7 @@ bspc rule -a pavucontrol state=floating
 #splash fidget --bg -a -p 2120 1080 440 360 &
 
 xsetroot -cursor_name left_ptr
+feh --bg-fill ~/.config/bspwm/wallpaper.png &
 
 #bspc config external_rules_command ~/.config/bspwm/scripts/external_rules.sh
 setxkbmap -option caps:none -layout us
