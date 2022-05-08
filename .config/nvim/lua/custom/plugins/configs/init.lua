@@ -12,9 +12,6 @@ M.treesitter = {
   }
 }
 
-M.nmivtree = {
-
-}
 
 M.telescope = {
    extensions = {

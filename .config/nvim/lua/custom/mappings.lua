@@ -7,6 +7,7 @@ map("", "<C-t>", ":tabedit<CR>")
 map("n", "<C-s>", "<cmd> :call Black() <CR> | :w <CR>") -- ctrl + s to save file
 map("n", "<leader>tf", ":TZFocus<CR>")
 map("n", "<leader>ta", ":TZAtaraxis<CR>")
+map("n", "<C-g>", ":TZFocus<CR>")
 map("n", "<leader>tm", ":TZMinimalist<CR>")
 map("n", "<leader>cc", ":Telescope <CR>")
 map("n", "<leader>q", ":q <CR>")
