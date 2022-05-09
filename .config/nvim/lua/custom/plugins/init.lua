@@ -89,6 +89,9 @@ return {
     },
     ["jose-elias-alvarez/null-ls.nvim"] = {
     after = "nvim-lspconfig",
+    setup = function()
+      require("core.utils").packer_lazy_load "null-ls.nvim"
+    end,
     config = function()
        require("custom.plugins.null-ls").setup()
       end,
