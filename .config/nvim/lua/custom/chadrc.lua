@@ -1,4 +1,3 @@
--- Just an example, supposed to be placed in /lua/custom/
 
 local M = {}
 

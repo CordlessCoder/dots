@@ -17,6 +17,8 @@ image_url = ""
 
 out = sys.stdout
 
+out.write("#C0CAF5\n")
+out.flush()
 
 while True:
     new_image_url = (
