@@ -1,11 +1,8 @@
 local present, alpha = pcall(require, "alpha")
 
-
 if not present then
    return
 end
-
-
 
 local function button(sc, txt, keybind, highlight, highlight_s)
    local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
@@ -60,8 +57,6 @@ options.header = {
       hl = "Label",
    },
 }
-
-
 
 options.buttons = {
    type = "group",

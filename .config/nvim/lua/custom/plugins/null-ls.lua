@@ -10,12 +10,18 @@ local sources = {
    b.formatting.stylua,
    b.diagnostics.luacheck.with { extra_args = { "--global vim" } },
 
-   -- Shell
+   -- Shells
    b.formatting.shfmt,
    b.diagnostics.shellcheck.with { diagnostics_format = "#{m} [#{c}]" },
-   null_ls.builtins.formatting.black.with {
-     filetypes = {"py", "python"}
-   },
+   b.diagnostics.fish,
+   b.formatting.fish_indent,
+
+   -- Python
+   b.formatting.black,
+   b.diagnostics.flake8.with { extra_args = { "--max-line-length", "120" } },
+
+   -- Rust
+   b.formatting.rustfmt,
 }
 
 local M = {}

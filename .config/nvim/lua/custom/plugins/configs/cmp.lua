@@ -87,7 +87,7 @@ local options = {
       { name = "nvim_lsp" },
       { name = "luasnip" },
       { name = "buffer" },
-      { name = 'fish' },
+      { name = "fish" },
       { name = "nvim_lua" },
       { name = "path" },
    },

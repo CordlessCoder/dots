@@ -1,26 +1,23 @@
 local M = {}
 
-
 M.treesitter = {
-  ensure_installed = {
-    "lua",
-    "html",
-    "css",
-    "python",
-    "markdown",
-    "bash",
-  }
+   ensure_installed = {
+      "lua",
+      "html",
+      "css",
+      "python",
+      "markdown",
+      "bash",
+   },
 }
-
 
 M.telescope = {
    extensions = {
-     -- fd is needed
+      -- fd is needed
       media_files = {
          filetypes = { "png", "webp", "jpg", "jpeg" },
       },
    },
 }
-
 
 return M

@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import os
-from PIL import Image
 import urllib.request
 from colorthief import ColorThief
 import time
