@@ -92,7 +92,7 @@ This configuration comes with a long list of those, some of which are shown in t
 # Dependencies
 
 <details><summary>List of all dependencies(click to expand)</summary>
-<pre>fish kitty nerd-fonts-fira-code adobe-source-code-pro-fonts ttf-icomoon-feather otf-raleway ttf-ubuntu-font-family nerd-fonts-fantasque-sans-mono cantarell-fonts oxygen-cursors ant-dracula-kvantum-theme-git xdo xdotool bspwm wmctrl slop polybar picom-jonaburg-fix glava python-colorthief rofi sxhkd scrot feh dunst conky playerctl xorg-xprop i3lock-color xclip xcolor npm glow python-blac flake8 luacheck shfmt shellcheck prettier deno stylua rustfmt</pre>
+<pre>fish kitty nerd-fonts-fira-code adobe-source-code-pro-fonts ttf-icomoon-feather otf-raleway ttf-ubuntu-font-family nerd-fonts-fantasque-sans-mono cantarell-fonts oxygen-cursors ant-dracula-kvantum-theme-git xdo xdotool bspwm wmctrl slop polybar picom-jonaburg-fix glava python-colorthief rofi sxhkd scrot feh dunst conky playerctl xorg-xprop i3lock-color xclip xcolor npm glow python-black python-neovim flake8 luacheck shfmt shellcheck prettier deno stylua rustfmt</pre>
 </details>
 
 <details><summary> Separate Dependencies(For only using part of the config)</summary>
@@ -134,6 +134,7 @@ This configuration comes with a long list of those, some of which are shown in t
 - glow
 #### Warning, formatters for null-ls below
 - python-black
+- python-neovim
 - flake8
 - luacheck
 - shfmt

@@ -80,9 +80,11 @@ return {
       end,
    },
    ["iamcco/markdown-preview.nvim"] = {
+      run = "cd app && npm install",
       setup = function()
-         nvchad.packer_lazy_load "markdown-preview.nvim"
+         vim.g.mkdp_filetypes = { "markdown" }
       end,
+      ft = { "markdown" },
    },
    ["luukvbaal/stabilize.nvim"] = {
       config = function()
