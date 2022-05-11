@@ -142,6 +142,7 @@ This configuration comes with a long list of those, some of which are shown in t
 - deno
 - styleua
 - rustfmt
+- emmet-ls (npm package), <pre lang=bash>npm install -g emmet-ls</pre>
 
 ## Conky Requirements
 
