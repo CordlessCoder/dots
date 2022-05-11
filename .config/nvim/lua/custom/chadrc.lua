@@ -26,6 +26,11 @@ M.options = {
       require "custom.options"
    end,
 }
+M.mappings = {
+   misc = function()
+      require "custom.mappings"
+   end,
+}
 
 M.ui = {
    hl_override = {

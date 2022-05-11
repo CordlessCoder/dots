@@ -11,7 +11,7 @@ for x in monitors:
     desktops[x] = []
 
 for i, x in enumerate(names):
-    desktops[monitors[i%len(monitors)]].append(x)
+    desktops[monitors[i % len(monitors)]].append(x)
 
 for key in desktops.keys():
     os.system(f"bspc monitor {key} -d {' '.join(desktops[key])}")

@@ -68,7 +68,11 @@ return {
          nvchad.packer_lazy_load "vim-sneak"
       end,
    },
-   ["f-person/git-blame.nvim"] = {},
+   ["f-person/git-blame.nvim"] = {
+      setup = function()
+         nvchad.packer_lazy_load "git-blame.nvim"
+      end,
+   },
    ["ellisonleao/glow.nvim"] = {
       branch = "main",
       setup = function()

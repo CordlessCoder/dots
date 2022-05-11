@@ -3,12 +3,13 @@ local b = null_ls.builtins
 
 local sources = {
 
+   b.formatting.trim_whitespace,
    b.formatting.prettierd.with { filetypes = { "lua", "html", "markdown", "css" } },
    b.formatting.deno_fmt,
 
    -- Lua
    b.formatting.stylua,
-   b.diagnostics.luacheck.with { extra_args = { "--global vim" } },
+   b.diagnostics.luacheck.with { extra_args = { "--global", "vim" } },
 
    -- Shells
    b.formatting.shfmt,

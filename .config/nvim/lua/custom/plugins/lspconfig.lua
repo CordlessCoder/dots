@@ -12,6 +12,9 @@ M.setup_lsp = function(attach, capabilities)
             if lsp == "emmet_ls" then
                capabilities.textDocument.completion.completionItem.snippetSupport = true
             end
+            if lsp == "sumneko_lua" then
+               client.globals = { "vim" }
+            end
          end,
          capabilities = capabilities,
       }
