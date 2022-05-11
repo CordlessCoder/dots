@@ -1,6 +1,7 @@
 -- custom/plugins/init.lua
 
 return {
+   ["nathom/filetype.nvim"] = {},
    ["mtoohey31/cmp-fish"] = { ft = "fish" },
    ["hrsh7th/nvim-cmp"] = {
       after = "friendly-snippets",
@@ -77,11 +78,6 @@ return {
    ["iamcco/markdown-preview.nvim"] = {
       setup = function()
          nvchad.packer_lazy_load "markdown-preview.nvim"
-      end,
-   },
-   ["averms/black-nvim"] = {
-      setup = function()
-         nvchad.packer_lazy_load "black-nvim"
       end,
    },
    ["luukvbaal/stabilize.nvim"] = {
