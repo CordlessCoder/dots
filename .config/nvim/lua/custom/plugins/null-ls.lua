@@ -23,9 +23,6 @@ local sources = {
 
    -- Rust
    b.formatting.rustfmt,
-
-   -- Words
-   b.hover.dictionary,
 }
 
 local M = {}
