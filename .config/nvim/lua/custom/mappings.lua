@@ -1,18 +1,25 @@
-local map = nvchad.map
+local M = {}
 
-map("v", "<Tab>", ">")
-map("v", "<S-Tab>", "<")
-map("", "<leader>tn", ":tabn<CR>")
-map("", "<C-t>", ":tabedit<CR>")
-map("n", "<C-s>", ":w <CR>") -- ctrl + s to save file
-map("n", "<leader>tf", ":TZFocus<CR>")
-map("n", "<leader>ta", ":TZAtaraxis<CR>")
-map("n", "<C-g>", ":TZFocus<CR>")
-map("n", "<leader>tm", ":TZMinimalist<CR>")
-map("n", "<leader>cc", ":Telescope <CR>")
-map("n", "<leader>q", ":q <CR>")
-map("n", "<C-h>", "<C-w>h")
-map("n", "<C-j>", "<C-w>j")
-map("n", "<C-k>", "<C-w>k")
-map("n", "<C-l>", "<C-w>l")
-map("n", "<leader>cc", "<cmd> :ColorizerToggle <CR>")
+M.editor = {
+   v = {
+      ["<Tab>"] = { ">", "   Indent selected lines" },
+      ["<S-Tab>"] = { "<", "   Unindent selected lines" },
+   },
+   n = {
+      ["<C-s>"] = { "<cmd> w <CR>", "   Save file" },
+      ["<C-S>"] = { "<cmd> wa <CR>", "   Save all files" },
+      ["<C-g>"] = { "<cmd> TZFocus <CR>", "Focus mode" },
+      ["<C-t>"] = { "<cmd> tabedit <CR>", "New tab" },
+      ["<leader>tn"] = { "<cmd> tabn <CR>", "next tab" },
+      ["<leader>tf"] = { "<cmd> TZFocus <CR>", "Focus mode" },
+      ["<leader>ta"] = { "<cmd> TZAtaraxis <CR>", "Focus mode, ataraxis" },
+      ["<leader>tm"] = { "<cmd> TZMinimalist <CR>", "Focus mode, minimal" },
+      ["<leader>cc"] = { "<cmd> ColorizerToggle <CR>", "   Toggle colorizer" },
+      ["<C-h>"] = { "<C-w>h", "Focus window to the left" },
+      ["<C-j>"] = { "<C-w>j", "Focus window downwards" },
+      ["<C-k>"] = { "<C-w>k", "Focus window upwards" },
+      ["<C-l>"] = { "<C-w>l", "Focus window to the right" },
+   },
+}
+
+return M
