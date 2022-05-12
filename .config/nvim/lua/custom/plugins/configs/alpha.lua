@@ -65,11 +65,11 @@ options.buttons = {
       button("SPC r f", "  Recent File     ", ":Telescope oldfiles<CR>", "Alpha1", "AlphaShortcut8"),
       button("SPC w s", "  Word Sniper", ":Telescope live_grep<CR>", "Alpha2", "AlphaShortcut7"),
       button("SPC b m", "  Bookmarks  ", ":Telescope marks<CR>", "Alpha3", "AlphaShortcut6"),
-      button("SPC t r", "  Terminal ", ":term <CR> i", "Alpha4", "AlphaShortcut5"),
+      button("SPC t r", "  Terminal ", ":term <CR> i", "Alpha4", "AlphaShortcut5"),
       button("SPC p s", "  Python Shell    ", "<cmd>:term bpython <CR> :tabonly <CR> i", "Alpha5", "AlphaShortcut4"),
       button("SPC t h", "  Themes  ", ":Telescope themes<CR>", "Alpha6", "AlphaShortcut3"),
       button("SPC s e", "  Settings", ":e $MYVIMRC | :cd %:p:h <CR>", "Alpha7", "AlphaShortcut2"),
-      button("SPC q q", "  Exit ", ":qa!<CR>", "Alpha8", "AlphaShortcut1"),
+      button("SPC q q", "  Exit ", ":qa!<CR>", "Alpha8", "AlphaShortcut1"),
    },
    opts = {
       spacing = 1,
