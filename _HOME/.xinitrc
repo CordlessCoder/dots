@@ -1,0 +1,2 @@
+#!/sbin/sh
+exec bspwm
