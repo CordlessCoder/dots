@@ -1,0 +1,1 @@
+/home/roman/.config/polybar/scripts/polywins.py
