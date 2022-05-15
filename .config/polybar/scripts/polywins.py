@@ -123,9 +123,9 @@ def regen(windows, focused):
                 + workspace
             )
         if len(window_workspace_pairs[workspace]) >= 1:
-            printf(":" + "%{A}")
+            printf(":" + "%{A}%{A}")
         else:
-            printf(" " + "%{A}")
+            printf(" " + "%{A}%{A}")
         for wid in window_workspace_pairs[workspace]:
             window = wlist[wid][0]
             printf(
