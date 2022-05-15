@@ -1,5 +1,9 @@
 -- n, v, i are mode names
 
+local function termcodes(str)
+   return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
 local M = {}
 
 M.general = {
@@ -46,6 +50,10 @@ M.general = {
          "   toggle theme",
       },
    },
+
+   t = {
+      ["jk"] = { termcodes "<C-\\><C-N>", "   escape terminal mode" },
+   },
 }
 
 M.bufferline = {
@@ -72,12 +80,18 @@ M.comment = {
 
    -- toggle comment in both modes
    n = {
-      ["<leader>/"] = { "<cmd> lua require('Comment.api').toggle_current_linewise()<CR>", "蘒  toggle comment" },
+      ["<leader>/"] = {
+         function()
+            require("Comment.api").toggle_current_linewise()
+         end,
+
+         "蘒  toggle comment",
+      },
    },
 
    v = {
       ["<leader>/"] = {
-         "<cmd> lua require('Comment.api').toggle_current_linewise_op(vim.fn.visualmode())<CR>",
+         "<ESC><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>",
          "蘒  toggle comment",
       },
    },
@@ -224,11 +238,11 @@ M.telescope = {
       -- find
       ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "  find files" },
       ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "  find all" },
-      ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "  live grep" },
+      ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "   live grep" },
       ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "  find buffers" },
       ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "  help page" },
-      ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "  find oldfiles" },
-      ["<leader>tk"] = { "<cmd> Telescope keys <CR>", "   show keys" },
+      ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "   find oldfiles" },
+      ["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "   show keys" },
 
       -- git
       ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "   git commits" },
@@ -243,9 +257,32 @@ M.telescope = {
 }
 
 M.nvterm = {
+   t = {
+      -- toggle in terminal mode
+      ["<A-i>"] = {
+         function()
+            require("nvterm.terminal").toggle "float"
+         end,
+         "   toggle floating term",
+      },
+
+      ["<A-h>"] = {
+         function()
+            require("nvterm.terminal").toggle "horizontal"
+         end,
+         "   toggle horizontal term",
+      },
+
+      ["<A-v>"] = {
+         function()
+            require("nvterm.terminal").toggle "vertical"
+         end,
+         "   toggle vertical term",
+      },
+   },
 
    n = {
-      -- toggle
+      -- toggle in normal mode
       ["<A-i>"] = {
          function()
             require("nvterm.terminal").toggle "float"
@@ -281,6 +318,24 @@ M.nvterm = {
             require("nvterm.terminal").new "vertical"
          end,
          "   new vertical term",
+      },
+   },
+}
+
+M.whichkey = {
+   n = {
+      ["<leader>wK"] = {
+         function()
+            vim.cmd "WhichKey"
+         end,
+         "   which-key all keymaps",
+      },
+      ["<leader>wk"] = {
+         function()
+            local input = vim.fn.input "WhichKey: "
+            vim.cmd("WhichKey " .. input)
+         end,
+         "   which-key query lookup",
       },
    },
 }

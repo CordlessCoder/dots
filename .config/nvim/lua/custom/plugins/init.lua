@@ -28,7 +28,6 @@ return {
       end,
    },
    ["andweeb/presence.nvim"] = {
-      run = "gh pr checkout 65",
       config = function()
          require("presence"):setup {
             neovim_image_text = "I am still in your walls.",
