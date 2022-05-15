@@ -14,14 +14,13 @@ inactive_text_color = "#C0CAF5"
 inactive_bg = ""
 inactive_underline = "#C0CAF5"
 
-separator = " "
+separator = ""
 show = "window_classname"  # options: window_title, window_class, window_classname
 forbidden_classes = "Polybar Conky Gmrun Pavucontrol"
 empty_desktop_message = "Desktop"
 
 char_limit = 10
 max_windows = 12
-char_case = "upper"  # normal, upper, lower
 add_spaces = "true"
 resize_increment = 16
 resize_offset = resize_increment / 2
@@ -37,8 +36,22 @@ inactive_right = "%{F-}"
 separator = "%{F" + inactive_text_color + "}" + separator + "%{F-}"
 
 
-def printf(text):
-    print(text, end="")
+if active_underline != None:
+    active_left = active_left + "%{+u}%{u" + active_underline + "}"
+    active_right = "%{-u}" + active_right
+
+
+on_click = sys.argv[0]
+
+
+printf = sys.stdout.write
+
+
+def get_active_wid():
+    wid = os.popen("xprop -root _NET_ACTIVE_WINDOW").read().split("#")[1].strip()
+    while len(wid) < 9:
+        wid = "0x0" + wid[2:]
+    return wid
 
 
 def get_active_workspace():
@@ -49,37 +62,51 @@ def get_active_workspace():
             return line[35:]
 
 
-def wid_to_name(wid, wlist):
-    name = os.popen(f"xprop -id {wid} WM_CLASS", "r").read().split('"')[1]
-    return name.upper()
-
-
 def regen(windows, focused):
     lookup = os.popen("wmctrl -lx").readlines()
+    if len(lookup) == 0:
+        printf(empty_desktop_message)
+        return None
     wlist = {}
     for line in lookup:
         wlist[line[:2] + line[3:10]] = line.split(" ")[3].split(".")[0].upper()
     for i, window in enumerate(windows[:max_windows]):
         i != 0 and printf(separator)
-        printf("%{A1:$on_click raise_or_minimize " + window + ":}")
-        printf("%{A2:$on_click close " + window + ":}")
-        printf("%{A3:$on_click slop_resize " + window + ":}")
-        printf("%{A4:$on_click increment_size " + window + ":}")
-        printf("%{A5:$on_click decrement_size " + window + ":}")
+        printf(
+            "%{A1:"
+            + on_click
+            + " raise_or_minimize "
+            + window
+            + ":}%{A2:"
+            + on_click
+            + " close "
+            + window
+            + ":}%{A3:"
+            + on_click
+            + " slop_resize "
+            + window
+            + ":}%{A4:"
+            + on_click
+            + " increment_size "
+            + window
+            + ":}%{A5:"
+            + on_click
+            + " decrement_size "
+            + window
+            + ":}"
+        )
         if window == focused:
-            printf(active_left + wlist[window] + active_right)
+            printf(active_left + " " + wlist[window] + " " + active_right)
         else:
-            printf(inactive_left + wlist[window] + inactive_right)
+            printf(inactive_left + " " + wlist[window] + " " + inactive_right)
         printf("%{A}%{A}%{A}%{A}%{A}")
     if len(windows) > max_windows:
         printf(f"+{len(windows)-max_windows}")
-    elif len(windows) == 0:
-        printf(empty_desktop_message)
 
 
 def main():
     # monitor = sys.argv[1]
-    if len(sys.argv) <= 2:
+    if len(sys.argv) <= 1:
         command = os.popen("xprop -root -spy _NET_CLIENT_LIST _NET_ACTIVE_WINDOW")
         windows = []
         focused = ""
@@ -90,7 +117,45 @@ def main():
             else:
                 focused = update.split("#")[1].strip()
             regen(windows, focused)
-            print()
+            printf("\n")
+            sys.stdout.flush()
+    else:
+        exec(sys.argv[1] + "(" + "'" + " ".join(sys.argv[2:]) + "')")
+
+
+def slop_resize(window):
+    os.system(
+        f"""bash -c 'bspc node "{window}" -g hidden=off &
+bspc node "{window}" -g hidden=off &
+xdo hidenc "{window}" &
+pos="$(slop -b 2 -c 0.75,0.8,0.96.1 -f 0,%x,%y,%w,%h)"
+xdo show "{window}"
+bspc node "{window}" -t floating
+wmctrl -ir "{window}" -e "$pos"
+xdo activate "{window}"'"""
+    )
+
+
+def close(window):
+    os.system("xdo close " + window)
+
+
+def raise_or_minimize(window):
+    if get_active_wid() == window:
+        os.system("bspc node " + window + " -g hidden=on")
+    else:
+        os.system("bspc node " + window + " -g hidden=off")
+        os.system("wmctrl -ia " + window)
+
+
+def increment_size(window):
+    os.system(f"xdo move -x -{resize_offset} -y -{resize_offset} {window}")
+    os.system(f"xdo resize -w +{resize_increment} -h +{resize_increment} {window}")
+
+
+def decrement_size(window):
+    os.system(f"xdo move -x +{resize_offset} -y +{resize_offset} {window}")
+    os.system(f"xdo resize -w -{resize_increment} -h -{resize_increment} {window}")
 
 
 if __name__ == "__main__":

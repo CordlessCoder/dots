@@ -21,10 +21,9 @@ max_windows=12
 char_case="upper" # normal, upper, lower
 add_spaces="true"
 resize_increment=16
-resize_offset=$(( resize_increment / 2 ))
+resize_offset=$((resize_increment / 2))
 
 # --- }}}
-
 
 main() {
 	# If no argument passed...
@@ -43,15 +42,14 @@ main() {
 	fi
 }
 
-
-
 # ON-CLICK FUNCTIONS {{{ ---
 
 raise_or_minimize() {
 	if [ "$(get_active_wid)" = "$1" ]; then
 		bspc node "$1" -g hidden=on
 	else
-		bspc node "$1" -g hidden=off; wmctrl -ia "$1"
+		bspc node "$1" -g hidden=off
+		wmctrl -ia "$1"
 	fi
 }
 
@@ -88,7 +86,6 @@ decrement_size() {
 }
 
 # --- }}}
-
 
 # WINDOW LIST SETUP {{{ ---
 
@@ -146,43 +143,43 @@ generate_window_list() {
 	# because classname and class are separated by '.'
 	while IFS="[ .\.]" read -r wid ws cname cls host title; do
 		# Don't show the window if on another workspace (-1 = sticky)
-		
+
 		#if [ "$ws" != "$active_workspace" ] && [ "$ws" != "-1" ]; then
 		#	continue
 		#fi
 
 		# Don't show the window if its class is forbidden
 		case "$forbidden_classes" in
-			*$cls*) continue ;;
+		*$cls*) continue ;;
 		esac
 
 		# If max number of windows reached, just increment
 		# the windows counter
 		if [ "$window_count" -ge "$max_windows" ]; then
-			window_count=$(( window_count + 1 ))
+			window_count=$((window_count + 1))
 			continue
 		fi
-		
+
 		# Show the user-selected window property
 		case "$show" in
-			"window_class") w_name="$cls" ;;
-			"window_classname") w_name="$cname" ;;
-			"window_title") w_name="$title" ;;
+		"window_class") w_name="$cls" ;;
+		"window_classname") w_name="$cname" ;;
+		"window_title") w_name="$title" ;;
 		esac
-		
+
 		# Use user-selected character case
 		case "$char_case" in
-			"lower") w_name=$(
-				echo "$w_name" | tr '[:upper:]' '[:lower:]'
-				) ;;
-			"upper") w_name=$(
-				echo "$w_name" | tr '[:lower:]' '[:upper:]'
-				) ;;
+		"lower") w_name=$(
+			echo "$w_name" | tr '[:upper:]' '[:lower:]'
+		) ;;
+		"upper") w_name=$(
+			echo "$w_name" | tr '[:lower:]' '[:upper:]'
+		) ;;
 		esac
 
 		# Truncate displayed name to user-selected limit
 		if [ "${#w_name}" -gt "$char_limit" ]; then
-			w_name="$(echo "$w_name" | cut -c1-$((char_limit-1)))…"
+			w_name="$(echo "$w_name" | cut -c1-$((char_limit - 1)))…"
 		fi
 
 		# Apply add-spaces setting
@@ -212,22 +209,22 @@ generate_window_list() {
 		printf "%s" "$w_name"
 		printf "%s" "%{A}%{A}%{A}%{A}%{A}"
 
-		window_count=$(( window_count + 1 ))
+		window_count=$((window_count + 1))
 	done <<-EOF
-	$(wmctrl -lx)
+		$(wmctrl -lx)
 	EOF
 
 	# After printing all the windows,
 	# print number of hidden windows
 	if [ "$window_count" -gt "$max_windows" ]; then
-		printf "%s" "+$(( window_count - max_windows ))"
+		printf "%s" "+$((window_count - max_windows))"
 	fi
 
 	# Print empty desktop message if no windows are open
 	if [ "$window_count" = 0 ]; then
 		printf "%s" "$empty_desktop_message"
 	fi
-	
+
 	# Print newline
 	echo ""
 }
