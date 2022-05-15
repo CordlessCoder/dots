@@ -35,13 +35,28 @@ inactive_left = "%{F" + inactive_text_color + "}"
 inactive_right = "%{F-}"
 separator = "%{F" + inactive_text_color + "}" + separator + "%{F-}"
 
+wps_active_left = "%{F" + active_text_color + "}%{+u}%{u" + active_underline + "}"
 
-if active_underline != None:
+wps_active_right = "%{u}%{F-}"
+wps_inactive_left = "%{F" + inactive_text_color + "}"
+wps_inactive_right = "%{F-}"
+
+if active_underline is not None:
     active_left = active_left + "%{+u}%{u" + active_underline + "}"
     active_right = "%{-u}" + active_right
 
 
-on_click = sys.argv[0]
+if inactive_underline is not None:
+    inactive_left += "%{+u}%{u" + inactive_underline + "}"
+    inactive_right = "%{-u}" + inactive_right
+
+
+active_left += "%{B" + active_bg + "}"
+active_right = "%{B-}" + active_right
+
+
+on_click = " ".join(sys.argv[:2])
+monitor = sys.argv[1]
 
 
 printf = sys.stdout.write
@@ -62,51 +77,91 @@ def get_active_workspace():
             return line[35:]
 
 
+def get_workspaces(monitor=None):
+    if monitor is None:
+        wml = os.popen("wmctrl -d").readlines()
+        workspaces = [line[35:-1] for line in wml]
+        for line in wml:
+            if line[3] == "*":
+                active_workspace = int(line.split(" ")[0])
+        return workspaces, active_workspace
+    else:
+        workspaces = os.popen(f"bspc query -m {monitor} -D --names").readlines()
+        workspaces = [workspace[:-1] for workspace in workspaces]
+        return workspaces
+
+
 def regen(windows, focused):
     lookup = os.popen("wmctrl -lx").readlines()
-    if len(lookup) == 0:
-        printf(empty_desktop_message)
-        return None
     wlist = {}
     for line in lookup:
-        wlist[line[:2] + line[3:10]] = line.split(" ")[3].split(".")[0].upper()
-    for i, window in enumerate(windows[:max_windows]):
-        i != 0 and printf(separator)
-        printf(
-            "%{A1:"
-            + on_click
-            + " raise_or_minimize "
-            + window
-            + ":}%{A2:"
-            + on_click
-            + " close "
-            + window
-            + ":}%{A3:"
-            + on_click
-            + " slop_resize "
-            + window
-            + ":}%{A4:"
-            + on_click
-            + " increment_size "
-            + window
-            + ":}%{A5:"
-            + on_click
-            + " decrement_size "
-            + window
-            + ":}"
+        wlist[line[:2] + line[3:10]] = (
+            line.split(" ")[3].split(".")[0].upper(),
+            int(line.split(" ")[2]),
         )
-        if window == focused:
-            printf(active_left + " " + wlist[window] + " " + active_right)
+    workspaces, active_workspace = get_workspaces()
+    window_workspace_pairs = {}
+    for workspace in workspaces:
+        window_workspace_pairs[workspace] = []
+    for window in windows[:max_windows]:
+        window_workspace_pairs[workspaces[wlist[window][1]]].append(window)
+    for i, workspace in enumerate(get_workspaces(monitor)):
+        i != 0 and printf(separator)
+        if workspace == workspaces[active_workspace]:
+            printf(wps_active_left + " " + workspace)
         else:
-            printf(inactive_left + " " + wlist[window] + " " + inactive_right)
-        printf("%{A}%{A}%{A}%{A}%{A}")
+            printf(
+                "%{A1:" + on_click + " switch_workspace " + workspace + ":}"
+                "%{A2:"
+                + on_click
+                + " swap_workspace "
+                + workspace
+                + ":}"
+                + wps_active_right
+                + active_right
+                + " "
+                + workspace
+            )
+        if len(window_workspace_pairs[workspace]) >= 1:
+            printf(":" + "%{A}")
+        else:
+            printf(" " + "%{A}")
+        for wid in window_workspace_pairs[workspace]:
+            window = wlist[wid][0]
+            printf(
+                "%{A1:"
+                + on_click
+                + " raise_or_minimize "
+                + wid
+                + ":}%{A2:"
+                + on_click
+                + " close "
+                + wid
+                + ":}%{A3:"
+                + on_click
+                + " slop_resize "
+                + wid
+                + ":}%{A4:"
+                + on_click
+                + " increment_size "
+                + wid
+                + ":}%{A5:"
+                + on_click
+                + " decrement_size "
+                + wid
+                + ":}"
+            )
+            if wid == focused:
+                printf(active_left + " " + window + " " + active_right)
+            else:
+                printf(inactive_left + " " + window + " " + inactive_right)
+            printf("%{A}%{A}%{A}%{A}%{A}")
     if len(windows) > max_windows:
         printf(f"+{len(windows)-max_windows}")
 
 
 def main():
-    # monitor = sys.argv[1]
-    if len(sys.argv) <= 1:
+    if len(sys.argv) <= 2:
         command = os.popen("xprop -root -spy _NET_CLIENT_LIST _NET_ACTIVE_WINDOW")
         windows = []
         focused = ""
@@ -120,14 +175,14 @@ def main():
             printf("\n")
             sys.stdout.flush()
     else:
-        exec(sys.argv[1] + "(" + "'" + " ".join(sys.argv[2:]) + "')")
+        exec(sys.argv[2] + "(" + "'" + sys.argv[3] + "')")
 
 
 def slop_resize(window):
     os.system(
         f"""bash -c 'bspc node "{window}" -g hidden=off &
 bspc node "{window}" -g hidden=off &
-xdo hidenc "{window}" &
+xdo hide "{window}" &
 pos="$(slop -b 2 -c 0.75,0.8,0.96.1 -f 0,%x,%y,%w,%h)"
 xdo show "{window}"
 bspc node "{window}" -t floating
@@ -156,6 +211,14 @@ def increment_size(window):
 def decrement_size(window):
     os.system(f"xdo move -x +{resize_offset} -y +{resize_offset} {window}")
     os.system(f"xdo resize -w -{resize_increment} -h -{resize_increment} {window}")
+
+
+def switch_workspace(workspace):
+    os.system(f"bspc desktop -f {workspace}")
+
+
+def swap_workspace(workspace):
+    os.system(f"bspc desktop -s {workspace}")
 
 
 if __name__ == "__main__":

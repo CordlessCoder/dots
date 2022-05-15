@@ -34,6 +34,7 @@ main() {
 		xprop -root -spy _NET_CLIENT_LIST _NET_ACTIVE_WINDOW |
 			while IFS= read -r _; do
 				generate_window_list
+				break
 			done
 
 	# If arguments are passed, run requested on-click function
@@ -227,6 +228,7 @@ generate_window_list() {
 
 	# Print newline
 	echo ""
+	return
 }
 
 # --- }}}
