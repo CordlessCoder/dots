@@ -2,6 +2,8 @@
 import sys
 import os
 
+# import timeit
+
 # POLYWORKS
 
 # SETTINGS
@@ -35,7 +37,7 @@ inactive_left = "%{F" + inactive_text_color + "}"
 inactive_right = "%{F-}"
 separator = "%{F" + inactive_text_color + "}" + separator + "%{F-}"
 
-wps_active_left = "%{F" + active_text_color + "}%{+u}%{u" + active_underline + "}"
+wps_active_left = "%{F" + inactive_text_color + "}%{+u}%{u" + inactive_underline + "}"
 
 wps_active_right = "%{u}%{F-}"
 wps_inactive_left = "%{F" + inactive_text_color + "}"
@@ -92,7 +94,7 @@ def get_workspaces(monitor=None):
 
 
 def regen(windows, focused):
-    lookup = os.popen("wmctrl -lx").readlines()
+    lookup = os.popen("wmctrl -lx 2> /dev/null").readlines()
     wlist = {}
     try:
         for line in lookup:
@@ -192,6 +194,8 @@ def main():
         focused = ""
         while True:
             update = command.readline().replace("\n", "")
+            if "not found." in update:
+                continue
             if update.startswith("_NET_CLIENT_LIST"):
                 windows = update.split("#")[-1][1:].split(", ")
             else:
@@ -199,6 +203,7 @@ def main():
             regen(windows, focused)
             printf("\n")
             sys.stdout.flush()
+            # break
     else:
         exec(sys.argv[2] + "(" + "'" + sys.argv[3] + "')")
 
@@ -247,4 +252,6 @@ def swap_workspace(workspace):
 
 
 if __name__ == "__main__":
+    # duration = timeit.Timer(main).timeit(number=20)
+    # print(duration / 20)
     main()
