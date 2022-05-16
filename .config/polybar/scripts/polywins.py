@@ -94,13 +94,38 @@ def get_workspaces(monitor=None):
 def regen(windows, focused):
     lookup = os.popen("wmctrl -lx").readlines()
     wlist = {}
-    for line in lookup:
-        wlist[line[:2] + line[3:10]] = (
-            line.split(" ")[3].split(".")[0].upper(),
-            int(line.split(" ")[2]),
-        )
-    workspaces, active_workspace = get_workspaces()
-    if len(windows) == 1 and windows[0] == "":
+    try:
+        for line in lookup:
+            wlist[line[:2] + line[3:10]] = (
+                line.split(" ")[3].split(".")[0].upper(),
+                int(line.split(" ")[2]),
+            )
+        workspaces, active_workspace = get_workspaces()
+        if len(windows) == 1 and windows[0] == "":
+            for i, workspace in enumerate(get_workspaces(monitor)):
+                i != 0 and printf(separator)
+                if workspace == workspaces[active_workspace]:
+                    printf(wps_active_left + " " + workspace)
+                else:
+                    printf(
+                        "%{A1:" + on_click + " switch_workspace " + workspace + ":}"
+                        "%{A2:"
+                        + on_click
+                        + " swap_workspace "
+                        + workspace
+                        + ":}"
+                        + wps_active_right
+                        + active_right
+                        + " "
+                        + workspace
+                    )
+                printf(" " + "%{A}%{A}")
+            return
+        window_workspace_pairs = {}
+        for workspace in workspaces:
+            window_workspace_pairs[workspace] = []
+        for window in windows:
+            window_workspace_pairs[workspaces[wlist[window][1]]].append(window)
         for i, workspace in enumerate(get_workspaces(monitor)):
             i != 0 and printf(separator)
             if workspace == workspaces[active_workspace]:
@@ -118,66 +143,44 @@ def regen(windows, focused):
                     + " "
                     + workspace
                 )
-            printf(" " + "%{A}%{A}")
-        return
-    window_workspace_pairs = {}
-    for workspace in workspaces:
-        window_workspace_pairs[workspace] = []
-    for window in windows:
-        window_workspace_pairs[workspaces[wlist[window][1]]].append(window)
-    for i, workspace in enumerate(get_workspaces(monitor)):
-        i != 0 and printf(separator)
-        if workspace == workspaces[active_workspace]:
-            printf(wps_active_left + " " + workspace)
-        else:
-            printf(
-                "%{A1:" + on_click + " switch_workspace " + workspace + ":}"
-                "%{A2:"
-                + on_click
-                + " swap_workspace "
-                + workspace
-                + ":}"
-                + wps_active_right
-                + active_right
-                + " "
-                + workspace
-            )
-        if len(window_workspace_pairs[workspace]) >= 1:
-            printf(":" + "%{A}%{A}")
-        else:
-            printf(" " + "%{A}%{A}")
-        for wid in window_workspace_pairs[workspace][:max_windows]:
-            window = wlist[wid][0]
-            printf(
-                "%{A1:"
-                + on_click
-                + " raise_or_minimize "
-                + wid
-                + ":}%{A2:"
-                + on_click
-                + " close "
-                + wid
-                + ":}%{A3:"
-                + on_click
-                + " slop_resize "
-                + wid
-                + ":}%{A4:"
-                + on_click
-                + " increment_size "
-                + wid
-                + ":}%{A5:"
-                + on_click
-                + " decrement_size "
-                + wid
-                + ":}"
-            )
-            if wid == focused:
-                printf(active_left + " " + window + " " + active_right)
+            if len(window_workspace_pairs[workspace]) >= 1:
+                printf(":" + "%{A}%{A}")
             else:
-                printf(inactive_left + " " + window + " " + inactive_right)
-            printf("%{A}%{A}%{A}%{A}%{A}")
-        if len(window_workspace_pairs[workspace]) > max_windows:
-            printf(f"+{len(window_workspace_pairs[workspace])-max_windows}")
+                printf(" " + "%{A}%{A}")
+            for wid in window_workspace_pairs[workspace][:max_windows]:
+                window = wlist[wid][0]
+                printf(
+                    "%{A1:"
+                    + on_click
+                    + " raise_or_minimize "
+                    + wid
+                    + ":}%{A2:"
+                    + on_click
+                    + " close "
+                    + wid
+                    + ":}%{A3:"
+                    + on_click
+                    + " slop_resize "
+                    + wid
+                    + ":}%{A4:"
+                    + on_click
+                    + " increment_size "
+                    + wid
+                    + ":}%{A5:"
+                    + on_click
+                    + " decrement_size "
+                    + wid
+                    + ":}"
+                )
+                if wid == focused:
+                    printf(active_left + " " + window + " " + active_right)
+                else:
+                    printf(inactive_left + " " + window + " " + inactive_right)
+                printf("%{A}%{A}%{A}%{A}%{A}")
+            if len(window_workspace_pairs[workspace]) > max_windows:
+                printf(f"+{len(window_workspace_pairs[workspace])-max_windows}")
+    except KeyError:
+        pass
 
 
 def main():
