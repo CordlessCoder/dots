@@ -20,7 +20,7 @@ forbidden_classes = "Polybar Conky Gmrun Pavucontrol"
 empty_desktop_message = "Desktop"
 
 char_limit = 10
-max_windows = 12
+max_windows = 5
 add_spaces = "true"
 resize_increment = 16
 resize_offset = resize_increment / 2
@@ -100,10 +100,30 @@ def regen(windows, focused):
             int(line.split(" ")[2]),
         )
     workspaces, active_workspace = get_workspaces()
+    if len(windows) == 1 and windows[0] == "":
+        for i, workspace in enumerate(get_workspaces(monitor)):
+            i != 0 and printf(separator)
+            if workspace == workspaces[active_workspace]:
+                printf(wps_active_left + " " + workspace)
+            else:
+                printf(
+                    "%{A1:" + on_click + " switch_workspace " + workspace + ":}"
+                    "%{A2:"
+                    + on_click
+                    + " swap_workspace "
+                    + workspace
+                    + ":}"
+                    + wps_active_right
+                    + active_right
+                    + " "
+                    + workspace
+                )
+            printf(" " + "%{A}%{A}")
+        return
     window_workspace_pairs = {}
     for workspace in workspaces:
         window_workspace_pairs[workspace] = []
-    for window in windows[:max_windows]:
+    for window in windows:
         window_workspace_pairs[workspaces[wlist[window][1]]].append(window)
     for i, workspace in enumerate(get_workspaces(monitor)):
         i != 0 and printf(separator)
@@ -126,7 +146,7 @@ def regen(windows, focused):
             printf(":" + "%{A}%{A}")
         else:
             printf(" " + "%{A}%{A}")
-        for wid in window_workspace_pairs[workspace]:
+        for wid in window_workspace_pairs[workspace][:max_windows]:
             window = wlist[wid][0]
             printf(
                 "%{A1:"
@@ -156,8 +176,8 @@ def regen(windows, focused):
             else:
                 printf(inactive_left + " " + window + " " + inactive_right)
             printf("%{A}%{A}%{A}%{A}%{A}")
-    if len(windows) > max_windows:
-        printf(f"+{len(windows)-max_windows}")
+        if len(window_workspace_pairs[workspace]) > max_windows:
+            printf(f"+{len(window_workspace_pairs[workspace])-max_windows}")
 
 
 def main():
