@@ -83,9 +83,11 @@ def get_workspaces(monitor=None):
     if monitor is None:
         wml = os.popen("wmctrl -d").readlines()
         workspaces = [line[35:-1] for line in wml]
+        active_workspace = 0
         for line in wml:
             if line[3] == "*":
                 active_workspace = int(line.split(" ")[0])
+                break
         return workspaces, active_workspace
     else:
         workspaces = os.popen(f"bspc query -m {monitor} -D --names").readlines()
