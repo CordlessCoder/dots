@@ -16,7 +16,7 @@ inactive_underline = "#C0CAF5"
 
 separator = ""
 show = "window_classname"  # options: window_title, window_class, window_classname
-forbidden_classes = "Polybar Conky Gmrun Pavucontrol"
+forbidden_classes = "Polybar Conky Gmrun Pavucontrol".upper().split(" ")
 empty_desktop_message = "Desktop"
 
 char_limit = 10
@@ -148,7 +148,9 @@ def regen(windows, focused):
             else:
                 printf(" " + "%{A}%{A}")
             for wid in window_workspace_pairs[workspace][:max_windows]:
-                window = wlist[wid][0]
+                if wlist[wid][0] in forbidden_classes:
+                    continue
+                window = wlist[wid][0][:char_limit]
                 printf(
                     "%{A1:"
                     + on_click
