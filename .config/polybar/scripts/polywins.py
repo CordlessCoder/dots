@@ -192,7 +192,7 @@ def regen(windows, focused):
 def main():
     if len(sys.argv) <= 2:
         command = os.popen("xprop -root -spy _NET_CLIENT_LIST _NET_ACTIVE_WINDOW")
-        windows = []
+        windows = ()
         focused = ""
         while True:
             update = command.readline().replace("\n", "")

@@ -9,34 +9,30 @@
 # you can use ~/.xprofile
 
 # ##############################################################################
-# #                                  FUNCTIONS                                 # 
+# #                                  FUNCTIONS                                 #
 # ##############################################################################
 function run_bg {
-    if ! pgrep $1 > /dev/null ;
-    then
-        nice -n 19 $@ &
-    fi
+	if ! pgrep $1 >/dev/null; then
+		nice -n 19 $@ &
+	fi
 }
 function run {
-    if ! pgrep $1 > /dev/null ;
-    then
-        $@ &
-    fi
+	if ! pgrep $1 >/dev/null; then
+		$@ &
+	fi
 }
-
 
 # Parse colors from "~/.Xresources"
 xrdb -override "${HOME}/.Xresources" &
 
-xrdb_query()
-{
-    [ -n "$XRDB_QUERY" ] || XRDB_QUERY="$(xrdb -query)"
+xrdb_query() {
+	[ -n "$XRDB_QUERY" ] || XRDB_QUERY="$(xrdb -query)"
 
-    echo "$XRDB_QUERY" | while IFS=';' read -r STRING; do
-        [ "${1}" = "${STRING%%\	*}" ] || continue
-        echo "${STRING##*\	}"
-        break
-    done
+	echo "$XRDB_QUERY" | while IFS=';' read -r STRING; do
+		[ "${1}" = "${STRING%%\	*}" ] || continue
+		echo "${STRING##*\	}"
+		break
+	done
 }
 xsetroot -cursor_name left_ptr
 
@@ -49,20 +45,18 @@ run_bg dunst
 
 #start Conky
 if ! test $(pgrep conky | wc -l) -gt 1; then
-        killall conky
-        nice -n 19 conky -c ~/.conkyrc &
-        nice -n 19 conky -c ~/.conkyglava &
-    fi
+	killall conky
+	nice -n 19 conky -c ~/.conkyrc &
+	nice -n 19 conky -c ~/.conkyglava &
+fi
 
 #start GLava
-if ! pgrep glava > /dev/null ;
-    then
-         python ~/.config/glava/Player_Colorizer.py | tee /tmp/.color | nice -n 19 glava -i &
+if ! pgrep glava >/dev/null; then
+	python ~/.config/glava/colorsteal.py | tee /tmp/.color | nice -n 19 glava -i &
 fi
 # ##############################################################################
 # #                             AUTOSTART POLYBAR(s)                           #
 # ##############################################################################
-
 
 pkill -f '^polybar'
 $HOME/.config/polybar/launch.sh
@@ -93,5 +87,3 @@ xdo raise -a "Polybar tray window"
 xdo lower -r $(xdotool search --class glava)
 xdo lower -r $(xdotool search --class conky)
 #xdotool search --class 'splash' set_window --overrideredirect 1 windowunmap windowmap
-
-
