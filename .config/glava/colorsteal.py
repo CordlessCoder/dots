@@ -11,8 +11,6 @@ def colorsel(r, g, b, significance=0):
     return (temp[1] * 0.9 + temp[2]) * (10 - significance)
 
 
-image_url = ""
-
 out = sys.stdout
 
 out.write("#C0CAF5\n")
@@ -30,8 +28,7 @@ while True:
         continue
 
     if url.split(":///")[0].strip() == "file":
-        direct_path = url.replace("file://", "")
-        image = direct_path
+        image = url.replace("file://", "")
         image = ColorThief(image).get_palette(color_count=4, quality=2)
     else:
         urllib.request.urlretrieve(url, ".playthumb")

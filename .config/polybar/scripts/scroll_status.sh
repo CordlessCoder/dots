@@ -17,8 +17,7 @@ cmd="bash get_status.sh $1"
 #    -m "corridor"   "-b ' '" \
 #    -U 3 -u t "$cmd" &
 cd ~/.config/polybar/scripts
-while true;
-do echo $($cmd);
-sleep 3;
-polybar-msg action \#mpris-play-pause.next 1>/dev/null 2>&1;
+while true; do
+	echo $($cmd)
+	sleep 3
 done
