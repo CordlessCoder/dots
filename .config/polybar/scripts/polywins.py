@@ -105,7 +105,7 @@ def regen(windows, focused):
                 int(line.split(" ")[2]),
             )
         workspaces, active_workspace = get_workspaces()
-        if len(windows) == 1 and windows[0] == "":
+        if len(windows) == 1 and windows[0] == "" or len(windows) == 0:
             for i, workspace in enumerate(get_workspaces(monitor)):
                 i != 0 and printf(separator)
                 if workspace == workspaces[active_workspace]:
