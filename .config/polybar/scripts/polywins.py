@@ -76,13 +76,15 @@ def get_active_workspace():
     while True:
         line = workspaces.readline()
         if line[3] == "*":
-            return " ".join(line.split(" ")[12:])[:-1]
+            return " ".join(line[line.rfind("WA:") :].split(" ")[1:])[:-1]
 
 
 def get_workspaces(monitor=None):
     if monitor is None:
         wml = os.popen("wmctrl -d").readlines()
-        workspaces = [" ".join(line.split(" ")[12:])[:-1] for line in wml]
+        workspaces = [
+            " ".join(line[line.rfind("WA:") :].split(" ")[2:])[1:-1] for line in wml
+        ]
         active_workspace = 0
         for line in wml:
             if line[3] == "*":
