@@ -4,10 +4,10 @@
 
 <img align="right" src="https://raw.githubusercontent.com/CordlessCoder/dots/0d8757f3b8f0633c11978ec3596409c89a88237e/screenshot.png">
 
-- A constantly declining mental state.[looking for therapists nearby ready to work]
-- experimental and objectively overengineered configs.[it's a good thing I swear]
+- A constantly declining mental state.[please god help me]
+- experimental and objectively overengineered configs.[like 5k SLoC,]
 - tons of questionable choices
-- conky[inherited from DtOS]
+- conky[]
 - the work of my entire life[very close to the end]
 - g a p[10 px]
 - colors

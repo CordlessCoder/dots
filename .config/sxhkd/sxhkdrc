@@ -23,7 +23,7 @@ super + {_,shift,ctrl} + c
 alt + {_, shift} + Tab
 	bspc node -f {next,last}.local.window
 super + {_,shift} + Tab
-	{bspc desktop -f last, bspc node -d last && bspc desktop -f last}
+	{bspc monitor -f next, bspc node -m next && bspc monitor -f next}
 
 # color picker
 super + n

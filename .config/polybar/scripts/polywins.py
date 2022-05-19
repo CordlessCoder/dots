@@ -19,7 +19,7 @@ inactive_underline = "#C0CAF5"
 separator = ""
 show = "window_classname"  # options: window_title, window_class, window_classname
 forbidden_classes = "Polybar Conky Gmrun Pavucontrol".upper().split(" ")
-empty_desktop_message = "Desktop"
+show_unpopulated_desktops = False
 
 char_limit = 10
 max_windows = 5
@@ -133,8 +133,12 @@ def regen(windows, focused):
             window_workspace_pairs[workspaces[wlist[window][1]]].append(window)
         except KeyError:
             pass
-    for i, workspace in enumerate(get_workspaces(monitor)):
+    i = 0
+    for workspace in get_workspaces(monitor):
+        if len(window_workspace_pairs[workspace]) == show_unpopulated_desktops - 1:
+            continue
         i != 0 and printf(separator)
+        i += 1
         if workspace == workspaces[active_workspace]:
             printf(wps_active_left + " " + workspace)
         else:
