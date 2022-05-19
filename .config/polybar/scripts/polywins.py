@@ -202,7 +202,7 @@ def main():
             if "not found." in update:
                 continue
             if update.startswith("_NET_CLIENT_LIST"):
-                windows = []
+                windows = ()
                 windowlist = update.split("#")[-1][1:].split(", ")
                 for window in windowlist:
                     while len(window) < 9:
