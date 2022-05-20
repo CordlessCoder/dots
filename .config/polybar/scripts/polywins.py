@@ -254,7 +254,7 @@ def generate(workspaces, focused_win="", focused_desk="", order=[]):
                 out += (
                     "%{A1:"
                     + on_click
-                    + " raise_or_minimize "
+                    + " focus "
                     + wid
                     + ":}%{A2:"
                     + on_click
@@ -466,10 +466,15 @@ def main():
 
             # break
     else:
-        exec(sys.argv[2] + "(" + "'" + sys.argv[3] + "')")
+        exec(sys.argv[2] + "(" + "'" + " ".join(sys.argv[3:]) + "')")
 
 
 def slop_resize(window):
+    window = sorted(window.split(" "))
+    try:
+        window = window[window.index(get_active_wid())]
+    except:
+        window = window[0]
     os.system(
         f"""bash -c 'bspc node "{window}" -g hidden=off &
 bspc node "{window}" -g hidden=off &
@@ -483,23 +488,40 @@ xdo activate "{window}"'"""
 
 
 def close(window):
+    window = sorted(window.split(" "))
+    try:
+        window = window[window.index(get_active_wid())]
+    except:
+        window = window[0]
     os.system("xdo close " + window)
 
 
-def raise_or_minimize(window):
-    if get_active_wid() == window:
-        os.system("bspc node " + window + " -g hidden=on")
-    else:
-        os.system("bspc node " + window + " -g hidden=off")
-        os.system("wmctrl -ia " + window)
+def focus(window):
+    window = sorted(window.split(" "))
+    try:
+        window = window[(window.index(get_active_wid()) + 1) % len(window)]
+    except:
+        window = window[0]
+    os.system("bspc node " + window + " -g hidden=off")
+    os.system("wmctrl -ia " + window)
 
 
 def increment_size(window):
+    window = sorted(window.split(" "))
+    try:
+        window = window[window.index(get_active_wid())]
+    except:
+        window = window[0]
     os.system(f"xdo move -x -{resize_offset} -y -{resize_offset} {window}")
     os.system(f"xdo resize -w +{resize_increment} -h +{resize_increment} {window}")
 
 
 def decrement_size(window):
+    window = sorted(window.split(" "))
+    try:
+        window = window[window.index(get_active_wid())]
+    except:
+        window = window[0]
     os.system(f"xdo move -x +{resize_offset} -y +{resize_offset} {window}")
     os.system(f"xdo resize -w -{resize_increment} -h -{resize_increment} {window}")
 
