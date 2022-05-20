@@ -77,7 +77,7 @@ class_icons = {
     "chromium": fa.icons["chrome"],
     "cura": fa.icons["cube"],
     "darktable": fa.icons["image"],
-    "discord": fa.icons["comment"],
+    "discord": fa.icons["discord"],
     "eclipse": fa.icons["code"],
     "emacs": fa.icons["code"],
     "eog": fa.icons["image"],
