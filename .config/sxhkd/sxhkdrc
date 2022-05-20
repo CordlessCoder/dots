@@ -17,8 +17,8 @@ alt + space
 super + e
     thunar &
 # app hotkeys
-super + {_,shift,ctrl} + c
-	bash {~/.config/sxhkd/NeoVim.sh &, ~/.config/sxhkd/FirefoxDevEd.sh &, ~/.config/sxhkd/VSCode.sh }
+super + {_,shift} + c
+	bash {~/.config/sxhkd/NeoVim.sh &, ~/.config/sxhkd/FirefoxDevEd.sh &}
 # switching
 alt + {_, shift} + Tab
 	bspc node -f {next,last}.local.window
