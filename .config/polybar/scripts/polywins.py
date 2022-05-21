@@ -2,9 +2,8 @@
 import sys
 import os
 
-# import timeit
 
-# BSPWINS.py
+# POLYWINS.py
 
 # SETTINGS
 
@@ -18,7 +17,7 @@ inactive_underline = "#C0CAF5"
 
 name_style = "upper"  # options: upper, lower, None
 separator = " "
-show = "window_class"  # options: window_title, window_class, window_classname
+show = "window_class"
 forbidden_classes = "Polybar Conky Gmrun Pavucontrol".lower().split(" ")
 hide_unpopulated_desktops = False
 iconize = True
@@ -71,6 +70,8 @@ class_icons = {
     "atom": "",
     "vscode": "",
     "neovim": "",
+    "nvim": "",
+    "nvim-qt": "",
     "banshee": "",
     "blender": "",
     "chromium": "",
@@ -155,7 +156,7 @@ if hide_name:
     def to_icon(name):
         try:
             return class_icons[name.lower()] + " "
-        except:
+        except KeyError:
             return name[:char_limit]
 
 else:
@@ -163,11 +164,11 @@ else:
     def to_icon(name):
         try:
             return class_icons[name.lower()] + " " + name[:char_limit]
-        except:
+        except KeyError:
             return name[:char_limit]
 
 
-def wid_to_name(wid):
+def wid_to_name(wid, cache={}):
     if not isinstance(wid, list):
         if show == "window_class":
             out = os.popen(f"xprop -id {wid} WM_CLASS 2> /dev/null").read().split('"')
@@ -190,44 +191,55 @@ def wid_to_name(wid):
         return out
     else:
         out = {}
+        cached = cache.keys()
         for id in wid:
-            if show == "window_class":
-                name = (
-                    os.popen(f"xprop -id {id} WM_CLASS 2> /dev/null")
-                    .read()
-                    .split('"')[1]
-                )
-            if show == "window_classname":
-                name = (
-                    os.popen(f"xprop -id {id} WM_CLASS 2> /dev/null")
-                    .read()
-                    .split('"')[-2]
-                )
-            if show == "window_title":
-                name = (
-                    os.popen(f"xprop -id {id} _NET_WM_NAME 2> /dev/null")
-                    .read()
-                    .split('"')[1]
-                )
-            if name.lower() not in forbidden_classes:
-                if iconize:
-                    name = to_icon(name)
+            if id not in cached:
+                if show == "window_class":
+                    name = (
+                        os.popen(f"xprop -id {id} WM_CLASS 2> /dev/null")
+                        .read()
+                        .split('"')[1]
+                    )
+                if show == "window_classname":
+                    name = (
+                        os.popen(f"xprop -id {id} WM_CLASS 2> /dev/null")
+                        .read()
+                        .split('"')[-2]
+                    )
+                if show == "window_title":
+                    name = (
+                        os.popen(f"xprop -id {id} _NET_WM_NAME 2> /dev/null")
+                        .read()
+                        .split('"')[1]
+                    )
+                if name.lower() not in forbidden_classes:
+                    if iconize:
+                        name = to_icon(name)
+                    try:
+                        out[name].append(id)
+                    except:
+                        out[name] = [id]
+                    cache[id] = name
+            else:
                 try:
-                    out[name].append(id)
-                except:
-                    out[name] = [id]
-        return out
+                    out[cache[id]].append(id)
+                except KeyError:
+                    out[cache[id]] = [id]
+        return out, cache
 
 
-def generate(workspaces, focused_win="", focused_desk="", order=[]):
-    out = ""
+def generate(workspaces, focused_desk, order):
+    global classcache
+    focused = os.popen(f"bspc query -N -m {mon_id} -n .focused").read()[
+        :-1
+    ]  # ID of the currently focused window
     for workspace_id in order:
         if (
             len(workspaces[workspace_id][0]) < hide_unpopulated_desktops
             and workspace_id != focused_desk
         ):
             continue
-        out += (
+        printf(
             "%{A1:"
             + on_click
             + " switch_workspace "
@@ -246,17 +258,15 @@ def generate(workspaces, focused_win="", focused_desk="", order=[]):
             else wps_active_left + separator + workspaces[workspace_id][1]
         )
         if len(workspaces[workspace_id][0]) == 0:
-            out += separator + wps_active_right
+            printf(separator + wps_active_right)
         else:
-            out += ":"
-            windows = wid_to_name(workspaces[workspace_id][0])
+            printf(":")
+            windows, classcache = wid_to_name(workspaces[workspace_id][0], classcache)
             for i, win_class in enumerate(windows.keys()):
                 if i == max_windows:
                     break
                 wid = " ".join(windows[win_class])
-                if focused_win in windows[win_class]:
-                    out += active_left
-                out += (
+                printf(
                     "%{A1:"
                     + on_click
                     + " focus "
@@ -279,18 +289,21 @@ def generate(workspaces, focused_win="", focused_desk="", order=[]):
                     + wid
                     + ":}"
                 )
-                out += separator
-                out += win_class.upper()
-                out += (
+                if focused in windows[win_class]:
+                    printf(active_left)
+                else:
+                    printf(inactive_left)
+                printf(separator)
+                printf(win_class.upper())
+                printf(
                     separator
                     if len(windows[win_class]) <= 1
                     else str(len(windows[win_class])).translate(superscript)
                 )
-                out += active_right + "%{A}%{A}%{A}%{A}%{A}"
-            out += wps_active_right
+                printf(active_right + "%{A}%{A}%{A}%{A}%{A}")
+            printf(wps_active_right)
             if len(windows.keys()) > max_windows:
-                out += f"+{len(windows.keys())-max_windows}"
-    return out
+                printf(f"+{len(windows.keys())-max_windows}")
 
 
 def main():
@@ -298,6 +311,7 @@ def main():
         command = os.popen(
             "bspc subscribe desktop_focus desktop_add desktop_rename desktop_remove desktop_swap node_add node_remove node_swap node_transfer node_focus"
         )
+        global mon_id
         mon_id = os.popen(f"bspc query -M -m '{monitor}'").read()[:-1]
         workspace_order = []
         workspaces = {}  # workspace ID and name pairs
@@ -319,17 +333,13 @@ def main():
         focused_workspace = os.popen(f"bspc query -D -m {mon_id} -d .focused").read()[
             :-1
         ]  # ID of the currently focused workspace
-        focused = os.popen(f"bspc query -N -m {mon_id} -n .focused").read()[
-            :-1
-        ]  # ID of the currently focused window
+        global classcache
+        classcache = {}
         try:
-            printf(
-                generate(
-                    workspaces,
-                    focused_win=focused,
-                    focused_desk=focused_workspace,
-                    order=workspace_order,
-                )
+            generate(
+                workspaces,
+                focused_workspace,
+                workspace_order,
             )
             printf("\n")
             sys.stdout.flush()
@@ -358,15 +368,26 @@ def main():
 
         while True:
             update = command.readline()[:-1]
-            if mon_id in update:
-                if "node" in update:
+            if (
+                mon_id in update
+                or update.startswith("node_remove")
+                or update.startswith("node_focus")
+            ):
+                if update.startswith("node"):
                     update = update[5:].split(" ")
                     if update[0] == "focus":
-                        focused = update[-1]
+                        pass
                     elif update[0] == "add":
-                        workspaces[update[2]][0].append(update[4])
+                        try:
+                            workspaces[update[2]][0].append(update[4])
+                        except KeyError:
+                            pass
                     elif update[0] == "remove":
-                        workspaces[update[2]][0].remove(update[3])
+                        classcache.pop(update[3], None)
+                        try:
+                            workspaces[update[2]][0].remove(update[3])
+                        except KeyError:
+                            continue
                     elif update[0] == "swap":
                         if update[1] == mon_id:
                             workspaces[update[2]][0].remove(update[3])
@@ -396,7 +417,7 @@ def main():
                             update[-1],
                         )
                     elif update[0] == "remove":
-                        workspaces.pop(update[-1])
+                        workspaces.pop(update[-1], None)
                     else:
                         if update[1] == mon_id and update[3] == mon_id:
                             index = workspace_order.index(update[4])
@@ -432,13 +453,10 @@ def main():
                                 ]  # ID of the currently focused workspace
 
                 try:
-                    printf(
-                        generate(
-                            workspaces,
-                            focused_win=focused,
-                            focused_desk=focused_workspace,
-                            order=workspace_order,
-                        )
+                    generate(
+                        workspaces,
+                        focused_workspace,
+                        workspace_order,
                     )
                     printf("\n")
                     sys.stdout.flush()
@@ -468,8 +486,9 @@ def main():
                         ).read()[
                             :-1
                         ]  # ID of the currently focused workspace
-
-            # break
+                        command = os.popen(
+                            "bspc subscribe desktop_focus desktop_add desktop_rename desktop_remove desktop_swap node_add node_remove node_swap node_transfer node_focus"
+                        )
     else:
         exec(sys.argv[2] + "(" + "'" + " ".join(sys.argv[3:]) + "')")
 
@@ -478,7 +497,7 @@ def slop_resize(window):
     window = sorted(window.split(" "))
     try:
         window = window[window.index(get_active_wid())]
-    except:
+    except ValueError:
         window = window[0]
     os.system(
         f"""bash -c 'bspc node "{window}" -g hidden=off &
@@ -496,7 +515,7 @@ def close(window):
     window = sorted(window.split(" "))
     try:
         window = window[window.index(get_active_wid())]
-    except:
+    except ValueError:
         window = window[0]
     os.system("xdo close " + window)
 
@@ -505,7 +524,7 @@ def focus(window):
     window = sorted(window.split(" "))
     try:
         window = window[(window.index(get_active_wid()) + 1) % len(window)]
-    except:
+    except ValueError:
         window = window[0]
     os.system("bspc node " + window + " -g hidden=off")
     os.system("wmctrl -ia " + window)
@@ -515,7 +534,7 @@ def increment_size(window):
     window = sorted(window.split(" "))
     try:
         window = window[window.index(get_active_wid())]
-    except:
+    except ValueError:
         window = window[0]
     os.system(f"xdo move -x -{resize_offset} -y -{resize_offset} {window}")
     os.system(f"xdo resize -w +{resize_increment} -h +{resize_increment} {window}")
@@ -525,8 +544,9 @@ def decrement_size(window):
     window = sorted(window.split(" "))
     try:
         window = window[window.index(get_active_wid())]
-    except:
+    except ValueError:
         window = window[0]
+    os.system(f"bspc node -t floating {window}")
     os.system(f"xdo move -x +{resize_offset} -y +{resize_offset} {window}")
     os.system(f"xdo resize -w -{resize_increment} -h -{resize_increment} {window}")
 
@@ -540,6 +560,4 @@ def swap_workspace(workspace):
 
 
 if __name__ == "__main__":
-    # duration = timeit.Timer(main).timeit(number=20)
-    # print(duration / 20)
     main()
