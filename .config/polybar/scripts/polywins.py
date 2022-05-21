@@ -21,7 +21,7 @@ show = "window_class"
 forbidden_classes = "Polybar Conky Gmrun Pavucontrol".lower().split(" ")
 hide_unpopulated_desktops = False
 iconize = True
-hide_name = False  # Controls whether to hide window names when an icon is present
+hide_name = True  # Controls whether to hide window names when an icon is present
 
 char_limit = 10
 max_windows = 10
@@ -217,7 +217,7 @@ def wid_to_name(wid, cache={}):
                         name = to_icon(name)
                     try:
                         out[name].append(id)
-                    except:
+                    except KeyError:
                         out[name] = [id]
                     cache[id] = name
             else:
