@@ -21,14 +21,18 @@ M.editor = {
       ["<C-l>"] = { "<C-w>l", "Focus window to the right" },
       ["gx"] = {
          function()
-            local url = string.match(vim.fn.getline ".", "[a-z]*://[^ >,;()]*")
-            if url ~= "" then
-               vim.cmd("silent exec \"!open '" .. url .. "'\"")
+            local line = vim.fn.getline "."
+            if line ~= "" then
+               local command = string.format(
+                  'xdg-open $(echo "%s" | grep -Po "(http|https)://[A-z-#/]+[^ >,;()]*")',
+                  line
+               )
+               os.execute(command)
             else
-               vim.cmd 'echo "No URI found in line."'
+               vim.cmd 'echo "Empty line"'
             end
          end,
-         "   Open URL",
+         "Open URL",
       },
    },
 }
