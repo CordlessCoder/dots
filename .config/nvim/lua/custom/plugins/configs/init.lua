@@ -8,6 +8,7 @@ M.treesitter = {
       "python",
       "markdown",
       "bash",
+      "rust",
    },
 }
 
