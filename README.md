@@ -170,7 +170,7 @@ That is most likely because **GLava**, the visualiser isn't set to use the corre
 3. Try to find a solution
 4. BASH your skull against the table, repeatedly
 5. Read this line
-6. Create a file `/etc/X11/Xsession.d/100-qt5ct`
+6. Create/Open `~/.profile`
 7. Put this into it: <pre lang=bash>
    export QT_QPA_PLATFORMTHEME=qt5ct
    export QT_PLATFORMTHEME=qt5ct
