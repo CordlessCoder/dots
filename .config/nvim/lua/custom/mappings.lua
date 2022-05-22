@@ -24,7 +24,7 @@ M.editor = {
             local line = vim.fn.getline "."
             if line ~= "" then
                local command = string.format(
-                  'xdg-open $(echo "%s" | grep -Po "(http|https)://[A-z-#/]+[^ >,;()]*")',
+                  'xdg-open $(echo "%s" | grep -Po "(http|https)://[A-z-#/]+[^ >,;()]*") 2> /dev/null',
                   line
                )
                os.execute(command)
