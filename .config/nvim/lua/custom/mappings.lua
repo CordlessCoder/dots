@@ -19,6 +19,17 @@ M.editor = {
       ["<C-j>"] = { "<C-w>j", "Focus window downwards" },
       ["<C-k>"] = { "<C-w>k", "Focus window upwards" },
       ["<C-l>"] = { "<C-w>l", "Focus window to the right" },
+      ["gx"] = {
+         function()
+            local url = string.match(vim.fn.getline ".", "[a-z]*://[^ >,;()]*")
+            if url ~= "" then
+               vim.cmd("silent exec \"!open '" .. url .. "'\"")
+            else
+               vim.cmd 'echo "No URI found in line."'
+            end
+         end,
+         "   Open URL",
+      },
    },
 }
 

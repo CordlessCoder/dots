@@ -1,6 +1,6 @@
 #!/bin/sh
 
-killall sxhkd
+killall sxhkd && sleep .2
 sxhkd &
 
 sh ~/.config/bspwm/scripts/autostart.sh &

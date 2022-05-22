@@ -69,6 +69,7 @@ class_icons = {
     "alacritty": "",
     "atom": "",
     "vscode": "",
+    "code": "",
     "neovim": "",
     "nvim": "",
     "nvim-qt": "",

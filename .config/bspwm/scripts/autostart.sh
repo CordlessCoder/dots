@@ -52,7 +52,7 @@ fi
 
 #start GLava
 if ! pgrep glava >/dev/null; then
-	python ~/.config/glava/colorsteal.py | tee /tmp/.color | nice -n 19 glava -i &
+	python ~/.config/glava/coverthief.py | nice -n 19 glava -i &
 fi
 # ##############################################################################
 # #                             AUTOSTART POLYBAR(s)                           #
