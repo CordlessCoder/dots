@@ -22,7 +22,7 @@ local sources = {
    b.diagnostics.flake8.with { extra_args = { "--max-line-length", "120" } },
 
    -- Rust
-   b.formatting.rustfmt,
+   b.formatting.rustfmt.with { extra_args = { "--edition=2021" } },
 }
 
 local M = {}
