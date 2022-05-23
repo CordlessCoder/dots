@@ -3,6 +3,9 @@ import os
 import sys
 
 
+char_limit = 38
+
+
 colors = {
     "text_color": "#C0CAF5",
     "title_color": "#C0CAF5",
@@ -44,11 +47,11 @@ while True:
         printf("\n")
         sys.stdout.flush()
     if "title" in update[1]:
-        title = " ".join(update[2:])
+        title = " ".join(update[2:])[:char_limit]
     elif "album" in update[1]:
-        album = " ".join(update[2:])
+        album = " ".join(update[2:])[:char_limit]
     elif "artist" in update[1]:
-        artist = " ".join(update[2:])
+        artist = " ".join(update[2:])[:char_limit]
         if len(title) > 0:
             try:
                 printf(
