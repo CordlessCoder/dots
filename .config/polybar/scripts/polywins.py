@@ -73,6 +73,7 @@ class_icons = {
     "neovim": "",
     "nvim": "",
     "nvim-qt": "",
+    "neovide": "",
     "banshee": "",
     "blender": "",
     "chromium": "",
@@ -139,6 +140,7 @@ class_icons = {
     "telegram": "",
     "kotatogram": "",
     "lunarclient": "",
+    "viber": "",
 }
 
 
