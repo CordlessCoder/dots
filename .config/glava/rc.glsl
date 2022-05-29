@@ -188,7 +188,7 @@
 
    This value has a _massive_ effect on FFT performance and
    quality for some modules. */
-#request setbufsize 512
+#request setbufsize 256
 
 /* PulseAudio sample rate. Lower values can add 'gravity' to
    FFT output, but can also reduce accuracy. Most hardware

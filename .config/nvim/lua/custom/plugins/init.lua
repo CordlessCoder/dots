@@ -40,7 +40,7 @@ return {
 	["elkowar/yuck.vim"] = {
 		ft = "yuck",
 		setup = function()
-			nvchad.packer_lazy_load("yuck.vim")
+			require("core.utils").packer_lazy_load("yuck.vim")
 		end,
 	},
 	["andweeb/presence.nvim"] = {
@@ -64,7 +64,7 @@ return {
 			require("custom.plugins.truezen")
 		end,
 		setup = function()
-			nvchad.packer_lazy_load("TrueZen.nvim")
+			require("core.utils").packer_lazy_load("TrueZen.nvim")
 		end,
 	},
 	-- ["karb94/neoscroll.nvim"] = {
@@ -76,23 +76,23 @@ return {
 
 		-- lazy loading
 		-- setup = function()
-			-- nvchad.packer_lazy_load("neoscroll.nvim")
+			-- require("core.utils").packer_lazy_load("neoscroll.nvim")
 		-- end,
 	-- },
 	["justinmk/vim-sneak"] = {
 		setup = function()
-			nvchad.packer_lazy_load("vim-sneak")
+			require("core.utils").packer_lazy_load("vim-sneak")
 		end,
 	},
 	["f-person/git-blame.nvim"] = {
 		setup = function()
-			nvchad.packer_lazy_load("git-blame.nvim")
+			require("core.utils").packer_lazy_load("git-blame.nvim")
 		end,
 	},
 	["ellisonleao/glow.nvim"] = {
 		branch = "main",
 		setup = function()
-			nvchad.packer_lazy_load("glow.nvim")
+			require("core.utils").packer_lazy_load("glow.nvim")
 		end,
 	},
 	["iamcco/markdown-preview.nvim"] = {
@@ -110,7 +110,7 @@ return {
 	["jose-elias-alvarez/null-ls.nvim"] = {
 		after = "nvim-lspconfig",
 		setup = function()
-			nvchad.packer_lazy_load("null-ls.nvim")
+			require("core.utils").packer_lazy_load("null-ls.nvim")
 		end,
 		config = function()
 			require("custom.plugins.null-ls").setup()

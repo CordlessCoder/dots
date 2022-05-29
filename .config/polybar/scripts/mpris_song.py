@@ -22,10 +22,10 @@ album_icon = "  "
 artist_icon = " ﴁ"
 
 
-icons = {
-    "firefox": "",
-    "spotify": "",
-}
+# icons = {
+# "firefox": "",
+# "spotify": "",
+# }
 
 
 command = os.popen("playerctl metadata --follow")
