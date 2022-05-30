@@ -70,6 +70,7 @@ class_icons = {
     "atom": "",
     "vscode": "",
     "code": "",
+    "code-oss": "",
     "neovim": "",
     "nvim": "",
     "nvim-qt": "",
