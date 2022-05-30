@@ -37,7 +37,7 @@ This configuration comes with a long list of those, some of which are shown in t
 | Alt+Ctrl+T                  | Open terminal emulator(kitty)                                      |
 | Meta+Enter                  | Alternative to ^                                                   |
 | Alt+Space                   | Application launcher(rofi)                                         |
-| Meta+C                      | Open NeoVim                                                        |
+| Meta+C                      | Open NeoVide(the best NeoVim GUI)                                  |
 | Meta+Shift+C                | Open Firefox(developer edition)                                    |
 | Meta+Ctrl+C                 | Open VSCode                                                        |
 | Meta+E                      | Open File Manager(thunar)                                          |
