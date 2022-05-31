@@ -9,8 +9,6 @@ M.setup_lsp = function(attach, capabilities)
 		lspconfig[lsp].setup({
 			on_attach = function(client, bufnr)
 				attach(client, bufnr)
-				client.server_capabilities.document_formatting = false
-				client.server_capabilities.document_range_formatting = false
 				if lsp == "emmet_ls" then
 					capabilities.textDocument.completion.completionItem.snippetSupport = true
 				end
