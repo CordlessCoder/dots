@@ -15,7 +15,7 @@ bspc config focus_follows_pointer false
 bspc config top_padding 40
 bspc config remove_unplugged_monitors true
 
-wal -R &
+wal -R -s -t -e &
 # source the colors.
 . "${HOME}/.cache/wal/colors.sh"
 
