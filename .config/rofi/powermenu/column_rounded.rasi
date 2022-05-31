@@ -16,7 +16,10 @@ configuration {
 	sidebar-mode: 					false;
 }
 
-@import "styles/colors.rasi"
+
+/* Dark theme. */
+@import "~/.cache/wal/colors-rofi-dark"
+
 
 window {
     transparency:                   "none";

@@ -9,7 +9,7 @@ super + Return
 	sh -c "python .config/sxhkd/change_layout.py us; kitty &"
 # program launcher
 alt + space
-	bash -c "python .config/sxhkd/change_layout.py us; ~/.config/rofi/launchers/launcher_ribbon &" &
+	bash -c "python .config/sxhkd/change_layout.py us; ~/.config/rofi/launcher/launcher.sh " &
 {_,super} + Print
 	bash -c '$(cd {/tmp,~/Screenshots} && name=$(date +"%H:%M:%S_%d_%B").png && maim -m 9 -u -s -b 2 -c 0.75,0.8,0.96,1 $name && xclip -selection clipboard -target image/png -i $name &) &'
 

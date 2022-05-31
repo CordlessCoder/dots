@@ -7,13 +7,6 @@ import os
 
 # SETTINGS
 
-active_text_color = "#EB6572"
-active_bg = "#24283B"
-active_underline = "#EB6572"
-
-inactive_text_color = "#C0CAF5"
-inactive_bg = ""
-inactive_underline = "#C0CAF5"
 
 name_style = "upper"  # options: upper, lower, None
 separator = " "
@@ -30,119 +23,134 @@ resize_increment = 16
 resize_offset = resize_increment / 2
 
 
-# WINDOW LIST SETUP
+if len(sys.argv) <= 2:
+    try:
+        with open(os.path.expanduser("~/.cache/wal/colors")) as colors:
+            colors = tuple(map(lambda x: x[:-1], colors.readlines()))
+        active_text_color = colors[1]
+        active_bg = colors[8]
+        active_underline = colors[1]
+        inactive_text_color = colors[7]
+        inactive_bg = ""
+        inactive_underline = colors[7]
 
+    except:
+        active_text_color = "#EB6572"
+        active_bg = "#24283B"
+        active_underline = "#EB6572"
+        inactive_text_color = "#C0CAF5"
+        inactive_bg = ""
+        inactive_underline = "#C0CAF5"
 
-active_left = "%{F" + active_text_color + "}"
-active_right = "%{F-}"
-inactive_left = "%{F" + inactive_text_color + "}"
-inactive_right = "%{F-}"
-# separator = "%{F" + inactive_text_color + "}" + separator + "%{F-}"
+    # WINDOW LIST SETUP
 
-wps_active_left = "%{F" + inactive_text_color + "}%{+u}%{u" + inactive_underline + "}"
+    active_left = "%{F" + active_text_color + "}"
+    active_right = "%{F-}"
+    inactive_left = "%{F" + inactive_text_color + "}"
+    inactive_right = "%{F-}"
+    # separator = "%{F" + inactive_text_color + "}" + separator + "%{F-}"
 
-wps_active_right = "%{-u}%{u}%{F-}"
-wps_inactive_left = "%{F" + inactive_text_color + "}"
-wps_inactive_right = "%{F-}"
+    wps_active_left = (
+        "%{F" + inactive_text_color + "}%{+u}%{u" + inactive_underline + "}"
+    )
 
-if active_underline is not None:
-    active_left = active_left + "%{+u}%{u" + active_underline + "}"
-    active_right = "%{-u}" + active_right
+    wps_active_right = "%{-u}%{u}%{F-}"
+    wps_inactive_left = "%{F" + inactive_text_color + "}"
+    wps_inactive_right = "%{F-}"
 
+    if active_underline is not None:
+        active_left = active_left + "%{+u}%{u" + active_underline + "}"
+        active_right = "%{-u}" + active_right
 
-if inactive_underline is not None:
-    inactive_left += "%{+u}%{u" + inactive_underline + "}"
-    inactive_right = "%{-u}" + inactive_right
+    if inactive_underline is not None:
+        inactive_left += "%{+u}%{u" + inactive_underline + "}"
+        inactive_right = "%{-u}" + inactive_right
 
+    on_click = " ".join(sys.argv[:2])
+    monitor = sys.argv[1]
 
-on_click = " ".join(sys.argv[:2])
-monitor = sys.argv[1]
+    printf = sys.stdout.write
 
+    superscript = str.maketrans("0123456789", "⁰¹²³⁴⁵⁶⁷⁸⁹")
 
-printf = sys.stdout.write
-
-
-superscript = str.maketrans("0123456789", "⁰¹²³⁴⁵⁶⁷⁸⁹")
-
-
-class_icons = {
-    "alacritty": "",
-    "atom": "",
-    "vscode": "",
-    "code": "",
-    "code-oss": "",
-    "neovim": "",
-    "nvim": "",
-    "nvim-qt": "",
-    "neovide": "",
-    "banshee": "",
-    "blender": "",
-    "chromium": "",
-    "google-chrome": "",
-    "cura": "",
-    "darktable": "",
-    "discord": "ﭮ",
-    "eclipse": "",
-    "emacs": "",
-    "eog": "",
-    "evince": "",
-    "evolution": "",
-    "feh": "",
-    "file-roller": "ﭕ",
-    "filezilla": "",
-    "firefox": "",
-    "firefox-esr": "",
-    "firefoxdev": "",
-    "navigator": "",
-    "gimp": "",
-    "gimp-2.8": "",
-    "gnome-control-center": "",
-    "gnome-terminal-server": "",
-    "prusa-slicer": "",
-    "gpick": "",
-    "imv": "",
-    "insomnia": "",
-    "java": "",
-    "jetbrains-idea": "",
-    "jetbrains-studio": "",
-    "keepassxc": "",
-    "keybase": "",
-    "kicad": "",
-    "kitty": "",
-    "libreoffice": "",
-    "lua5.1": "",
-    "mpv": "",
-    "mupdf": "",
-    "mysql-workbench-bin": "",
-    "nautilus": "",
-    "nemo": "",
-    "openscad": "",
-    "pavucontrol": "",
-    "postman": "",
-    "rhythmbox": "蓼",
-    "robo3t": "",
-    "signal": "",
-    "slack": "",
-    "slic3r.pl": "",
-    "spotify": "",
-    "steam": "",
-    "subl": "",
-    "subl3": "",
-    "sublime_text": "",
-    "thunar": "",
-    "thunderbird": "",
-    "totem": "",
-    "urxvt": "",
-    "xfce4-terminal": "",
-    "xournal": "",
-    "yelp": "",
-    "zenity": "",
-    "zoom": "",
-    "telegram": "",
-    "kotatogram": "",
-    "lunarclient": "",
-    "viber": "",
-}
+    class_icons = {
+        "alacritty": "",
+        "atom": "",
+        "vscode": "",
+        "code": "",
+        "code-oss": "",
+        "neovim": "",
+        "nvim": "",
+        "nvim-qt": "",
+        "neovide": "",
+        "banshee": "",
+        "blender": "",
+        "chromium": "",
+        "google-chrome": "",
+        "cura": "",
+        "darktable": "",
+        "discord": "ﭮ",
+        "eclipse": "",
+        "emacs": "",
+        "eog": "",
+        "evince": "",
+        "evolution": "",
+        "feh": "",
+        "file-roller": "ﭕ",
+        "filezilla": "",
+        "firefox": "",
+        "firefox-esr": "",
+        "firefoxdev": "",
+        "navigator": "",
+        "gimp": "",
+        "gimp-2.8": "",
+        "gnome-control-center": "",
+        "gnome-terminal-server": "",
+        "prusa-slicer": "",
+        "gpick": "",
+        "imv": "",
+        "insomnia": "",
+        "java": "",
+        "jetbrains-idea": "",
+        "jetbrains-studio": "",
+        "keepassxc": "",
+        "keybase": "",
+        "kicad": "",
+        "kitty": "",
+        "libreoffice": "",
+        "lua5.1": "",
+        "mpv": "",
+        "mupdf": "",
+        "mysql-workbench-bin": "",
+        "nautilus": "",
+        "nemo": "",
+        "openscad": "",
+        "pavucontrol": "",
+        "postman": "",
+        "rhythmbox": "蓼",
+        "robo3t": "",
+        "signal": "",
+        "slack": "",
+        "slic3r.pl": "",
+        "spotify": "",
+        "steam": "",
+        "subl": "",
+        "subl3": "",
+        "sublime_text": "",
+        "thunar": "",
+        "thunderbird": "",
+        "totem": "",
+        "urxvt": "",
+        "xfce4-terminal": "",
+        "xournal": "",
+        "yelp": "",
+        "zenity": "",
+        "zoom": "",
+        "telegram": "",
+        "kotatogram": "",
+        "lunarclient": "",
+        "viber": "",
+    }
 
 
 def get_active_wid():

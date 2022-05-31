@@ -7,6 +7,7 @@
 # NOTE: This script runs with every restart of BSPWM[Binary Space Partitioning Window Manager]
 # If you would like to run a command *once* on login,
 # you can use ~/.xprofile
+cd "$HOME" || exit
 
 # ##############################################################################
 # #                                  FUNCTIONS                                 #
@@ -37,7 +38,7 @@ xrdb_query() {
 xsetroot -cursor_name left_ptr
 
 # Desktop effects
-run picom
+# run picom
 setxkbmap -option caps:none -layout us
 
 #start the Dunst daemon

@@ -6,15 +6,28 @@ import sys
 char_limit = 38
 
 
-colors = {
-    "text_color": "#C0CAF5",
-    "title_color": "#C0CAF5",
-    "album_color": "#C0CAF5",
-    "artist_color": "#7AA2F7",
-    "title_icon": "#7DCFFF",
-    "album_icon": "#7DCFFF",
-    "artist_icon": "#7AA2F7",
-}
+try:
+    with open(os.path.expanduser("~/.cache/wal/colors")) as colors:
+        colors = tuple(map(lambda x: x[:-1], colors.readlines()))
+    colors = {
+        "text_color": colors[7],
+        "title_color": colors[7],
+        "album_color": colors[7],
+        "artist_color": colors[4],
+        "title_icon": colors[6],
+        "album_icon": colors[14],
+        "artist_icon": colors[12],
+    }
+except:
+    colors = {
+        "text_color": "#C0CAF5",
+        "title_color": "#C0CAF5",
+        "album_color": "#C0CAF5",
+        "artist_color": "#7AA2F7",
+        "title_icon": "#7DCFFF",
+        "album_icon": "#7DCFFF",
+        "artist_icon": "#7AA2F7",
+    }
 
 
 title_icon = "  "
