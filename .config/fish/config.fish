@@ -15,13 +15,21 @@ if status is-interactive
         export FZF_DEFAULT_OPTS='-m --height 50% --border'
     end
     alias sex startx
-    if type -q neovide; and type -q kitty; and type -q xdo
-        # alias nvm="xdo hide -p $KITTY_PID; neovide --nofork && xdo show -p $KITTY_PID"
-        function nvm -d "Window swallower function for NeoVide" -w neovide
-            xdo hide -p $KITTY_PID
-            neovide --nofork $argv && xdo show -p $KITTY_PID
+    if type -sq kitty; and type -sq xdo
+        if type -sq neovide
+            # alias nvm="xdo hide -p $KITTY_PID; neovide --nofork && xdo show -p $KITTY_PID"
+            function nvm -d "Window swallower function for NeoVide" -w neovide
+                xdo hide -p $KITTY_PID
+                neovide --nofork $argv && xdo show -p $KITTY_PID
+            end
+            alias nvim=nvm
         end
-        alias nvim=nvm
+        if type -sq zathura
+            function zath -d "Window swallower function for zathura" -w zathura
+                xdo hide -p $KITTY_PID
+                zathura $argv && xdo show -p $KITTY_PID
+            end
+        end
     end
 end
 
