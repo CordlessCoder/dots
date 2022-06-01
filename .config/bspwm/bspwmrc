@@ -28,7 +28,7 @@ sh ~/.config/bspwm/scripts/autostart.sh &
 
 python $HOME/.config/bspwm/scripts/span_monitors.py &
 
-bspc rule -a Zathura state=floating &
+bspc rule -a Zathura state=tiled &
 bspc rule -a "zoom " state=floating border=off &
 bspc rule -a GLava state=floating manage=off &
 bspc rule -a pavucontrol state=floating &

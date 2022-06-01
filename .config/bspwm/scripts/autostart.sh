@@ -29,11 +29,12 @@ function run {
 xsetroot -cursor_name left_ptr
 
 # Desktop effects
+killall dunst
 # run picom
 setxkbmap -option caps:none -layout us
 
 #start the Dunst daemon
-run_bg dunst
+nice -n 19 dunst
 
 #start Conky
 if ! test $(pgrep conky | wc -l) -gt 1; then
