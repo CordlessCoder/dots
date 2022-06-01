@@ -1,0 +1,33 @@
+if status is-interactive
+    starship init fish | source
+    # Commands to run in interactive sessions can go here
+    abbr yeet 'paru -Rcs'
+    alias ip="ip -c"
+    abbr pfetch paleofetch
+    abbr polyfix 'xdo lower -N "Polybar"'
+    alias v=nvim
+    alias g=git
+    alias ls=exa
+    alias icat="kitty +kitten icat"
+    fish_add_path ~/.cargo/bin
+    if type rg &>/dev/null
+        export FZF_DEFAULT_COMMAND='rg --files'
+        export FZF_DEFAULT_OPTS='-m --height 50% --border'
+    end
+    alias sex startx
+    if type -q neovide; and type -q kitty; and type -q xdo
+        # alias nvm="xdo hide -p $KITTY_PID; neovide --nofork && xdo show -p $KITTY_PID"
+        function nvm -d "Window swallower function for NeoVide" -w neovide
+            xdo hide -p $KITTY_PID
+            neovide --nofork $argv && xdo show -p $KITTY_PID
+        end
+        alias nvim=nvm
+    end
+end
+
+
+set -x MANPAGER nvimpager
+set -x PAGER nvimpager
+# what to add to path
+export EDITOR='nvim'
+export VISUAL='nvim'

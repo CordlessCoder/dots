@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/roman/Desktop/doasIsay.png",
+    "alpha": "70",
+    "special": {
+        "background": "#0e0d15",
+        "foreground": "#bdd9e2",
+        "cursor": "#bdd9e2"
+    },
+    "colors": {
+        "color0": "#0e0d15",
+        "color1": "#B97184",
+        "color2": "#C97E92",
+        "color3": "#6D9AAD",
+        "color4": "#CE8296",
+        "color5": "#E08CA1",
+        "color6": "#86BBCE",
+        "color7": "#bdd9e2",
+        "color8": "#84979e",
+        "color9": "#B97184",
+        "color10": "#C97E92",
+        "color11": "#6D9AAD",
+        "color12": "#CE8296",
+        "color13": "#E08CA1",
+        "color14": "#86BBCE",
+        "color15": "#bdd9e2"
+    }
+}

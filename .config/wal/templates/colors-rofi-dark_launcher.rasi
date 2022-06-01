@@ -1,0 +1,8 @@
+
+* {{
+    background:                     #00{background.strip};
+    background-alt:              	#00{background.strip};
+    background-bar:                 #f2{background.strip};
+    foreground:                     #f2{foreground.strip};
+    accent:			            	#ff{color4.strip};
+}}

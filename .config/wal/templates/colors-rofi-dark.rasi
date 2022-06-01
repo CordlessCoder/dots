@@ -1,0 +1,12 @@
+* {{
+    background:                     {background};
+    background-alt:                 {color8};
+    foreground:                     {foreground};
+    border:               			{color15};
+    border-alt:               		{color4};
+    selected:               		{color0};
+    urgent:                         {color2};
+    spacing: 0;
+    width: 60%;
+    height: 80%;
+}}

@@ -1,0 +1,157 @@
+
+--[[
+#######################################
+##         .conkyrc (BSPWM)          ##
+#######################################
+]]
+
+conky.config = {{
+
+	--Various settings
+	background = true, 							-- forked to background
+	cpu_avg_samples = 2,						-- The number of samples to average for CPU monitoring.
+	diskio_avg_samples = 10,					-- The number of samples to average for disk I/O monitoring.
+	double_buffer = true,						-- Use the Xdbe extension? (eliminates flicker)
+	if_up_strictness = 'address',				-- how strict if testing interface is up - up, link or address
+	net_avg_samples = 2,						-- The number of samples to average for net data
+	no_buffers = true,							-- Subtract (file system) buffers from used memory?
+	temperature_unit = 'celsius',			-- fahrenheit or celsius
+	text_buffer_size = 2048,					-- size of buffer for display of content of large variables - default 256
+	update_interval = 1,						-- update interval
+	imlib_cache_size = 0,                       -- disable image cache to get a new spotify cover per song
+
+	-- Placement (Conky on MIDDLE of THREE monitors at 1920x1080)
+	--alignment = 'top_left',		                -- top_left,top_middle,top_right,bottom_left,bottom_middle,bottom_right,
+	--gap_x = 3540,                               -- pixels between right or left border
+	--gap_y = 70,									-- pixels between bottom or left border
+
+    -- Placement (For SINGLE monitor users!)
+	alignment = 'top_right',		            -- top_left,top_middle,top_right,bottom_left,bottom_middle,bottom_right,
+	gap_x = 5,								-- pixels between right or left border
+	gap_y = 92,								-- pixels between bottom or left border
+
+    -- Size
+    --minimum_height = 200,						-- minimum height of window
+	--minimum_width = 380,						-- minimum width of window
+	--maximum_width = 460,						-- maximum width of window
+
+	--Graphical
+	border_inner_margin = 0, 					-- margin between border and text
+	border_outer_margin = 0, 					-- margin between border and edge of window
+	border_width = 0, 							-- border width in pixels
+	default_bar_width = 300,					-- default is 0 - full width
+	default_bar_height = 10,					-- default is 6
+	default_gauge_height = 25,					-- default is 25
+	default_gauge_width =40,					-- default is 40
+	default_graph_height = 40,					-- default is 25
+	default_graph_width = 153,					-- default is 0 - full width
+	default_shade_color = '#000000',			-- default shading colour
+	default_outline_color = '#000000',			-- default outline colour
+	draw_borders = false,						-- draw borders around text
+	draw_graph_borders = true,					-- draw borders around graphs
+	draw_shades = false,						-- draw shades
+	draw_outline = false,						-- draw outline
+	stippled_borders = 0,						-- dashing the border
+
+	--Textual
+	format_human_readable = true,				-- KiB, MiB rather then number of bytes
+	font  = 'FiraCode Nerd Font:bold:size=14',  	-- the default font used
+	font2  = 'FiraCode Nerd Font:size=14',  	-- the default font used
+	font3 = 'Ubuntu:size=30',               	-- font for the date
+	font4 = 'Raleway:bold:size=18',              -- font for the keybindings heading
+	max_text_width = 0,							-- 0 will make sure line does not get broken if width too small
+	max_user_text = 16384,						-- max text in conky default 16384
+	override_utf8_locale = true,				-- force UTF8 requires xft
+	short_units = false,							-- shorten units from KiB to k
+	top_name_width = 32,						-- width for $top name value default 15
+	top_name_verbose = false,					-- If true, top name shows the full command line of  each  process - Default value is false.
+	uppercase = false,							-- uppercase or not
+	use_spacer = 'none',						-- adds spaces around certain objects to align - default none
+	use_xft = true,								-- xft font - anti-aliased font
+	xftalpha = 1,								-- alpha of the xft font - between 0-1
+
+	--Windows
+	own_window = true,							-- create your own window to draw
+	own_window_argb_value = 255,			    -- real transparency - composite manager required 0-255
+	own_window_argb_visual = false,				-- use ARGB - composite manager required
+	own_window_class = 'conky',					-- manually set the WM_CLASS name for use with xprop
+	own_window_colour = '{background}',				-- set colour if own_window_transparent no
+	own_window_transparent = true,				-- if own_window_argb_visual is true sets background opacity 0%
+	own_window_title = 'conky',			-- set the name manually
+	own_window_type = 'desktop',				-- if own_window true options are: normal/override/dock/desktop/panel
+	own_window_hints = 'below,sticky,skip_taskbar,skip_pager',  -- if own_window true - just hints - own_window_type sets it
+
+	--Colors
+	color0 = '{color2.strip}',
+	color1 = '{color15.strip}',
+	color2 = '{foreground.strip}',
+}};
+
+
+conky.text = [[
+${{color1}}┌────────────────────────────────────────────┐
+│${{color2}} Kernel:$color0${{alignr}}${{kernel}}${{color1}}$font │
+│${{color2}} Uptime:$color0${{alignr}}${{uptime}}${{color1}}$font │
+│${{color2}} UTC Time:$color0${{alignr}}${{utime}}${{color1}}$font │
+├────────────────────────────────────────────┤
+│${{color2}} CPU:$color0${{alignr}}${{execi 60 cat /proc/cpuinfo | grep "model name" | head -1 | cut -d":" -f2 | cut -d" " -f-5}}${{color1}}$font │
+│ ${{color2}}${{top name 1}}$alignr$color0${{top cpu 1}}% $font${{color1}}│
+│ ${{color2}}${{top name 2}}$alignr$color0${{top cpu 2}}% $font${{color1}}│
+│ ${{color2}}${{top name 3}}$alignr$color0${{top cpu 3}}% $font${{color1}}│
+│ ${{color2}}${{top name 4}}$alignr$color0${{top cpu 4}}% $font${{color1}}│
+│ ${{color2}}${{top name 5}}$alignr$color0${{top cpu 5}}% $font${{color1}}│
+│ ${{color2}}Load average:$alignr$color0${{loadavg}} $font${{color1}}│
+│ ${{color2}}Temperature:$alignr$color0${{hwmon temp 1}}°C $font${{color1}}│
+│ ${{color2}}Frequency:$alignr$color0${{freq_g}}GHz $font${{color1}}│
+├────────────────────────────────────────────┤
+│ ${{color2}}GPU:$alignr$color0${{nvidia modelname}} $font${{color1}}│
+│ ${{color2}}Utilization:$alignr$color0${{nvidia gpuutil}}% $font${{color1}}│
+│ ${{color2}}VRAM:$alignr$color0${{nvidia memused}}MiB / ${{nvidia memmax}}MiB (${{nvidia memutil}}%) $font${{color1}}│
+│ ${{color2}}Temperature:$alignr$color0${{nvidia gputemp}}°C $font${{color1}}│
+│ ${{color2}}Frequency:$alignr$color0${{nvidia gpufreqcur}}MHz $font${{color1}}│
+│ ${{color2}}Fan speed:$alignr$color0${{nvidia fanspeed}}RPM $font${{color1}}│
+├────────────────────────────────────────────┤
+│${{color2}} Resolution:$color0${{alignr}}${{execi 60 xdpyinfo  | grep -oP 'dimensions:\s+\K\S+'}}${{color1}}$font │
+│${{color2}} Refresh rate:$color0${{alignr}}${{execi 60 xrandr --q12 | grep -A 1 " connected" | grep -e "[\[:digit:]\]*.[\[:digit:]\]*\*" -o | cut -d"." -f1 | sed ":a; N; \$!ba; s/\n/Hz, /g"}}Hz${{color1}}$font │
+│${{color2}} Theme:$color0${{alignr}}${{execi 60 gtk-query-settings gtk-theme-name | awk -F '"' '{{print $2}}'}}${{color1}}$font │
+│${{color2}} Font:$color0${{alignr}}${{execi 60 gtk-query-settings gtk-font-name | awk -F '"' '{{print $2}}'}}${{color1}}$font │
+│${{color2}} WM:$color0${{alignr}}${{execi 60 xprop -id `xprop -root -notype _NET_SUPPORTING_WM_CHECK | awk '{{print $5}}'` | tail -n 1 | awk '{{print toupper($4)}}' | tr -d '\"'}}${{color1}}$font │
+│${{color2}} Shell:$color0${{alignr}}${{execi 60 echo $SHELL | awk -F / 'NF>1{{print $NF}}'}}${{color1}}$font │
+├────────────────────────────────────────────┤
+│ ${{color2}}Memory:$alignr$color0${{mem}} / ${{memmax}} (${{memperc}}%) $font${{color1}}│
+│ ${{color2}}Disk(/):$alignr$color0${{fs_used}} / ${{fs_size}} (${{fs_used_perc}}%) $font${{color1}}│
+└────────────────────────────────────────────┘
+]]
+-- ${{alignc}}$color0${{uid_name 1000}}@${{color2}}${{nodename}}
+--conky.text = [[
+--${{alignc}}${{color1}}${{font2}}${{time %H:%M}}${{font}}
+--${{voffset 6}}${{alignc}}${{color1}}${{font3}}${{time %b %d, %Y}}${{font}}${{color0}}
+--${{voffset 18}}${{goto 12}}${{color3}}CPU at ${{freq_g}}GHz${{alignr}}$cpu%[${{hwmon 1 temp 1}}°C]
+--${{color2}}${{goto 12}}${{cpubar 12,0}}
+--${{voffset 5}}${{goto 12}}$font${{color1}}${{top name 1}}$alignr$color0${{top cpu 1}}%
+--${{goto 12}}${{color1}}${{top name 2}}$alignr$color0${{top cpu 2}}%
+--${{goto 12}}${{color1}}${{top name 3}}$alignr$color0${{top cpu 3}}%
+--${{goto 12}}${{color1}}${{top name 4}}$alignr$color0${{top cpu 4}}%
+--${{goto 12}}${{color1}}${{top name 5}}$alignr$color0${{top cpu 5}}%
+--${{voffset 14}}${{goto 12}}${{color3}}RAM${{alignr}}$mem/$memmax
+--${{color2}}${{goto 12}}${{membar 12,0}}${{color}}
+--${{goto 12}}${{voffset 5}}${{color1}}${{top_mem name 1}}$alignr$color0${{top_mem mem_res 1}}
+--${{goto 12}}${{color1}}${{top_mem name 2}}$alignr$color0${{top_mem mem_res 2}}
+--${{goto 12}}${{color1}}${{top_mem name 3}}$alignr$color0${{top_mem mem_res 3}}
+--${{goto 12}}${{color1}}${{top_mem name 4}}$alignr$color0${{top_mem mem_res 4}}
+--${{goto 12}}${{color1}}${{top_mem name 5}}$alignr$color0${{top_mem mem_res 5}}
+--${{voffset 18}}${{color1}}${{alignc}}${{font4}}BSPWM KEYBINDINGS${{font}}${{color}}
+--${{color1}}${{hr}}${{color}}
+--${{color1}}[C]+[SHIFT]+Q${{alignr}}${{color2}}close window${{color}}
+--${{color1}}[S]+HJKL${{alignr}}${{color2}}move win focus${{color}}
+--${{color1}}[S]+[SHIFT]+HJKL${{alignr}}${{color2}}move window${{color}}
+--${{color1}}[S]+[1-9,0]${{alignr}}${{color2}}switch workspace${{color}}
+--${{color1}}[S]+[SHIFT]+[1-9,0]${{alignr}}${{color2}}send window${{color}}
+--${{color1}}[S]+G${{alignr}}${{color2}}draw resize${{color}}
+--${{color1}}${{hr}}${{color}}
+--${{color1}}[C]+[ALT]+T${{alignr}}${{color2}}launch terminal${{color}}
+--${{color1}}[S]+C${{alignr}}${{color2}}open NeoVim${{color}}
+--${{color1}}[S]+[SHIFT]+C${{alignr}}${{color2}}open Firefox${{color}}
+--${{color1}}[S]+[ALT]+R${{alignr}}${{color2}}restart BSPWM${{color}}
+--${{color1}}[S]+[ALT]+Q${{alignr}}${{color2}}quit BSPWM${{color}}
+--]];

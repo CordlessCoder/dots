@@ -1,0 +1,120 @@
+URxvt*depth:      32
+URxvt*font:			xft:Fira Code Nerd Font:size=13:antialias=true, \
+					xft:DejaVu Sans Mono, \
+					xft:Inconsolata, \
+					xft:Symbols Nerd Font, \
+					xft:FontAwesome, \
+					xft:Unifont
+URxvt*boldFont:		xft:Fira Code Nerd Font:bold:size=13:antialias=true, \
+					xft:DejaVu Sans Mono, \
+					xft:Inconsolata, \
+					xft:Symbols Nerd Font, \
+					xft:FontAwesome, \
+					xft:Unifont
+URxvt.scrollBar:	false
+URxvt.saveLines:	65535
+URxvt.perl-ext-common: default,keyboard-select
+URxvt.perl-ext:  url-select,resize-font,clipboard,tabbedex
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+Xft.dpi: 96
+Xft.Hinting: 1
+Xft.RGBA: rgb
+Xft.HintStyle: hintslight
+Xft.Antialias: 1
+
+URxvt.buffered: True
+URxvt.secondaryScroll: True
+URxvt.letterSpace: 0
+URxvt.lineSpace: 0
+URxvt.geometry: 92x24
+URxvt.cursorBlink: False
+URxvt.cursorUnderline: False
+
+URxvt.tabbedex.tabbar-fg: 3
+URxvt.tabbedex.tabbar-bg: 0
+URxvt.tabbedex.tab-fg:    0
+URxvt.tabbedex.tab-bg:    1
+
+
+Xft*dpi:       96
+Xft*antialias: True
+Xft*hinting:   Full
+URxvt.keysym.KP_Add:    +
+URxvt.keysym.KP_Subtract: -
+URxvt.keysym.KP_Multiply: *
+URxvt.keysym.KP_Divide  : /
+URxvt.keysym.KP_Decimal : .
+URxvt.keysym.KP_Separator : ,
+URxvt.keysym.KP_1:      1
+URxvt.keysym.KP_2:      2
+URxvt.keysym.KP_3:      3
+URxvt.keysym.KP_4:      4
+URxvt.keysym.KP_5:      5
+URxvt.keysym.KP_6:      6
+URxvt.keysym.KP_7:      7
+URxvt.keysym.KP_8:      8
+URxvt.keysym.KP_9:      9
+URxvt.keysym.KP_0:      0
+
+URxvt.keysym.Control-Up:     \033[1;5A
+URxvt.keysym.Control-Down:   \033[1;5B
+URxvt.keysym.Control-Left:   \033[1;5D
+URxvt.keysym.Control-Right:  \033[1;5C
+
+
+! special
+*.foreground:    {foreground}
+*.background:    {background}
+URxvt.background: [{alpha}]{background}
+*.cursorColor:   {cursor}
+*.highlightColor:{color2}
+
+!*fading:                  40
+!*fadeColor:               S_base03
+!*pointerColorBackground:  S_base01
+!*pointerColorForeground:  S_base1
+
+! Normal      Bright
+! --------    -------
+! 0 Black      8 Black
+! 1 Red        9 Red
+! 2 Yellow    10 Yellow
+! 3 Green     11 Green
+! 4 Blue      12 Blue
+! 5 Magenta   13 Magenta
+! 6 Cyan      14 Cyan
+! 7 White     15 White
+
+! Black colours
+*.color0:        {color0}
+*.color8:        {color8}
+! Red colours
+*.color1:        {color1}
+*.color9:        {color9}
+! Yellow colours
+*.color2:        {color2}
+*.color10:       {color10}
+! Green colours
+*.color3:        {color3}
+*.color11:       {color11}
+! Blue colours
+*.color4:        {color4}
+*.color12:       {color12}
+! Magenta (pink, !green) colours
+*.color5:        {color5}
+*.color13:       {color13}
+! Cyan (blue + green)
+*.color6:        {color6}
+*.color14:       {color14}
+! White colours
+*.color7:        {color7}
+*.color15:       {color15}
