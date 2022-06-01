@@ -10,7 +10,7 @@
 - conky[]
 - the work of my entire life[very close to the end]
 - g a p[10 px]
-- colors
+- colors with pywal integration for EVERYTHING
 - [music integration](https://www.youtube.com/watch?v=OHK2zh7Bu54)
 
 # Installation(no guide here)
@@ -92,7 +92,7 @@ This configuration comes with a long list of those, some of which are shown in t
 # Dependencies
 
 <details><summary>List of all dependencies(click to expand)</summary>
-<pre>fish kitty nerd-fonts-fira-code adobe-source-code-pro-fonts ttf-icomoon-feather otf-raleway ttf-ubuntu-font-family nerd-fonts-fantasque-sans-mono cantarell-fonts oxygen-cursors ant-dracula-kvantum-theme-git xdo xdotool bspwm wmctrl slop polybar picom-jonaburg-fix glava python-colorthief rofi sxhkd scrot feh dunst conky playerctl xorg-xprop i3lock-color xclip xcolor npm glow python-black python-neovim flake8 luacheck shfmt shellcheck prettier deno stylua rustfmt</pre>
+<pre>fish kitty nerd-fonts-fira-code adobe-source-code-pro-fonts ttf-icomoon-feather otf-raleway ttf-ubuntu-font-family nerd-fonts-fantasque-sans-mono cantarell-fonts oxygen-cursors ant-dracula-kvantum-theme-git xdo xdotool bspwm wmctrl slop polybar pywal glava python-colorthief rofi sxhkd scrot feh dunst conky playerctl xorg-xprop i3lock-color xclip xcolor npm glow python-black python-neovim flake8 luacheck shfmt shellcheck prettier deno stylua rustfmt</pre>
 </details>
 
 <details><summary> Separate Dependencies(For only using part of the config)</summary>

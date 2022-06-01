@@ -1,3 +1,4 @@
+
 --[[
 #######################################
 ##         .conkyrc (BSPWM)          ##
@@ -74,16 +75,16 @@ conky.config = {
 	own_window_argb_value = 255,			    -- real transparency - composite manager required 0-255
 	own_window_argb_visual = false,				-- use ARGB - composite manager required
 	own_window_class = 'conky',					-- manually set the WM_CLASS name for use with xprop
-	own_window_colour = '#12131D',				-- set colour if own_window_transparent no
-	own_window_transparent = false,				-- if own_window_argb_visual is true sets background opacity 0%
+	own_window_colour = '#190921',				-- set colour if own_window_transparent no
+	own_window_transparent = true,				-- if own_window_argb_visual is true sets background opacity 0%
 	own_window_title = 'conky',			-- set the name manually
 	own_window_type = 'desktop',				-- if own_window true options are: normal/override/dock/desktop/panel
 	own_window_hints = 'below,sticky,skip_taskbar,skip_pager',  -- if own_window true - just hints - own_window_type sets it
 
-	--Colors (Monokai Pro)
-	color0 = '#F7768E',
-	color1 = '#414868',
-	color2 = '#C0CAF5',
+	--Colors
+	color0 = 'F58277',
+	color1 = 'a5c0e9',
+	color2 = 'a5c0e9',
 };
 
 

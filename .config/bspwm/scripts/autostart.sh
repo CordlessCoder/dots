@@ -8,7 +8,10 @@
 # If you would like to run a command *once* on login,
 # you can use ~/.xprofile
 cd "$HOME" || exit
+# Parse colors from "~/.Xresources"
+xrdb -override "${HOME}/.Xresources" &
 
+wal -R -e
 # ##############################################################################
 # #                                  FUNCTIONS                                 #
 # ##############################################################################
@@ -23,18 +26,6 @@ function run {
 	fi
 }
 
-# Parse colors from "~/.Xresources"
-xrdb -override "${HOME}/.Xresources" &
-
-xrdb_query() {
-	[ -n "$XRDB_QUERY" ] || XRDB_QUERY="$(xrdb -query)"
-
-	echo "$XRDB_QUERY" | while IFS=';' read -r STRING; do
-		[ "${1}" = "${STRING%%\	*}" ] || continue
-		echo "${STRING##*\	}"
-		break
-	done
-}
 xsetroot -cursor_name left_ptr
 
 # Desktop effects

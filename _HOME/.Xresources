@@ -72,11 +72,11 @@ URxvt.keysym.Control-Right:  \033[1;5C
 
 
 ! special
-*.foreground:    #bdd9e2
-*.background:    #0e0d15
-URxvt.background: [90]#0e0d15
-*.cursorColor:   #E9718A
-*.highlightColor:#3A3F4B
+*.foreground:    #a5c0e9
+*.background:    #190921
+URxvt.background: [80]#190921
+*.cursorColor:   #a5c0e9
+*.highlightColor:#F58277
 
 !*fading:                  40
 !*fadeColor:               S_base03
@@ -95,26 +95,26 @@ URxvt.background: [90]#0e0d15
 ! 7 White     15 White
 
 ! Black colours
-*.color0:        #12131D
-*.color8:        #414868
+*.color0:        #190921
+*.color8:        #7386a3
 ! Red colours
-*.color1:        #EB6572
-*.color9:        #F7768E
+*.color1:        #C2576E
+*.color9:        #C2576E
 ! Yellow colours
-*.color2:        #9ECE6A
-*.color10:       #9ECE6A
+*.color2:        #F58277
+*.color10:       #F58277
 ! Green colours
-*.color3:        #E0AF68
-*.color11:       #E0AF68
+*.color3:        #2A57A3
+*.color11:       #2A57A3
 ! Blue colours
-*.color4:        #7AA2F7
-*.color12:       #7AA2F7
+*.color4:        #665F97
+*.color12:       #665F97
 ! Magenta (pink, !green) colours
-*.color5:        #BB9AF7
-*.color13:       #BB9AF7
+*.color5:        #9B689A
+*.color13:       #9B689A
 ! Cyan (blue + green)
-*.color6:        #7DCFFF
-*.color14:       #7DCFFF
+*.color6:        #CB74A8
+*.color14:       #CB74A8
 ! White colours
-*.color7:        #C0CAF5
-*.color15:       #A9B1D6
+*.color7:        #a5c0e9
+*.color15:       #a5c0e9
