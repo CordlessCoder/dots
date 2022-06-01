@@ -1,0 +1,16 @@
+# IMPORTANT: colors have to be defined in quotation marks.
+# Otherwise the "#" and following would be interpreted as a comment.
+[urgency_low]
+    frame_color = "{color5}"
+    foreground = "{foreground}"
+    background = "{background}"
+
+[urgency_normal]
+    frame_color = "{color4}"
+    foreground = "{foreground}"
+    background = "{background}"
+
+[urgency_critical]
+    frame_color = "{color2}"
+    foreground = "{foreground}"
+    background = "{background}"
