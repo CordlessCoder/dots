@@ -2,7 +2,7 @@
 
 ### These dotfiles include:
 
-<img align="right" src="https://raw.githubusercontent.com/CordlessCoder/dots/0d8757f3b8f0633c11978ec3596409c89a88237e/screenshot.png">
+<img align="right" src="https://github.com/CordlessCoder/dots/raw/main/screenshot.png">
 
 - A constantly declining mental state.[please god help me]
 - experimental and objectively overengineered configs.[like 5k SLoC,]
