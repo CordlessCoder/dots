@@ -1,0 +1,21 @@
+set $wallpaper /home/roman/stuff/cyberpunk-challenger-2560×1440.jpg
+
+set $background #0C1A1D
+set $foreground #c2abe0
+
+set $color0 #0C1A1D
+set $color1 #3D445F
+set $color2 #A15367
+set $color3 #2E3893
+set $color4 #5F4EA7
+set $color5 #5347A9
+set $color6 #955EAD
+set $color7 #c2abe0
+set $color8 #87779c
+set $color9 #3D445F
+set $color10 #A15367
+set $color11 #2E3893
+set $color12 #5F4EA7
+set $color13 #5347A9
+set $color14 #955EAD
+set $color15 #c2abe0

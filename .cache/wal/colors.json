@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/roman/stuff/cyberpunk-challenger-2560×1440.jpg",
+    "alpha": "80",
+
+    "special": {
+        "background": "#0C1A1D",
+        "foreground": "#c2abe0",
+        "cursor": "#c2abe0"
+    },
+    "colors": {
+        "color0": "#0C1A1D",
+        "color1": "#3D445F",
+        "color2": "#A15367",
+        "color3": "#2E3893",
+        "color4": "#5F4EA7",
+        "color5": "#5347A9",
+        "color6": "#955EAD",
+        "color7": "#c2abe0",
+        "color8": "#87779c",
+        "color9": "#3D445F",
+        "color10": "#A15367",
+        "color11": "#2E3893",
+        "color12": "#5F4EA7",
+        "color13": "#5347A9",
+        "color14": "#955EAD",
+        "color15": "#c2abe0"
+    }
+}

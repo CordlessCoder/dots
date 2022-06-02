@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/home/roman/stuff/cyberpunk-challenger-2560×1440.jpg"
+let background = "#0C1A1D"
+let foreground = "#c2abe0"
+let cursor     = "#c2abe0"
+
+" Colors
+let color0  = "#0C1A1D"
+let color1  = "#3D445F"
+let color2  = "#A15367"
+let color3  = "#2E3893"
+let color4  = "#5F4EA7"
+let color5  = "#5347A9"
+let color6  = "#955EAD"
+let color7  = "#c2abe0"
+let color8  = "#87779c"
+let color9  = "#3D445F"
+let color10 = "#A15367"
+let color11 = "#2E3893"
+let color12 = "#5F4EA7"
+let color13 = "#5347A9"
+let color14 = "#955EAD"
+let color15 = "#c2abe0"
