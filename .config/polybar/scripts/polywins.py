@@ -27,7 +27,7 @@ if len(sys.argv) <= 2:
     try:
         with open(os.path.expanduser("~/.cache/wal/colors")) as colors:
             colors = tuple(map(lambda x: x[:-1], colors.readlines()))
-        active_text_color = colors[1]
+        active_text_color = colors[3]
         active_bg = colors[8]
         active_underline = colors[1]
         inactive_text_color = colors[7]

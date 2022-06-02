@@ -20,7 +20,8 @@ if status is-interactive
             # alias nvm="xdo hide -p $KITTY_PID; neovide --nofork && xdo show -p $KITTY_PID"
             function nvm -d "Window swallower function for NeoVide" -w neovide
                 xdo hide -p $KITTY_PID
-                neovide --nofork $argv && xdo show -p $KITTY_PID
+                neovide --nofork $argv || /usr/bin/env nvim $argv
+                xdo show -p $KITTY_PID
             end
             alias nvim=nvm
         end
