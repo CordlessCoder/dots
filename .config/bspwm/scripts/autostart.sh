@@ -7,7 +7,6 @@
 # NOTE: This script runs with every restart of BSPWM[Binary Space Partitioning Window Manager]
 # If you would like to run a command *once* on login,
 # you can use ~/.xprofile
-cd "$HOME" || exit
 # Parse colors from "~/.Xresources"
 xrdb -override "${HOME}/.Xresources" &
 
@@ -29,12 +28,11 @@ function run {
 xsetroot -cursor_name left_ptr
 
 # Desktop effects
-killall dunst
 # run picom
 setxkbmap -option caps:none -layout us
 
 #start the Dunst daemon
-nice -n 19 dunst
+run_bg dunst
 
 #start Conky
 if ! test $(pgrep conky | wc -l) -gt 1; then
@@ -45,7 +43,9 @@ fi
 
 #start GLava
 if ! pgrep glava >/dev/null; then
-	python ~/.config/glava/coverthief.py | nice -n 19 glava -i &
+	killall glava
+	# python ~/.config/glava/coverthief.py | nice -n 19 glava -i &  # Enable dynamic visualizer color
+	sed "8q;d" ~/.cache/wal/colors | tee /tmp/.color | nice -n 19 glava -i &
 fi
 # ##############################################################################
 # #                             AUTOSTART POLYBAR(s)                           #
@@ -55,7 +55,6 @@ pkill -f '^polybar'
 $HOME/.config/polybar/launch.sh
 
 sleep .1
-bspc config ignore_ewmh_struts true
 sh $HOME/.config/polybar/tinybar.sh &
 sleep .2
 xdo lower -N "Polybar"

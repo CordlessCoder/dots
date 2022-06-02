@@ -67,9 +67,9 @@ conky.config = {{
 	own_window_hints = 'below,sticky,skip_taskbar,skip_pager',  -- if own_window true - just hints - own_window_type sets it
 
 	--Colors
-	color0 = '{color2.strip}',
+	color0 = '{foreground.strip}',
 	color1 = '{color15.strip}',
-	color2 = '{foreground.strip}',
+	color2 = '{color3.strip}',
 }};
   --Round corners: ╭╮╰╯
   --Square corners:┌┐└┘
