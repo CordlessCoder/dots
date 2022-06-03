@@ -219,5 +219,11 @@ You can get any of my custom wallpapers from my [Wallpapers repo](https://github
 
 </details>
 
+### Random stuff you might find useful:
+
+<details><summary>How to disable mouse acceleration</summary>
+https://askubuntu.com/questions/1120841/make-xinput-settings-permanent-after-boot
+</details>
+
 <h1><span style="color:#f7768e">I use arch, btw.</span></h1>
 I don't have lungs. At least that I know of.
