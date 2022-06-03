@@ -2,7 +2,7 @@
 
 ### These dotfiles include:
 
-<img align="right" src="https://raw.githubusercontent.com/CordlessCoder/dots/0d8757f3b8f0633c11978ec3596409c89a88237e/screenshot.png">
+<img align="right" src="https://github.com/CordlessCoder/dots/raw/main/screenshot.png">
 
 - A constantly declining mental state.[please god help me]
 - experimental and objectively overengineered configs.[like 5k SLoC,]
@@ -217,6 +217,12 @@ You can get any of my custom wallpapers from my [Wallpapers repo](https://github
 | <img width="1604" alt="Nord geometric, stylized" src="https://raw.githubusercontent.com/CordlessCoder/Wallpapers/main/Nord_Geometric_1920x1080-8bit.png"> Nord geometric, stylized |          <img width="1604" alt="TokyoNight, cubes." src="https://github.com/CordlessCoder/Wallpapers/raw/main/TokyoNight_Cubes.png"> TokyoNight, cubes.           |
 |             <img width="1604" alt='The "do as I say" meme' src="https://github.com/CordlessCoder/Wallpapers/raw/main/doasIsay_white_final.png"> The "do as I say" meme             | <img width="1604" alt="Arch_minimal_4000x4000.png" src="https://github.com/CordlessCoder/Wallpapers/raw/main/Arch_minimal_4000x4000.png"> Arch, minimal 4000x4000 |
 
+</details>
+
+### Random stuff you might find useful:
+
+<details><summary>How to disable mouse acceleration</summary>
+https://askubuntu.com/questions/1120841/make-xinput-settings-permanent-after-boot
 </details>
 
 <h1><span style="color:#f7768e">I use arch, btw.</span></h1>
