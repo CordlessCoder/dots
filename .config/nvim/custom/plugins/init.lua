@@ -1,7 +1,17 @@
 -- custom/plugins/init.lua
 
 return {
-   ["dylanaraps/wal.vim"] = {},
+   ["wakatime/vim-wakatime"] = {
+      setup = function()
+         require("core.utils").packer_lazy_load "vim-wakatime"
+      end,
+   },
+   ["eraserhd/parinfer-rust"] = {
+      run = "cargo build --release",
+      setup = function()
+         require("core.utils").packer_lazy_load "parinfer-rust"
+      end,
+   },
    ["simrat39/rust-tools.nvim"] = {
       setup = {
          hover_actions = {
@@ -68,18 +78,6 @@ return {
          require("core.utils").packer_lazy_load "TrueZen.nvim"
       end,
    },
-   -- ["karb94/neoscroll.nvim"] = {
-   -- config = function()
-   -- require("neoscroll").setup({
-   -- easing_function = "sine",
-   -- })
-   -- end,
-
-   -- lazy loading
-   -- setup = function()
-   -- require("core.utils").packer_lazy_load("neoscroll.nvim")
-   -- end,
-   -- },
    ["justinmk/vim-sneak"] = {
       setup = function()
          require("core.utils").packer_lazy_load "vim-sneak"

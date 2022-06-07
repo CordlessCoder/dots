@@ -25,7 +25,7 @@ options.header = {
    val = ascii,
    opts = {
       position = "center",
-      hl = "Label",
+      hl = "Normal",
    },
 }
 
@@ -39,8 +39,8 @@ local function button(sc, txt, keybind, highlight, highlight_s)
       cursor = 5,
       width = 40,
       align_shortcut = "right",
-      hl = "ErrorMsg",
-      hl_shortcut = "ErrorMsg",
+      hl = "Normal",
+      hl_shortcut = "Normal",
    }
 
    if keybind then

@@ -23,8 +23,6 @@ local function lines_from(file)
 end
 
 -- tests the functions above
-local lines = lines_from(os.getenv "HOME" .. "/.cache/wal/colors")
-
 local base30 = lines_from(os.getenv "HOME" .. "/.cache/wal/colors-base30")
 
 M.base_30 = {
@@ -56,28 +54,27 @@ M.base_30 = {
    cyan = base30[26],
    statusline_bg = base30[27],
    lightbg = base30[28],
-   lightbg2 = base30[29],
-   pmenu_bg = base30[30],
-   folder_bg = base30[31],
+   pmenu_bg = base30[29],
+   folder_bg = base30[30],
 }
 
 M.base_16 = {
-   base00 = lines[1],
-   base01 = lines[2],
-   base02 = lines[3],
-   base03 = lines[4],
-   base04 = lines[5],
-   base05 = lines[6],
-   base06 = lines[7],
-   base07 = lines[8],
-   base08 = lines[9],
-   base09 = lines[10],
-   base0A = lines[11],
-   base0B = lines[12],
-   base0C = lines[13],
-   base0D = lines[14],
-   base0E = lines[15],
-   base0F = lines[16],
+   base00 = base30[3],
+   base01 = base30[4],
+   base02 = base30[5],
+   base03 = base30[6],
+   base04 = base30[7],
+   base05 = base30[1],
+   base06 = base30[12],
+   base07 = base30[32],
+   base08 = base30[14],
+   base09 = base30[18],
+   base0A = base30[19],
+   base0B = base30[20],
+   base0C = base30[22],
+   base0D = base30[17],
+   base0E = base30[23],
+   base0F = base30[12],
 }
 
 -- print all line numbers and their contents

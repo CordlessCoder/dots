@@ -60,7 +60,7 @@ conky.config = {{
 	own_window_argb_value = 255,			    -- real transparency - composite manager required 0-255
 	own_window_argb_visual = false,				-- use ARGB - composite manager required
 	own_window_class = 'conky',					-- manually set the WM_CLASS name for use with xprop
-	own_window_colour = '#12131D',				-- set colour if own_window_transparent no
+	own_window_colour = '{background}',				-- set colour if own_window_transparent no
 	own_window_transparent = true,				-- if own_window_argb_visual is true sets background opacity 0%
 	own_window_title = 'conky',			-- set the name manually
 	own_window_type = 'desktop',				-- if own_window true options are: normal/override/dock/desktop/panel
@@ -69,7 +69,7 @@ conky.config = {{
 	--Colors
 	color0 = '{foreground.strip}',
 	color1 = '{color15.strip}',
-	color2 = '{color3.strip}',
+	color2 = '{color5.strip}',
 }};
   --Round corners: ╭╮╰╯
   --Square corners:┌┐└┘
