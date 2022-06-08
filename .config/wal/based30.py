@@ -76,8 +76,9 @@ for key in base30.keys():
 #    lightbg = "#2a2b36",
 #    pmenu_bg = "#ee6d85",
 #    folder_bg = "#7199ee",
-base30["white"].saturation = 0.1
-base30["white"].luminance = 0.80
+base30["white"].saturation = 0.13
+base30["white"].luminance = 0.75
+base30["white"].hue = base30["white"].hue + 0.06
 base30["darker_black"].luminance = base30["darker_black"].luminance * 0.8
 base30["black2"].luminance = (
     base30["black2"].luminance * 1.35 if base30["black2"].luminance * 1.35 < 1 else 1
@@ -98,18 +99,14 @@ base30["light_grey"].saturation = 0.24
 base30["light_grey"].luminance = 0.41
 base30["red"].luminance = base30["red"].luminance * 0.95
 base30["baby_pink"].luminance = (
-    base30["baby_pink"].luminance * 1.1
-    if base30["baby_pink"].luminance * 1.1 < 1
-    else 1
+    base30["baby_pink"].luminance * 1.1 if base30["baby_pink"].luminance * 1.1 < 1 else 1
 )
 base30["line"].luminance = 0.13
 base30["green"].luminance = (
     base30["green"].luminance * 1.1 if base30["green"].luminance * 1.1 < 1 else 1
 )
 base30["nord_blue"].luminance = base30["nord_blue"].luminance * 0.95
-base30["sun"].luminance = (
-    base30["sun"].luminance * 1.1 if base30["sun"].luminance * 1.1 < 1 else 1
-)
+base30["sun"].luminance = base30["sun"].luminance * 1.1 if base30["sun"].luminance * 1.1 < 1 else 1
 base30["dark_purple"].luminance = base30["dark_purple"].luminance * 0.95
 base30["teal"].hue = base30["teal"].hue + 0.26
 base30["orange"].saturation = (
@@ -120,36 +117,6 @@ base30["cyan"].hue = base30["cyan"].hue + 0.18
 base30["statusline_bg"] = base30["black2"]
 base30["lightbg"].saturation = 0.24
 base30["lightbg"].luminance = 0.16
-# base30["statusline_bg"].luminance = base30["statusline_bg"].luminance * 1.1
-# base30["statusline_bg"].saturation = base30["statusline_bg"].saturation * 1.1
-# base30["lightbg"].luminance = base30["lightbg"].luminance * 1.6
-# base30["pmenu_bg"].luminance = base30["pmenu_bg"].luminance * 1.7
-# base30["light_grey"].saturation = 0.05
-# base30["light_grey"].luminance = 0.75
-# base30["pink"].saturation = 0.6
-# base30["pink"].luminance = 0.75
-# base30["yellow"].saturation = 0.8
-# base30["yellow"].luminance = 0.75
-# base30["sun"].saturation = 0.9
-# base30["sun"].luminance = 0.80
-# base30["baby_pink"].saturation = 0.6
-# base30["baby_pink"].luminance = 0.85
-# base30["blue"].saturation = 0.7
-# base30["blue"].luminance = 0.6
-# base30["nord_blue"].saturation = 0.7
-# base30["nord_blue"].luminance = 0.7
-# base30["teal"].luminance = 0.3
-# base30["teal"].saturation = 0.4
-# base30["green"].luminance = 0.6
-# base30["green"].saturation = 0.6
-# base30["vibrant_green"].luminance = 0.6
-# base30["vibrant_green"].saturation = 0.7
-# base30["orange"].luminance = 0.5
-# base30["orange"].saturation = 0.6
-# base30["purple"].saturation = 0.7
-# base30["purple"].luminance = 0.6
-# base30["dark_purple"].saturation = 0.6
-# base30["dark_purple"].luminance = 0.5
 for key in base30.keys():
     out += base30[key].hex_l + "\n"
     # if (

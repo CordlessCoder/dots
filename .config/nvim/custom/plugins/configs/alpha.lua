@@ -68,7 +68,13 @@ options.buttons = {
       button("SPC t r", "  Terminal ", ":term <CR> i", "Alpha4", "AlphaShortcut5"),
       button("SPC p s", "  Python Shell    ", "<cmd>:term python <CR> :tabonly <CR> i", "Alpha5", "AlphaShortcut4"),
       button("SPC t h", "  Themes  ", ":Telescope themes<CR>", "Alpha6", "AlphaShortcut3"),
-      button("SPC s e", "  Settings", ":e $MYVIMRC | :cd %:p:h <CR>", "Alpha7", "AlphaShortcut2"),
+      button(
+         "SPC s e",
+         "  Settings",
+         ":e ~/.config/nvim/lua/custom/chadrc.lua| :cd %:p:h <CR>",
+         "Alpha7",
+         "AlphaShortcut2"
+      ),
       button("SPC q q", "  Exit ", ":qa!<CR>", "Alpha8", "AlphaShortcut1"),
    },
    opts = {
