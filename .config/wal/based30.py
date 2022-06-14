@@ -46,36 +46,6 @@ base30 = {
 for key in base30.keys():
     base30[key] = colour.Color(base30[key])
 
-#    white = "#A0A8CD",
-#    darker_black = "#0c0d18",
-#    black = "#11121D", --  nvim bg
-#    black2 = "#171823",
-#    one_bg = "#1d1e29",
-#    one_bg2 = "#252631",
-#    one_bg3 = "#252631",
-#    grey = "#40414c",
-#    grey_fg = "#474853",
-#    grey_fg2 = "#4e4f5a",
-#    light_grey = "#545560",
-#    red = "#ee6d85",
-#    baby_pink = "#fd7c94",
-#    pink = "#fe6D85",
-#    line = "#191a25",
-#    green = "#98c379",
-#    vibrant_green = "#95c561",
-#    nord_blue = "#648ce1",
-#    blue = "#7199ee",
-#    yellow = "#d7a65f",
-#    sun = "#dfae67",
-#    purple = "#a485dd",
-#    dark_purple = "#9071c9",
-#    teal = "#519aba",
-#    orange = "#f6955b",
-#    cyan = "#38a89d",
-#    statusline_bg = "#161722",
-#    lightbg = "#2a2b36",
-#    pmenu_bg = "#ee6d85",
-#    folder_bg = "#7199ee",
 base30["white"].saturation = 0.13
 base30["white"].luminance = 0.75
 base30["white"].hue = base30["white"].hue + 0.06
@@ -119,22 +89,7 @@ base30["lightbg"].saturation = 0.24
 base30["lightbg"].luminance = 0.16
 for key in base30.keys():
     out += base30[key].hex_l + "\n"
-    # if (
-    #     "white" in key
-    #     or "black" in key
-    #     or "one" in key
-    #     or "grey" in key
-    #     or "red" in key
-    #     or "pink" in key
-    #     or "line" in key
-    #     or "green" in key
-    #     or "blue" in key
-    #     or "yellow" in key
-    #     or "sun" in key
-    #     or "purple" in key
-    # ):
-    #     continue
-    print(key + ":" + " " * (13 - len(key)), base30[key].hex_l)
+    # print(key + ":" + " " * (max((len(x) for x in base30.keys())) - len(key)), base30[key].hex_l)
 
 with open(os.path.expanduser("~/.cache/wal/colors-base30"), "w") as file:
     file.write(out)
