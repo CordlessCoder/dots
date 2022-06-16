@@ -6,7 +6,6 @@ local sources = {
    b.formatting.trim_whitespace,
    b.formatting.prettierd.with { filetypes = { "lua", "html", "markdown", "css" } },
    b.formatting.deno_fmt,
-
    -- Markdown
    b.formatting.mdformat,
 

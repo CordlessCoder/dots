@@ -1,28 +1,61 @@
 local M = {}
+local utils = require "core.utils"
 
-M.setup_lsp = function(attach, capabilities)
-    local lspconfig = require("lspconfig")
+M.on_attach = function(client, bufnr)
+   client.server_capabilities.documentFormattingProvider = false
+   client.server_capabilities.documentRangeFormattingProvider = false
 
-    -- lspservers with default config
-    local servers = { "rust_analyzer", "jedi_language_server", "html", "cssls", "clangd", "sumneko_lua", "emmet_ls" }
-    for _, lsp in ipairs(servers) do
-        lspconfig[lsp].setup({
-            on_attach = function(client, bufnr)
-                attach(client, bufnr)
-                if lsp == "emmet_ls" then
-                    capabilities.textDocument.completion.completionItem.snippetSupport = true
-                end
-                if lsp == "sumneko_lua" then
-                    client.globals = { "vim" }
-                end
-                client.server_capabilities.document_formatting = false -- 0.7 and earlier
-                client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
-                capabilities.document_formatting = false -- 0.7 and earlier
-                capabilities.documentFormattingProvider = false -- 0.8 and later
-            end,
-            capabilities = capabilities,
-        })
-    end
+   local lsp_mappings = utils.load_config().mappings.lspconfig
+   utils.load_mappings({ lsp_mappings }, { buffer = bufnr })
+
+   if client.supports_method "textDocument/signatureHelp" then
+      vim.api.nvim_create_autocmd({ "CursorHoldI" }, {
+         pattern = "*",
+         group = vim.api.nvim_create_augroup("LspSignature", {}),
+         callback = function()
+            vim.lsp.buf.signature_help()
+         end,
+      })
+   end
 end
 
+M.setup_lsp = function(attach, capabilities)
+   local lspconfig = require "lspconfig"
+
+   -- lspservers with default config
+   local servers = { "rust_analyzer", "jedi_language_server", "html", "cssls", "clangd", "sumneko_lua", "emmet_ls" }
+   for _, lsp in ipairs(servers) do
+      if lsp ~= "sumneko_lua" then
+         lspconfig[lsp].setup {
+            on_attach = function(client, bufnr)
+               attach(client, bufnr)
+               if lsp == "emmet_ls" then
+                  capabilities.textDocument.completion.completionItem.snippetSupport = true
+               end
+            end,
+            capabilities = capabilities,
+         }
+      end
+   end
+   lspconfig.sumneko_lua.setup {
+      on_attach = M.on_attach,
+      capabilities = capabilities,
+
+      settings = {
+         Lua = {
+            diagnostics = {
+               globals = { "vim" },
+            },
+            workspace = {
+               library = {
+                  [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+                  [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+               },
+               maxPreload = 100000,
+               preloadFileSize = 10000,
+            },
+         },
+      },
+   }
+end
 return M
