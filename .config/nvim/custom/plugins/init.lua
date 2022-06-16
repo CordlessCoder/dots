@@ -2,15 +2,15 @@
 
 return {
    ["wakatime/vim-wakatime"] = {
-      setup = function()
-         require("core.utils").packer_lazy_load "vim-wakatime"
-      end,
+      -- setup = function()
+      -- require("core.utils").packer_lazy_load "vim-wakatime"
+      -- end,
    },
    ["eraserhd/parinfer-rust"] = {
       run = "cargo build --release",
-      setup = function()
-         require("core.utils").packer_lazy_load "parinfer-rust"
-      end,
+      -- setup = function()
+      -- require("core.utils").packer_lazy_load "parinfer-rust"
+      -- end,
    },
    ["simrat39/rust-tools.nvim"] = {
       setup = {
@@ -50,9 +50,9 @@ return {
    },
    ["elkowar/yuck.vim"] = {
       ft = "yuck",
-      setup = function()
-         require("core.utils").packer_lazy_load "yuck.vim"
-      end,
+      -- setup = function()
+      -- require("core.utils").packer_lazy_load "yuck.vim"
+      -- end,
    },
    ["andweeb/presence.nvim"] = {
       config = function()
@@ -74,25 +74,25 @@ return {
       config = function()
          require "custom.plugins.truezen"
       end,
-      setup = function()
-         require("core.utils").packer_lazy_load "TrueZen.nvim"
-      end,
+      -- setup = function()
+      -- require("core.utils").packer_lazy_load "TrueZen.nvim"
+      -- end,
    },
    ["justinmk/vim-sneak"] = {
-      setup = function()
-         require("core.utils").packer_lazy_load "vim-sneak"
-      end,
+      -- setup = function()
+      -- require("core.utils").packer_lazy_load "vim-sneak"
+      -- end,
    },
    ["f-person/git-blame.nvim"] = {
-      setup = function()
-         require("core.utils").packer_lazy_load "git-blame.nvim"
-      end,
+      -- setup = function()
+      -- require("core.utils").packer_lazy_load "git-blame.nvim"
+      -- end,
    },
    ["ellisonleao/glow.nvim"] = {
       branch = "main",
-      setup = function()
-         require("core.utils").packer_lazy_load "glow.nvim"
-      end,
+      -- setup = function()
+      --    require("core.utils").packer_lazy_load "glow.nvim"
+      -- end,
    },
    ["iamcco/markdown-preview.nvim"] = {
       run = "cd app && npm install",
@@ -108,9 +108,9 @@ return {
    },
    ["jose-elias-alvarez/null-ls.nvim"] = {
       after = "nvim-lspconfig",
-      setup = function()
-         require("core.utils").packer_lazy_load "null-ls.nvim"
-      end,
+      -- setup = function()
+      -- require("core.utils").packer_lazy_load "null-ls.nvim"
+      -- end,
       config = function()
          require("custom.plugins.null-ls").setup()
       end,

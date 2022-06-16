@@ -12,7 +12,7 @@ local sources = {
 
    -- Lua
    b.formatting.stylua,
-   b.diagnostics.luacheck.with { extra_args = { "--global", "vim" } },
+   b.diagnostics.luacheck.with { extra_args = { "--new-globals", "vim", "--cache" } },
 
    -- Shells
    b.formatting.shfmt,
@@ -29,15 +29,31 @@ local sources = {
 }
 
 local M = {}
+
+-- if you want to set up formatting on save, you can use this as a callback
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+-- add to your shared on_attach callback
 M.setup = function()
    null_ls.setup {
       debug = true,
       sources = sources,
 
       -- format on save
-      on_attach = function(client)
-         if client.resolved_capabilities.document_formatting then
-            vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
+      on_attach = function(client, bufnr)
+         if client.supports_method "textDocument/formatting" then
+            vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+            vim.api.nvim_create_autocmd("BufWritePre", {
+               group = augroup,
+               buffer = bufnr,
+               callback = function()
+                  vim.lsp.buf.format {
+                     -- apply whatever logic you want (in this example, we'll only use null-ls)
+                     client.name == "null-ls",
+                     bufnr = bufnr,
+                  }
+               end,
+            })
          end
       end,
    }
