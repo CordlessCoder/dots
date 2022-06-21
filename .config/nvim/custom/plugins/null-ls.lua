@@ -4,8 +4,9 @@ local b = null_ls.builtins
 local sources = {
 
    b.formatting.trim_whitespace,
-   b.formatting.prettierd.with { filetypes = { "lua", "html", "markdown", "css" } },
+   b.formatting.prettierd.with { filetypes = { "lua", "html", "markdown", "css", "yaml" } },
    b.formatting.deno_fmt,
+   b.diagnostics.actionlint,
    -- Markdown
    b.formatting.mdformat,
 

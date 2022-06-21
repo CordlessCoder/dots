@@ -11,7 +11,7 @@ import os
 name_style = "upper"  # options: upper, lower, None
 separator = " "
 show = "window_class"
-forbidden_classes = "Polybar Conky Gmrun Pavucontrol".lower().split(" ")
+forbidden_classes = "Polybar Conky Gmrun Pavucontrol".casefold().split(" ")
 hide_unpopulated_desktops = False
 iconize = True
 hide_name = True  # Controls whether to hide window names when an icon is present

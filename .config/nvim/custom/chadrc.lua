@@ -10,9 +10,6 @@ M.plugins = {
    },
    user = userPlugins,
    options = {
-      statusline = {
-         separator_style = "block",
-      },
       lspconfig = {
          setup_lspconf = "custom.plugins.lspconfig",
       },
@@ -27,6 +24,9 @@ M.options = {
 M.mappings = require "custom.mappings"
 
 M.ui = {
+   statusline = {
+      separator_style = "block", -- default/round/block/arrow
+   },
    theme = "pywal",
    theme_toggle = { "pywal", "tokyodark" },
 }

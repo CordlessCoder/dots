@@ -23,6 +23,7 @@ local function lines_from(file)
    return lines
 end
 
+opt.confirm = true
 opt.tabstop = 4
 opt.expandtab = true
 opt.shiftwidth = 4
