@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/roman/stuff/ql3o2km.jpeg",
+    "alpha": "80",
+    "special": {
+        "background": "#3f1c2b",
+        "foreground": "#d4e0cb",
+        "cursor": "#d4e0cb"
+    },
+    "colors": {
+        "color0": "#3f1c2b",
+        "color1": "#56A49F",
+        "color2": "#4FB2B0",
+        "color3": "#5AC2BB",
+        "color4": "#6DC9B8",
+        "color5": "#6DC9C4",
+        "color6": "#98D4B7",
+        "color7": "#d4e0cb",
+        "color8": "#949c8e",
+        "color9": "#56A49F",
+        "color10": "#4FB2B0",
+        "color11": "#5AC2BB",
+        "color12": "#6DC9B8",
+        "color13": "#6DC9C4",
+        "color14": "#98D4B7",
+        "color15": "#d4e0cb"
+    }
+}

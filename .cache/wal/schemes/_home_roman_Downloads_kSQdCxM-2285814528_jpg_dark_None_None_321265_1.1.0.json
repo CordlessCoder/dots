@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/roman/Downloads/kSQdCxM-2285814528.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0b090d",
+        "foreground": "#ddc1a3",
+        "cursor": "#ddc1a3"
+    },
+    "colors": {
+        "color0": "#0b090d",
+        "color1": "#203360",
+        "color2": "#563448",
+        "color3": "#364A63",
+        "color4": "#5B565F",
+        "color5": "#9D594E",
+        "color6": "#B96042",
+        "color7": "#ddc1a3",
+        "color8": "#9a8772",
+        "color9": "#203360",
+        "color10": "#563448",
+        "color11": "#364A63",
+        "color12": "#5B565F",
+        "color13": "#9D594E",
+        "color14": "#B96042",
+        "color15": "#ddc1a3"
+    }
+}

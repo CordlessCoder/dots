@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/roman/Downloads/Singapore-Wallpapers-HQ-3546188694.jpg",
+    "alpha": "80",
+    "special": {
+        "background": "#0F120F",
+        "foreground": "#91d6eb",
+        "cursor": "#91d6eb"
+    },
+    "colors": {
+        "color0": "#0F120F",
+        "color1": "#AB5C37",
+        "color2": "#E2AA29",
+        "color3": "#02568D",
+        "color4": "#0769A8",
+        "color5": "#406DA0",
+        "color6": "#0298DE",
+        "color7": "#91d6eb",
+        "color8": "#6595a4",
+        "color9": "#AB5C37",
+        "color10": "#E2AA29",
+        "color11": "#02568D",
+        "color12": "#0769A8",
+        "color13": "#406DA0",
+        "color14": "#0298DE",
+        "color15": "#91d6eb"
+    }
+}

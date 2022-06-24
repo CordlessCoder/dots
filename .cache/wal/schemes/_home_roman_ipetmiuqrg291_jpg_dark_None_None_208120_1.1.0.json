@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/roman/ipetmiuqrg291.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#020816",
+        "foreground": "#a79abb",
+        "cursor": "#a79abb"
+    },
+    "colors": {
+        "color0": "#020816",
+        "color1": "#B04746",
+        "color2": "#F59857",
+        "color3": "#F3BD60",
+        "color4": "#1C3C82",
+        "color5": "#263F81",
+        "color6": "#2E4480",
+        "color7": "#a79abb",
+        "color8": "#746b82",
+        "color9": "#B04746",
+        "color10": "#F59857",
+        "color11": "#F3BD60",
+        "color12": "#1C3C82",
+        "color13": "#263F81",
+        "color14": "#2E4480",
+        "color15": "#a79abb"
+    }
+}

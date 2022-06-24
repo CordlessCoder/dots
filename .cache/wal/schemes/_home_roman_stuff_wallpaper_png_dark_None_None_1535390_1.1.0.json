@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/roman/stuff/wallpaper.png",
+    "alpha": "80",
+    "special": {
+        "background": "#0E1F2F",
+        "foreground": "#7fcfec",
+        "cursor": "#7fcfec"
+    },
+    "colors": {
+        "color0": "#0E1F2F",
+        "color1": "#DE5952",
+        "color2": "#E94546",
+        "color3": "#B2856C",
+        "color4": "#F1966F",
+        "color5": "#F1A277",
+        "color6": "#027A8D",
+        "color7": "#7fcfec",
+        "color8": "#5890a5",
+        "color9": "#DE5952",
+        "color10": "#E94546",
+        "color11": "#B2856C",
+        "color12": "#F1966F",
+        "color13": "#F1A277",
+        "color14": "#027A8D",
+        "color15": "#7fcfec"
+    }
+}

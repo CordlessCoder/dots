@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/roman/1w2mmjlm5z191.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#3b091c",
+        "foreground": "#eacbc7",
+        "cursor": "#eacbc7"
+    },
+    "colors": {
+        "color0": "#3b091c",
+        "color1": "#BB7F81",
+        "color2": "#0B9BAB",
+        "color3": "#0290B1",
+        "color4": "#02AECB",
+        "color5": "#17A3C9",
+        "color6": "#41B5CA",
+        "color7": "#eacbc7",
+        "color8": "#a38e8b",
+        "color9": "#BB7F81",
+        "color10": "#0B9BAB",
+        "color11": "#0290B1",
+        "color12": "#02AECB",
+        "color13": "#17A3C9",
+        "color14": "#41B5CA",
+        "color15": "#eacbc7"
+    }
+}

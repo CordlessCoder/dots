@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/roman/stuff/alex-knight-5-GNa303REg-unsplash.jpg",
+    "alpha": "80",
+    "special": {
+        "background": "#04040A",
+        "foreground": "#d2c9e0",
+        "cursor": "#d2c9e0"
+    },
+    "colors": {
+        "color0": "#04040A",
+        "color1": "#A3174C",
+        "color2": "#C8A74F",
+        "color3": "#06579C",
+        "color4": "#3357A9",
+        "color5": "#B75FA8",
+        "color6": "#23A0E5",
+        "color7": "#d2c9e0",
+        "color8": "#938c9c",
+        "color9": "#A3174C",
+        "color10": "#C8A74F",
+        "color11": "#06579C",
+        "color12": "#3357A9",
+        "color13": "#B75FA8",
+        "color14": "#23A0E5",
+        "color15": "#d2c9e0"
+    }
+}

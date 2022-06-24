@@ -75,16 +75,16 @@ conky.config = {
 	own_window_argb_value = 255,			    -- real transparency - composite manager required 0-255
 	own_window_argb_visual = false,				-- use ARGB - composite manager required
 	own_window_class = 'conky',					-- manually set the WM_CLASS name for use with xprop
-	own_window_colour = '#0C1A1D',				-- set colour if own_window_transparent no
+	own_window_colour = '#11121D',				-- set colour if own_window_transparent no
 	own_window_transparent = true,				-- if own_window_argb_visual is true sets background opacity 0%
 	own_window_title = 'conky',			-- set the name manually
 	own_window_type = 'desktop',				-- if own_window true options are: normal/override/dock/desktop/panel
 	own_window_hints = 'below,sticky,skip_taskbar,skip_pager',  -- if own_window true - just hints - own_window_type sets it
 
 	--Colors
-	color0 = '2E3893',
-	color1 = '955EAD',
-	color2 = 'c2abe0',
+	color0 = 'bb9af7',
+	color1 = 'c0caf5',
+	color2 = 'c0caf5',
 };
 
 

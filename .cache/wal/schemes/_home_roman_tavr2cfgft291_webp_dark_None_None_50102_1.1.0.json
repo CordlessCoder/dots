@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/roman/tavr2cfgft291.webp",
+    "alpha": "80",
+    "special": {
+        "background": "#011932",
+        "foreground": "#9da5c8",
+        "cursor": "#9da5c8"
+    },
+    "colors": {
+        "color0": "#011932",
+        "color1": "#674E6D",
+        "color2": "#8A3256",
+        "color3": "#A53757",
+        "color4": "#BD4457",
+        "color5": "#083987",
+        "color6": "#175499",
+        "color7": "#9da5c8",
+        "color8": "#6d738c",
+        "color9": "#674E6D",
+        "color10": "#8A3256",
+        "color11": "#A53757",
+        "color12": "#BD4457",
+        "color13": "#083987",
+        "color14": "#175499",
+        "color15": "#9da5c8"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/roman/stuff/ofas72yn1kt01.jpg",
+    "alpha": "80",
+    "special": {
+        "background": "#0D1B1F",
+        "foreground": "#bfb2c0",
+        "cursor": "#bfb2c0"
+    },
+    "colors": {
+        "color0": "#0D1B1F",
+        "color1": "#214B5E",
+        "color2": "#5B5460",
+        "color3": "#962E34",
+        "color4": "#A2324D",
+        "color5": "#B24C5D",
+        "color6": "#4C5F8D",
+        "color7": "#bfb2c0",
+        "color8": "#857c86",
+        "color9": "#214B5E",
+        "color10": "#5B5460",
+        "color11": "#962E34",
+        "color12": "#A2324D",
+        "color13": "#B24C5D",
+        "color14": "#4C5F8D",
+        "color15": "#bfb2c0"
+    }
+}

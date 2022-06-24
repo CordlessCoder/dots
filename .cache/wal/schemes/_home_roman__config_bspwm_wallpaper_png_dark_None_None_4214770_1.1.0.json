@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/roman/.config/bspwm/wallpaper.png",
+    "alpha": "80",
+    "special": {
+        "background": "#0a0a11",
+        "foreground": "#d8e1de",
+        "cursor": "#d8e1de"
+    },
+    "colors": {
+        "color0": "#0a0a11",
+        "color1": "#1B5EEC",
+        "color2": "#58ACFC",
+        "color3": "#48B1F7",
+        "color4": "#BFCBA7",
+        "color5": "#97D1F4",
+        "color6": "#BCCDF7",
+        "color7": "#d8e1de",
+        "color8": "#979d9b",
+        "color9": "#1B5EEC",
+        "color10": "#58ACFC",
+        "color11": "#48B1F7",
+        "color12": "#BFCBA7",
+        "color13": "#97D1F4",
+        "color14": "#BCCDF7",
+        "color15": "#d8e1de"
+    }
+}

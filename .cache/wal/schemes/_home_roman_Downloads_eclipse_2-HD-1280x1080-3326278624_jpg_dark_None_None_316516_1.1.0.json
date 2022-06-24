@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/roman/Downloads/eclipse_2-HD-1280x1080-3326278624.jpg",
+    "alpha": "80",
+    "special": {
+        "background": "#0C0B15",
+        "foreground": "#d9979a",
+        "cursor": "#d9979a"
+    },
+    "colors": {
+        "color0": "#0C0B15",
+        "color1": "#6D3F43",
+        "color2": "#743241",
+        "color3": "#983143",
+        "color4": "#954544",
+        "color5": "#AB4C46",
+        "color6": "#AD6159",
+        "color7": "#d9979a",
+        "color8": "#97696b",
+        "color9": "#6D3F43",
+        "color10": "#743241",
+        "color11": "#983143",
+        "color12": "#954544",
+        "color13": "#AB4C46",
+        "color14": "#AD6159",
+        "color15": "#d9979a"
+    }
+}

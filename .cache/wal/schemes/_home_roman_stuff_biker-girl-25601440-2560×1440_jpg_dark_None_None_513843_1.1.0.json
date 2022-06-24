@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/roman/stuff/biker-girl-25601440-2560\u00d71440.jpg",
+    "alpha": "80",
+    "special": {
+        "background": "#080A13",
+        "foreground": "#88d8e3",
+        "cursor": "#88d8e3"
+    },
+    "colors": {
+        "color0": "#080A13",
+        "color1": "#EA1A25",
+        "color2": "#BE5630",
+        "color3": "#F82548",
+        "color4": "#8D766C",
+        "color5": "#D6A942",
+        "color6": "#145DAD",
+        "color7": "#88d8e3",
+        "color8": "#5f979e",
+        "color9": "#EA1A25",
+        "color10": "#BE5630",
+        "color11": "#F82548",
+        "color12": "#8D766C",
+        "color13": "#D6A942",
+        "color14": "#145DAD",
+        "color15": "#88d8e3"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/roman/stuff/kanistra-studio-8-unicorn.jpg",
+    "alpha": "80",
+    "special": {
+        "background": "#21091a",
+        "foreground": "#c4cac5",
+        "cursor": "#c4cac5"
+    },
+    "colors": {
+        "color0": "#21091a",
+        "color1": "#4C4D67",
+        "color2": "#625869",
+        "color3": "#98565D",
+        "color4": "#9F8D78",
+        "color5": "#637984",
+        "color6": "#6F8E92",
+        "color7": "#c4cac5",
+        "color8": "#898d89",
+        "color9": "#4C4D67",
+        "color10": "#625869",
+        "color11": "#98565D",
+        "color12": "#9F8D78",
+        "color13": "#637984",
+        "color14": "#6F8E92",
+        "color15": "#c4cac5"
+    }
+}
