@@ -506,10 +506,14 @@ def focus(window):
     window = sorted(window.split(" "))
     try:
         window = window[(window.index(get_active_wid()) + 1) % len(window)]
+        os.system("bspc node " + window + " -g hidden=off")
+        # os.system("bspc node -s " + window)
+        os.system("bspc node -f " + window)
     except ValueError:
         window = window[0]
-    os.system("bspc node " + window + " -g hidden=off")
-    os.system("wmctrl -ia " + window)
+        os.system("bspc node " + window + " -g hidden=off")
+        os.system("bspc node -f " + window)
+        os.system("wmctrl -ia " + window)
 
 
 def increment_size(window):

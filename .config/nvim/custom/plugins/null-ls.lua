@@ -7,6 +7,7 @@ local sources = {
    b.formatting.prettierd.with { filetypes = { "lua", "html", "markdown", "css", "yaml" } },
    b.formatting.deno_fmt,
    b.diagnostics.actionlint,
+   b.formatting.taplo,
    -- Markdown
    b.formatting.mdformat,
 

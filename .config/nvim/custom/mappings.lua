@@ -6,6 +6,12 @@ M.editor = {
       ["<S-Tab>"] = { "<", "   Unindent selected lines" },
    },
    n = {
+      ["<leader>fm"] = {
+         function()
+            vim.lsp.buf.format { async = true }
+         end,
+         "   lsp formatting",
+      },
       ["<C-s>"] = { "<cmd> w <CR>", "   Save file" },
       ["<C-S>"] = { "<cmd> wa <CR>", "   Save all files" },
       ["<C-g>"] = { "<cmd> TZFocus <CR>", "Focus mode" },
