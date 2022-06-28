@@ -4,9 +4,9 @@
 
 # terminal emulator
 alt + {shift,_} + ctrl + t
-	{alacritty msg create-window > /dev/null || alacritty &, kitty &}
+	{kitty &, st &}
 super + Return
-	sh -c "python .config/sxhkd/change_layout.py us; kitty &"
+	sh -c "st &"
 # program launcher
 alt + space
 	bash -c "python .config/sxhkd/change_layout.py us; ~/.config/rofi/launcher/launcher.sh " &

@@ -30,11 +30,7 @@ try:
             set_layout(arg)
         else:
             current_layout = (
-                os.popen("setxkbmap -query", mode="r")
-                .read()
-                .split("\n")[2]
-                .split()[1]
-                .strip()
+                os.popen("setxkbmap -query", mode="r").read().split("\n")[2].split()[1].strip()
             )
             if arg == "next":
                 layout = str(layout_walk(current_layout, "next"))
@@ -43,11 +39,9 @@ try:
             display.write(layout)
             set_layout(layout)
 except IndexError:
-    current_layout = (
-        os.popen("setxkbmap -query", mode="r").read().split("\n")[2].split()[1].strip()
-    )
+    current_layout = os.popen("setxkbmap -query", mode="r").read().split("\n")[2].split()[1].strip()
     with open("/tmp/.current_layout", "w") as display:
         layout = str(layout_walk(current_layout, "next"))
         display.write(layout)
         set_layout(layout)
-os.system("polybar-msg action \#layout.next")
+# os.system("polybar-msg action \#layout.next")

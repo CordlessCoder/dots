@@ -59,25 +59,61 @@ M.base_30 = {
 }
 
 M.base_16 = {
-   base00 = base30[3],
-   base01 = base30[4],
-   base02 = base30[5],
-   base03 = base30[6],
-   base04 = base30[7],
-   base05 = base30[1],
-   base06 = base30[12],
-   base07 = base30[32],
-   base08 = base30[14],
-   base09 = base30[18],
+   base00 = base30[2],
+   base01 = base30[12],
+   base02 = base30[16],
+   base03 = base30[20],
+   base04 = base30[19],
+   base05 = base30[22],
+   base06 = base30[26],
+   base07 = base30[10],
+   base08 = base30[11],
+   base09 = base30[14],
    base0A = base30[19],
    base0B = base30[20],
-   base0C = base30[22],
-   base0D = base30[17],
-   base0E = base30[23],
-   base0F = base30[12],
+   base0C = base30[18],
+   base0D = base30[13],
+   base0E = base30[26],
+   base0F = base30[1],
+   -- base00 = base16[1],
+   -- base01 = base16[2],
+   -- base02 = base16[3],
+   -- base03 = base16[4],
+   -- base04 = base16[5],
+   -- base05 = base16[6],
+   -- base06 = base16[7],
+   -- base07 = base16[8],
+   -- base08 = base16[9],
+   -- base09 = base16[10],
+   -- base0A = base16[11],
+   -- base0B = base16[12],
+   -- base0C = base16[13],
+   -- base0D = base16[14],
+   -- base0E = base16[15],
+   -- base0F = base16[16],
 }
 
 -- print all line numbers and their contents
 M.type = "dark"
+
+vim.opt.bg = "dark"
+
+M.polish_hl = {
+   Visual = { fg = M.base_30.white, bg = M.base_30.black2 },
+   Number = { bold = true },
+   Float = { bold = true },
+   Boolean = { bold = true },
+   Comment = { italic = true },
+   ErrorMsg = { bold = true },
+   Operator = { bold = false },
+   Keyword = { bold = true },
+   Define = { bold = true },
+   Include = { bold = true },
+   Structure = { bold = true },
+   Type = { bold = true },
+   Macro = { bold = true },
+}
+
+M = require("base46").override_theme(M, "pywal")
 
 return M

@@ -1,6 +1,7 @@
 -- custom/plugins/init.lua
 
 return {
+   ["mg979/vim-visual-multi"] = {},
    ["wakatime/vim-wakatime"] = {
       -- setup = function()
       -- require("core.utils").packer_lazy_load "vim-wakatime"

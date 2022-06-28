@@ -6,6 +6,8 @@ M.editor = {
       ["<S-Tab>"] = { "<", "   Unindent selected lines" },
    },
    n = {
+      ["<leader>n"] = { "<cmd> NvimTreeToggle <CR>", "   toggle nvimtree" },
+      ["<C-n>"] = { "<cmd> execute 'normal <Plug>(VM-Find-Under)' <CR>", "   toggle nvimtree" },
       ["<leader>fm"] = {
          function()
             vim.lsp.buf.format { async = true }

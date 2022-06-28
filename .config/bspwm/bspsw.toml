@@ -1,0 +1,37 @@
+# "blacklist": allow all applicatons by default
+# "whitelist": deny all applicatons by default
+operation_mode = "blacklist"
+
+# These arrays contain executable names to either be allowed or disallowed
+# depending on the operation mode. 'blacklist' is automatically populated
+# with the values of 'terminals'. If this behavior is not desired, add your
+# terminals to 'whitelist'. 'whitelist' is evaluated first and will take
+# precedence over 'blacklist'.
+# If you have multiple applications with the same binary name, you can specify
+# a full path here, and only applications matching that path exact path will be
+# allowed/disallowed.
+
+# Applications that are allowed to swallow
+whitelist = [
+]
+
+# Applications that are not allowed to swallow
+blacklist = [
+	"xev",
+]
+
+# Terminals or other applications that will be swallowed. These items are
+# automatically added to 'blacklist' during execution.
+# In order for swallowing to occur the terminal must be the last focused
+# application and the launched application must be a child process of that
+# terminal. The PID of the spawned node is derived through xcffib (XCB for
+# python), and does not rely on _NET_WM_PID being present on the child window.
+# This means applications such as 'sxiv' will work with this script.
+# Swallowing also depends on the child window being tiled. Windows that spawn
+# floating or full-screen will not swallow.
+terminals = [
+	"kitty",
+	"alacritty",
+	"st",
+	"urxvt",
+]

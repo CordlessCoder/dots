@@ -1,13 +1,20 @@
 #!/usr/bin/env python
 import os
 import colour
+from base30_override import known
 
 
 out = ""
 
 
 with open(os.path.expanduser("~/.cache/wal/colors")) as file:
-    colors = [x[:-1] for x in file.readlines()]
+    colors = tuple(x[:-1] for x in file.readlines())
+
+#
+#
+#
+#
+#
 
 
 base30 = {
@@ -67,7 +74,7 @@ base30["grey_fg2"].saturation = 0.23
 base30["grey_fg2"].luminance = 0.36
 base30["light_grey"].saturation = 0.24
 base30["light_grey"].luminance = 0.41
-base30["red"].luminance = base30["red"].luminance * 0.95
+# base30["red"].luminance = base30["red"].luminance * 0.95
 base30["baby_pink"].luminance = (
     base30["baby_pink"].luminance * 1.1 if base30["baby_pink"].luminance * 1.1 < 1 else 1
 )
@@ -87,6 +94,13 @@ base30["cyan"].hue = base30["cyan"].hue + 0.18
 base30["statusline_bg"] = base30["black2"]
 base30["lightbg"].saturation = 0.24
 base30["lightbg"].luminance = 0.16
+
+
+if colors in known:
+    for key in known[colors]:
+        base30[key] = colour.Color(known[colors][key]) if known[colors][key] != "" else base30[key]
+
+
 for key in base30.keys():
     out += base30[key].hex_l + "\n"
     # print(key + ":" + " " * (max((len(x) for x in base30.keys())) - len(key)), base30[key].hex_l)

@@ -8,7 +8,7 @@ import os
 # SETTINGS
 
 
-name_style = "upper"  # options: upper, lower, None
+name_style = None  # options: upper, lower, None
 separator = " "
 show = "window_class"
 forbidden_classes = "Polybar Conky Gmrun Pavucontrol".casefold().split(" ")
@@ -114,7 +114,9 @@ if len(sys.argv) <= 2:
         "keepassxc": "",
         "keybase": "",
         "kicad": "",
-        "kitty": "",
+        "kitty": "",
+        "st-256color": "",
+        "st": "",
         "libreoffice": "",
         "lua5.1": "",
         "mpv": "",
