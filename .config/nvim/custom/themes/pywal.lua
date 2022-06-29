@@ -75,22 +75,6 @@ M.base_16 = {
    base0D = base30[13],
    base0E = base30[26],
    base0F = base30[1],
-   -- base00 = base16[1],
-   -- base01 = base16[2],
-   -- base02 = base16[3],
-   -- base03 = base16[4],
-   -- base04 = base16[5],
-   -- base05 = base16[6],
-   -- base06 = base16[7],
-   -- base07 = base16[8],
-   -- base08 = base16[9],
-   -- base09 = base16[10],
-   -- base0A = base16[11],
-   -- base0B = base16[12],
-   -- base0C = base16[13],
-   -- base0D = base16[14],
-   -- base0E = base16[15],
-   -- base0F = base16[16],
 }
 
 -- print all line numbers and their contents
@@ -99,10 +83,13 @@ M.type = "dark"
 vim.opt.bg = "dark"
 
 M.polish_hl = {
+   Normal = { fg = M.base_30.light_grey, bg = M.base_30.darker_black },
    Visual = { fg = M.base_30.white, bg = M.base_30.black2 },
+   Directory = { bold = true },
    Number = { bold = true },
    Float = { bold = true },
    Boolean = { bold = true },
+   Special = { bold = true },
    Comment = { italic = true },
    ErrorMsg = { bold = true },
    Operator = { bold = false },
@@ -112,6 +99,7 @@ M.polish_hl = {
    Structure = { bold = true },
    Type = { bold = true },
    Macro = { bold = true },
+   TblineFill = { bg = M.base_30.black },
 }
 
 M = require("base46").override_theme(M, "pywal")

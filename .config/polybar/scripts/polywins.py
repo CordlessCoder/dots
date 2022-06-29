@@ -34,7 +34,7 @@ if len(sys.argv) <= 2:
         inactive_bg = ""
         inactive_underline = colors[7]
 
-    except:
+    except (OSError, IndexError, TypeError):
         active_text_color = "#EB6572"
         active_bg = "#24283B"
         active_underline = "#EB6572"

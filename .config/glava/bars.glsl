@@ -7,7 +7,7 @@
 #define BAR_GAP 3
 /* Outline color */
 //#define BAR_OUTLINE vec4(COLOR.rg * 0.8, COLOR.b * 1.5, COLOR.a)
-//#define BAR_OUTLINE vec4(#76CAF5)
+#define BAR_OUTLINE vec4(#ffffff)
 /* Outline width (in pixels, set to 0 to disable outline drawing) */
 #define BAR_OUTLINE_WIDTH 0
 /* Amplify magnitude of the results each bar displays */
@@ -32,4 +32,3 @@
 /* Whether to mirror output along `Y = X`, causing output to render on the left side of the window */
 /* Use with `FLIP 1` to render on the right side */
 #define MIRROR_YX 1
-

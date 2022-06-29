@@ -43,7 +43,7 @@ known = {
         "dark_purple": "#e050a4",
         "teal": "#3e83c4",
         "orange": "#ef8c40",
-        "cyan": "#3fc5b7",
+        "cyan": "#A580E2",
         "statusline_bg": "#202020",
         "lightbg": "#252525",
         "pmenu_bg": "#777777",

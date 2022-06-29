@@ -6,6 +6,7 @@ M.editor = {
       ["<S-Tab>"] = { "<", "   Unindent selected lines" },
    },
    n = {
+      ["<leader>hi"] = { "<cmd>", "Show the name of the highlight under the cursor" },
       ["<leader>n"] = { "<cmd> NvimTreeToggle <CR>", "   toggle nvimtree" },
       ["<C-n>"] = { "<cmd> execute 'normal <Plug>(VM-Find-Under)' <CR>", "   toggle nvimtree" },
       ["<leader>fm"] = {

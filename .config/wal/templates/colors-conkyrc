@@ -82,7 +82,7 @@ conky.config = {{
 	own_window_hints = 'below,sticky,skip_taskbar,skip_pager',  -- if own_window true - just hints - own_window_type sets it
 
 	--Colors
-	color0 = '{color5.strip}',
+	color0 = '{color1.strip}',
 	color1 = '{foreground.strip}',
 	color2 = '{foreground.strip}',
 }};
