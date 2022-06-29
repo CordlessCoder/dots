@@ -101,7 +101,7 @@ This configuration comes with a long list of those, some of which are shown in t
 
 - bspwm(duh)
 - fish
-- kitty
+- st
 - nerd-fonts-fira-code
 - adobe-source-code-pro-fonts
 - ttf-icomoon-feather
@@ -125,11 +125,12 @@ This configuration comes with a long list of those, some of which are shown in t
 - xclip
 - xcolor
 
-**Easy to copy list:** <pre>fish kitty nerd-fonts-fira-code adobe-source-code-pro-fonts ttf-icomoon-feather nerd-fonts-fantasque-sans-mono cantarell-fonts oxygen-cursors xdo xdotool wmctrl slop polybar picom-jonaburg-fix rofi sxhkd scrot feh dunst playerctl xorg-xprop i3lock-color xclip xcolor</pre>
+**Easy to copy list:** <pre>fish neovim-git st nerd-fonts-fira-code adobe-source-code-pro-fonts ttf-icomoon-feather nerd-fonts-fantasque-sans-mono cantarell-fonts oxygen-cursors xdo xdotool wmctrl slop polybar picom-jonaburg-fix rofi sxhkd scrot feh dunst playerctl xorg-xprop i3lock-color xclip xcolor</pre>
 
 ## NeoVim Requirements
 
 - neovim
+- neovide(for the GUI)
 - npm
 - glow
 #### Warning, formatters for null-ls below
