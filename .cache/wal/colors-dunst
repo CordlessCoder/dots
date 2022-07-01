@@ -1,16 +1,16 @@
 # IMPORTANT: colors have to be defined in quotation marks.
 # Otherwise the "#" and following would be interpreted as a comment.
 [urgency_low]
-    frame_color = "#bb9af7"
-    foreground = "#c0caf5"
-    background = "#11121D"
+    frame_color = "#EB6EB7"
+    foreground = "#b9b9b9"
+    background = "#181818"
 
 [urgency_normal]
-    frame_color = "#7aa2f7"
-    foreground = "#c0caf5"
-    background = "#11121D"
+    frame_color = "#368AEB"
+    foreground = "#b9b9b9"
+    background = "#181818"
 
 [urgency_critical]
-    frame_color = "#9ece6a"
-    foreground = "#c0caf5"
-    background = "#11121D"
+    frame_color = "#70B433"
+    foreground = "#b9b9b9"
+    background = "#181818"

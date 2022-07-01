@@ -77,7 +77,7 @@ conky.config = {{
 conky.text = [[
 ${{alignc}}${{color0}}${{uid_name 1000}}@${{color2}}${{nodename}}${{color1}}
 ┌────────────────────────────────────────────┐
-│${{color0}}${{eval $${{${{tail /tmp/.color 1 (1)}}}}}} Song: ${{color2}}${{alignr}}${{scroll wait 35 1 10 ${{execi 1 playerctl metadata title}}${{color1}}}} │
+│${{color0}}${{eval $${{${{tail /tmp/.color 1 (1)}}}}}} Song: ${{color2}}${{alignr}}${{scroll wait 35 1 10 ${{execi 1 playerctl metadata title}}}}${{color1}} │
 │${{color0}}${{eval $${{${{tail /tmp/.color 1 (1)}}}}}} Album: ${{color2}}${{alignr}}${{scroll wait 35 1 10 ${{execi 1  playerctl metadata album}}}}${{color1}} │
 │${{color0}}${{eval $${{${{tail /tmp/.color 1 (1)}}}}}} Artist: ${{color2}}${{alignr}}${{scroll wait 35 1 10 ${{execi 1 playerctl metadata artist}}}}${{color1}} │
 ├────────────────────────────────────────────┤

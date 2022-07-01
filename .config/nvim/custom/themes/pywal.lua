@@ -24,6 +24,7 @@ end
 
 -- tests the functions above
 local base30 = lines_from(os.getenv "HOME" .. "/.cache/wal/colors-base30")
+local base16 = lines_from(os.getenv "HOME" .. "/.cache/wal/colors")
 
 M.base_30 = {
    white = base30[1],
@@ -59,22 +60,22 @@ M.base_30 = {
 }
 
 M.base_16 = {
-   base00 = base30[2],
-   base01 = base30[12],
-   base02 = base30[16],
-   base03 = base30[20],
-   base04 = base30[19],
-   base05 = base30[22],
-   base06 = base30[26],
-   base07 = base30[10],
-   base08 = base30[11],
-   base09 = base30[14],
-   base0A = base30[19],
-   base0B = base30[20],
-   base0C = base30[18],
-   base0D = base30[13],
-   base0E = base30[26],
-   base0F = base30[1],
+   base00 = base16[1],
+   base01 = base16[2],
+   base02 = base16[3],
+   base03 = base16[4],
+   base04 = base16[5],
+   base05 = base16[6],
+   base06 = base16[7],
+   base07 = base16[8],
+   base08 = base16[9],
+   base09 = base16[10],
+   base0A = base16[11],
+   base0B = base16[12],
+   base0C = base16[13],
+   base0D = base16[14],
+   base0E = base16[15],
+   base0F = base16[16],
 }
 
 -- print all line numbers and their contents
@@ -85,6 +86,19 @@ vim.opt.bg = "dark"
 M.polish_hl = {
    Normal = { fg = M.base_30.light_grey, bg = M.base_30.darker_black },
    Visual = { fg = M.base_30.white, bg = M.base_30.black2 },
+   Delimiter = { fg = M.base_30.teal },
+   TSPunctDelimiter = { fg = M.base_30.teal },
+   SpecialChar = { fg = M.base_30.teal },
+   String = { fg = M.base_30.teal },
+   Statement = { fg = M.base_30.purple },
+   Type = { fg = M.base_30.cyan, bold = true },
+   Decorator = { fg = M.base_30.cyan, bold = true },
+   Enum = { fg = M.base_30.cyan, bold = true },
+   Method = { fg = M.base_30.cyan, bold = true },
+   TSNamespace = { fg = M.base_30.baby_pink, bold = true },
+   Identifier = { fg = M.base_30.cyan, italic = true },
+   Function = { italic = true },
+   TSFuncMacro = { italic = true, fg = M.base_30.baby_pink },
    Directory = { bold = true },
    Number = { bold = true },
    Float = { bold = true },
@@ -93,14 +107,28 @@ M.polish_hl = {
    Comment = { italic = true },
    ErrorMsg = { bold = true },
    Operator = { bold = false },
-   Keyword = { bold = true },
    Define = { bold = true },
-   Include = { bold = true },
    Structure = { bold = true },
-   Type = { bold = true },
    Macro = { bold = true },
    TblineFill = { bg = M.base_30.black },
 }
+
+vim.g.terminal_color_0 = M.base_16.base00
+vim.g.terminal_color_1 = M.base_16.base01
+vim.g.terminal_color_2 = M.base_16.base02
+vim.g.terminal_color_3 = M.base_16.base03
+vim.g.terminal_color_4 = M.base_16.base04
+vim.g.terminal_color_5 = M.base_16.base05
+vim.g.terminal_color_6 = M.base_16.base06
+vim.g.terminal_color_7 = M.base_16.base07
+vim.g.terminal_color_8 = M.base_16.base08
+vim.g.terminal_color_9 = M.base_16.base09
+vim.g.terminal_color_10 = M.base_16.base0A
+vim.g.terminal_color_11 = M.base_16.base0B
+vim.g.terminal_color_12 = M.base_16.base0C
+vim.g.terminal_color_13 = M.base_16.base0D
+vim.g.terminal_color_14 = M.base_16.base0E
+vim.g.terminal_color_15 = M.base_16.base0F
 
 M = require("base46").override_theme(M, "pywal")
 

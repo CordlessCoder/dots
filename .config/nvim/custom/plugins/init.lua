@@ -1,6 +1,12 @@
 -- custom/plugins/init.lua
 
 return {
+   ["NvChad/nvterm"] = {
+      module = "nvterm",
+      config = function()
+         require "custom.plugins.configs.nvterm"
+      end,
+   },
    ["mg979/vim-visual-multi"] = {},
    ["wakatime/vim-wakatime"] = {
       -- setup = function()

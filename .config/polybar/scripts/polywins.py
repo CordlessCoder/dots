@@ -9,7 +9,8 @@ import os
 
 
 name_style = None  # options: upper, lower, None
-separator = " "
+separator = " "  # What to separate workspaces with
+windowlist_prefix = " "  # prefix before listing windows, default is ":"
 show = "window_class"
 forbidden_classes = "Polybar Conky Gmrun Pavucontrol".casefold().split(" ")
 hide_unpopulated_desktops = False
@@ -21,26 +22,32 @@ max_windows = 10
 add_spaces = "true"
 resize_increment = 16
 resize_offset = resize_increment / 2
+use_pywal = True
 
+override_names = [
+    "",
+    "",
+]  # Either a list containing the focused and unfocused versions of workspace name, or False
+
+underline = False
+highlight_active_wps = False
 
 if len(sys.argv) <= 2:
     try:
+        if use_pywal is not True:
+            raise TypeError
         with open(os.path.expanduser("~/.cache/wal/colors")) as colors:
             colors = tuple(map(lambda x: x[:-1], colors.readlines()))
         active_text_color = colors[1]
-        active_bg = colors[8]
-        active_underline = colors[1]
+        active_underline = colors[1] if underline is not False else None
         inactive_text_color = colors[7]
-        inactive_bg = ""
-        inactive_underline = colors[7]
+        inactive_underline = colors[7] if underline is not False else None
 
     except (OSError, IndexError, TypeError):
         active_text_color = "#EB6572"
-        active_bg = "#24283B"
-        active_underline = "#EB6572"
+        active_underline = "#EB6572" if underline is not False else None
         inactive_text_color = "#C0CAF5"
-        inactive_bg = ""
-        inactive_underline = "#C0CAF5"
+        inactive_underline = "#C0CAF5" if underline is not False else None
 
     # WINDOW LIST SETUP
 
@@ -50,15 +57,17 @@ if len(sys.argv) <= 2:
     inactive_right = "%{F-}"
     # separator = "%{F" + inactive_text_color + "}" + separator + "%{F-}"
 
-    wps_active_left = "%{F" + inactive_text_color + "}%{+u}%{u" + inactive_underline + "}"
-
-    wps_active_right = "%{-u}%{u}%{F-}"
+    wps_active_left = (
+        "%{F" + (inactive_text_color if highlight_active_wps is False else active_text_color) + "}"
+    )
+    wps_active_right = "%{F-}"
     wps_inactive_left = "%{F" + inactive_text_color + "}"
     wps_inactive_right = "%{F-}"
-
     if active_underline is not None:
         active_left = active_left + "%{+u}%{u" + active_underline + "}"
         active_right = "%{-u}" + active_right
+        wps_active_left = "%{F" + inactive_text_color + "}%{+u}%{u" + inactive_underline + "}"
+        wps_active_right = "%{-u}%{u}%{F-}"
 
     if inactive_underline is not None:
         inactive_left += "%{+u}%{u" + inactive_underline + "}"
@@ -252,16 +261,19 @@ def generate(workspaces, focused_desk, order):
             + ":}"
             + wps_inactive_left
             + separator
-            + workspaces[workspace_id][1]
+            + (workspaces[workspace_id][1] if override_names is False else override_names[1])
             + "%{A}%{A}"
             if workspace_id != focused_desk
-            else wps_active_left + separator + workspaces[workspace_id][1]
+            else wps_active_left
+            + separator
+            + (workspaces[workspace_id][1] if override_names is False else override_names[0])
         )
         if len(workspaces[workspace_id][0]) == 0:
             printf(separator + wps_active_right)
         else:
-            printf(":")
+            printf(windowlist_prefix)
             windows, classcache = wid_to_name(workspaces[workspace_id][0], classcache)
+            win_length = len(windows.keys())
             for i, win_class in enumerate(windows.keys()):
                 if i == max_windows:
                     break
@@ -289,14 +301,15 @@ def generate(workspaces, focused_desk, order):
                     + wid
                     + ":}"
                 )
-                if focused in windows[win_class]:
-                    printf(active_left)
-                else:
-                    printf(inactive_left)
-                printf(separator)
-                printf(win_class.upper())
+                printf(active_left if focused in windows[win_class] else inactive_left)
+                printf(separator if i == 0 else "")
                 printf(
-                    separator
+                    win_class.upper()
+                    if name_style == "upper"
+                    else (win_class.lower() if name_style == "lower" else win_class)
+                )
+                printf(
+                    (separator if i < (win_length - 1) else "")
                     if len(windows[win_class]) <= 1
                     else str(len(windows[win_class])).translate(superscript)
                 )
