@@ -81,6 +81,10 @@ M.editor = {
          end,
          "Reset font size (to 14)",
       },
+      ["gz"] = {
+         "<cmd> UrlView <CR>",
+         "Open URL list in Telescope",
+      },
       ["gx"] = {
          function()
             local line = vim.fn.getline "."

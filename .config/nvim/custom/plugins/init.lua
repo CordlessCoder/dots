@@ -1,6 +1,16 @@
 -- custom/plugins/init.lua
 
 return {
+   ["axieax/urlview.nvim"] = {
+      config = function()
+         require("urlview").setup {
+            default_title = "URIs:",
+            default_picker = "telescope",
+            navigate_method = "system",
+            unique = true,
+         }
+      end,
+   },
    ["NvChad/nvterm"] = {
       module = "nvterm",
       config = function()
@@ -47,6 +57,7 @@ return {
       after = "telescope.nvim",
       config = function()
          require("telescope").load_extension "media_files"
+         require("telescope").load_extension "urlview"
       end,
    },
    ["goolord/alpha-nvim"] = {

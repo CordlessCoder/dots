@@ -239,9 +239,10 @@ def wid_to_name(wid, cache={}):
 
 def generate(workspaces, focused_desk, order):
     global classcache
-    focused = os.popen(f"bspc query -N -m {mon_id} -n .focused").read()[
-        :-1
-    ]  # ID of the currently focused window
+    global focused
+    # focused = os.popen(f"bspc query -N -m {mon_id} -n .focused").read()[
+    #     :-1
+    # ]  # ID of the currently focused window
     for workspace_id in order:
         if (
             len(workspaces[workspace_id][0]) < hide_unpopulated_desktops
@@ -262,16 +263,15 @@ def generate(workspaces, focused_desk, order):
             + wps_inactive_left
             + separator
             + (workspaces[workspace_id][1] if override_names is False else override_names[1])
-            + "%{A}%{A}"
             if workspace_id != focused_desk
             else wps_active_left
             + separator
             + (workspaces[workspace_id][1] if override_names is False else override_names[0])
         )
         if len(workspaces[workspace_id][0]) == 0:
-            printf(separator + wps_active_right)
+            printf(separator + wps_active_right + "%{A}%{A}")
         else:
-            printf(windowlist_prefix)
+            printf(windowlist_prefix + "%{A}%{A}")
             windows, classcache = wid_to_name(workspaces[workspace_id][0], classcache)
             win_length = len(windows.keys())
             for i, win_class in enumerate(windows.keys()):
@@ -321,6 +321,8 @@ def generate(workspaces, focused_desk, order):
 
 def main():
     if len(sys.argv) <= 2:
+        global focused
+        focused = ""
         command = os.popen(
             "bspc subscribe desktop_focus desktop_add desktop_rename desktop_remove desktop_swap node_add node_remove node_swap node_transfer node_focus"
         )
@@ -379,11 +381,13 @@ def main():
                 mon_id in update
                 or update.startswith("node_remove")
                 or update.startswith("node_focus")
+                or update.startswith("desktop_focus")
             ):
                 if update.startswith("node"):
                     update = update[5:].split(" ")
                     if update[0] == "focus":
-                        pass
+                        # global focused
+                        focused = update[3]
                     elif update[0] == "add":
                         try:
                             workspaces[update[2]][0].append(update[4])
