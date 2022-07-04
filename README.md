@@ -34,12 +34,11 @@ This configuration comes with a long list of those, some of which are shown in t
 
 | Keybind                     | Function                                                           |
 | :-------------------------- | ------------------------------------------------------------------ |
-| Alt+Ctrl+T                  | Open terminal emulator(kitty)                                      |
+| Alt+Ctrl+T                  | Open terminal emulator(st)                                         |
 | Meta+Enter                  | Alternative to ^                                                   |
 | Alt+Space                   | Application launcher(rofi)                                         |
 | Meta+C                      | Open NeoVide(the best NeoVim GUI)                                  |
 | Meta+Shift+C                | Open Firefox(developer edition)                                    |
-| Meta+Ctrl+C                 | Open VSCode                                                        |
 | Meta+E                      | Open File Manager(thunar)                                          |
 | Ctrl+Shift+Q                | Close the focused **window**                                       |
 | Meta+Ctrl+Shift+Q           | ^ but with all windows of the app                                  |
