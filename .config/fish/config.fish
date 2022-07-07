@@ -1,4 +1,8 @@
 if status is-interactive
+    set fish_greeting ""
+    if [ $TERM = st-256color ]
+        export COLORTERM=truecolor
+    end
     starship init fish | source
     # Commands to run in interactive sessions can go here
     abbr yeet 'paru -Rcs'
@@ -7,7 +11,7 @@ if status is-interactive
     abbr polyfix 'xdo lower -N "Polybar"'
     alias v=nvim
     alias g=git
-    alias ls="exa -lbghm@ --icons --git --color=always"
+    alias ls="exa -l --icons --color=always"
     alias icat="kitty +kitten icat"
     fish_add_path ~/.cargo/bin
     if type rg &>/dev/null
