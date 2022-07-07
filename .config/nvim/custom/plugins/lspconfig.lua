@@ -23,7 +23,15 @@ M.setup_lsp = function(attach, capabilities)
    local lspconfig = require "lspconfig"
 
    -- lspservers with default config
-   local servers = { "rust_analyzer", "jedi_language_server", "html", "cssls", "clangd", "sumneko_lua", "emmet_ls" }
+   local servers = {
+      "pylsp",
+      "rust_analyzer",
+      "html",
+      "cssls",
+      "clangd",
+      "sumneko_lua",
+      "emmet_ls",
+   }
    for _, lsp in ipairs(servers) do
       if lsp ~= "sumneko_lua" then
          lspconfig[lsp].setup {

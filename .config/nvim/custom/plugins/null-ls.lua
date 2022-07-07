@@ -24,6 +24,7 @@ local sources = {
    -- Python
    b.formatting.black.with { extra_args = { "--line-length", "100" } },
    b.diagnostics.flake8.with { extra_args = { "--max-line-length", "120" } },
+   b.diagnostics.mypy,
 
    -- Rust
    b.formatting.rustfmt.with { extra_args = { "--edition=2021" } },

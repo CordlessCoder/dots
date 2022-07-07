@@ -45,7 +45,7 @@ M.editor = {
       ["<C-+>"] = {
          function()
             local cur_font = vim.opt.guifont:get()[1]
-            local fontsize = 14
+            local fontsize = 15
             local t = {}
             for size in string.gmatch(cur_font, "([^" .. ":" .. "]+)") do
                fontsize = tonumber(string.sub(size, 2))
@@ -59,7 +59,7 @@ M.editor = {
       ["<C-=>"] = {
          function()
             local cur_font = vim.opt.guifont:get()[1]
-            local fontsize = 14
+            local fontsize = 15
             local t = {}
             for size in string.gmatch(cur_font, "([^" .. ":" .. "]+)") do
                fontsize = tonumber(string.sub(size, 2))
@@ -77,7 +77,7 @@ M.editor = {
             for size in string.gmatch(cur_font, "([^" .. ":" .. "]+)") do
                table.insert(t, size)
             end
-            vim.opt.guifont = t[1] .. ":h" .. 14
+            vim.opt.guifont = t[1] .. ":h" .. 15
          end,
          "Reset font size (to 14)",
       },
