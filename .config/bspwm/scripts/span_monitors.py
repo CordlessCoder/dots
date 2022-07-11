@@ -5,7 +5,7 @@ os.system("bspc config remove_unplugged_monitors true")
 os.system("bspc config remove_disabled_monitors true")
 
 
-a = os.popen("bspc query -M --names", mode="r").read().split("\n")
+a = os.popen("bspc query -M", mode="r").read().split("\n")
 a.pop()
 numbers = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
 workspaces_per_mon = len(numbers) // len(a)
