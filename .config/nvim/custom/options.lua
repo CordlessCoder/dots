@@ -17,3 +17,4 @@ opt.guifont = "FiraCode Nerd Font:h15"
 g.neovide_cursor_unfocused_outline_width = 0.1
 g.neovide_cursor_animation_length = 0.06
 g.neovide_cursor_trail_length = 0.17
+vim.cmd "let g:sneak#label = 1"
