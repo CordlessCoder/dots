@@ -5,6 +5,17 @@ local pluginConfs = require "custom.plugins.configs"
 
 M.plugins = {
    override = {
+      ["NvChad/ui"] = {
+         statusline = {
+            separator_style = "block",
+            -- overriden_modules = function()
+            -- return require "custom.abc"
+            -- end,
+         },
+         tabufline = {
+            enabled = false,
+         },
+      },
       ["nvim-treesitter/nvim-treesitter"] = pluginConfs.treesitter,
       ["nvim-telescope/telescope.nvim"] = pluginConfs.telescope,
    },
@@ -24,10 +35,8 @@ M.options = {
 M.mappings = require "custom.mappings"
 
 M.ui = {
-   statusline = {
-      separator_style = "block", -- default/round/block/arrow
-   },
-   theme = "pywal",
+   theme = "decay",
+   -- transparency = true,
    theme_toggle = { "pywal", "tokyodark" },
 }
 

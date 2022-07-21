@@ -1,6 +1,13 @@
 -- custom/plugins/init.lua
 
 return {
+   ["ThePrimeagen/harpoon"] = {
+      run = "./install.sh",
+      setup = {
+         save_on_toggle = true,
+         mark_branch = false,
+      },
+   },
    ["axieax/urlview.nvim"] = {
       config = function()
          require("urlview").setup {
@@ -23,36 +30,30 @@ return {
       -- require("core.utils").packer_lazy_load "vim-wakatime"
       -- end,
    },
-   ["eraserhd/parinfer-rust"] = {
-      run = "cargo build --release",
-      -- setup = function()
-      -- require("core.utils").packer_lazy_load "parinfer-rust"
-      -- end,
-   },
-   ["simrat39/rust-tools.nvim"] = {
-      setup = {
-         hover_actions = {
-            border = {
-               { "╭", "FloatBorder" },
-               { "─", "FloatBorder" },
-               { "╮", "FloatBorder" },
-               { "│", "FloatBorder" },
-               { "╯", "FloatBorder" },
-               { "─", "FloatBorder" },
-               { "╰", "FloatBorder" },
-               { "│", "FloatBorder" },
-            },
-         },
-      },
-   },
+   -- ["simrat40/rust-tools.nvim"] = {
+   --    setup = {
+   --       hover_actions = {
+   --          border = {
+   --             { "╭", "FloatBorder" },
+   --             { "─", "FloatBorder" },
+   --             { "╮", "FloatBorder" },
+   --             { "│", "FloatBorder" },
+   --             { "╯", "FloatBorder" },
+   --             { "─", "FloatBorder" },
+   --             { "╰", "FloatBorder" },
+   --             { "│", "FloatBorder" },
+   --          },
+   --       },
+   --    },
+   -- },
    ["nathom/filetype.nvim"] = {},
-   ["mtoohey31/cmp-fish"] = { ft = "fish" },
-   ["hrsh7th/nvim-cmp"] = {
-      after = "friendly-snippets",
-      config = function()
-         require "custom.plugins.configs.cmp"
-      end,
-   },
+   -- ["mtoohey31/cmp-fish"] = { ft = "fish", after = "nvim-cmp" },
+   -- ["hrsh7th/nvim-cmp"] = {
+   --    after = "friendly-snippets",
+   --    config = function()
+   --       require "custom.plugins.configs.cmp"
+   --    end,
+   -- },
    ["nvim-telescope/telescope-media-files.nvim"] = {
       after = "telescope.nvim",
       config = function()

@@ -6,6 +6,42 @@ M.editor = {
       ["<S-Tab>"] = { "<", "   Unindent selected lines" },
    },
    n = {
+      ["<leader>ha"] = {
+         function()
+            require("harpoon.mark").add_file()
+         end,
+         "   Add mark to harpoon",
+      },
+      ["<leader>hh"] = {
+         function()
+            require("harpoon.ui").toggle_quick_menu()
+         end,
+         "   Toggle harpoon quick menu",
+      },
+      ["<A-h>"] = {
+         function()
+            require("harpoon.ui").nav_file(1)
+         end,
+         "  Navigate to first file in harpoon",
+      },
+      ["<A-j>"] = {
+         function()
+            require("harpoon.ui").nav_file(2)
+         end,
+         "  Navigate to second file in harpoon",
+      },
+      ["<A-k>"] = {
+         function()
+            require("harpoon.ui").nav_file(3)
+         end,
+         "  Navigate to third file in harpoon",
+      },
+      ["<A-l>"] = {
+         function()
+            require("harpoon.ui").nav_file(4)
+         end,
+         "  Navigate to fourth file in harpoon",
+      },
       ["<leader>hi"] = { "<cmd>", "Show the name of the highlight under the cursor" },
       ["<leader>n"] = { "<cmd> NvimTreeToggle <CR>", "   toggle nvimtree" },
       ["<C-n>"] = { "<cmd> execute 'normal <Plug>(VM-Find-Under)' <CR>", "   toggle nvimtree" },

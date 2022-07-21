@@ -28,7 +28,6 @@ M.setup_lsp = function(attach, capabilities)
       "rust_analyzer",
       "html",
       "cssls",
-      "clangd",
       "sumneko_lua",
       "emmet_ls",
    }

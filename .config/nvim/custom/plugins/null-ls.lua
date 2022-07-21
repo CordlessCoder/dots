@@ -13,7 +13,7 @@ local sources = {
 
    -- Lua
    b.formatting.stylua,
-   b.diagnostics.luacheck.with { extra_args = { "--new-globals", "vim", "--cache" } },
+   -- b.diagnostics.luacheck.with { extra_args = { "--new-globals", "vim", "--cache" } },
 
    -- Shells
    b.formatting.shfmt,
