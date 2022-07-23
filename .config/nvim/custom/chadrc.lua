@@ -13,7 +13,7 @@ M.plugins = {
             -- end,
          },
          tabufline = {
-            enabled = false,
+            enabled = true,
          },
       },
       ["nvim-treesitter/nvim-treesitter"] = pluginConfs.treesitter,
@@ -35,7 +35,7 @@ M.options = {
 M.mappings = require "custom.mappings"
 
 M.ui = {
-   theme = "decay",
+   theme = "pywal",
    -- transparency = true,
    theme_toggle = { "pywal", "tokyodark" },
 }
