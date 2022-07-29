@@ -13,7 +13,7 @@ g.instant_username = "CordlessCoder"
 g.python3_host_prog = "/usr/bin/python3"
 
 g.neovide_transparency = 0.85
-g.neovide_refresh_rate = 165
+-- g.neovide_refresh_rate = 165
 opt.guifont = "FiraCode Nerd Font:h15"
 g.neovide_cursor_unfocused_outline_width = 0.1
 g.neovide_cursor_animation_length = 0.06
