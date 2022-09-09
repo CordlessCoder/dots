@@ -1,5 +1,5 @@
 "$schema" = 'https://starship.rs/config-schema.json'
-format = '$jobs$directory$git_branch$git_commit$git_state$git_metrics$git_status$line_break$character'
+format = '$directory$jobs$git_branch$git_commit$git_state$git_metrics$git_status$line_break$character'
 right_format = '$rust$python$c$cmd_duration$memory_usage'
 continuation_prompt = '[∙](bright-black) '
 scan_timeout = 30
@@ -154,7 +154,7 @@ format = '[$read_only]($read_only_style)[$path]($style) '
 repo_root_format = '[$read_only]($read_only_style)[$before_root_path]($style)[$repo_root]($repo_root_style)[$path]($style) '
 style = 'cyan bold'
 disabled = false
-read_only = ''
+read_only = '|'
 read_only_style = 'red bold'
 truncation_symbol = ''
 home_symbol = '~'

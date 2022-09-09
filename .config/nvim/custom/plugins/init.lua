@@ -1,20 +1,16 @@
 -- custom/plugins/init.lua
 
 return {
+  ["mattn/webapi-vim"] = {},
+  ["rust-lang/rust.vim"] = {},
   ["neovim/nvim-lspconfig"] = {
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.plugins.lspconfig"
     end,
   },
-  ["ThePrimeagen/harpoon"] = {
-    run = "./install.sh",
-    setup = {
-      save_on_toggle = true,
-      mark_branch = false,
-    },
-  },
   ["axieax/urlview.nvim"] = {
+    after = "telescope.nvim",
     config = function()
       require("urlview").setup {
         default_title = "URIs:",
@@ -22,6 +18,7 @@ return {
         navigate_method = "system",
         unique = true,
       }
+      require("telescope").load_extension "urlview"
     end,
   },
   ["NvChad/nvterm"] = {
@@ -64,7 +61,6 @@ return {
     after = "telescope.nvim",
     config = function()
       require("telescope").load_extension "media_files"
-      require("telescope").load_extension "urlview"
     end,
   },
   ["goolord/alpha-nvim"] = {

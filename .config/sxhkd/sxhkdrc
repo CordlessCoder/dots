@@ -4,12 +4,12 @@
 
 # terminal emulator
 alt + {shift,_} + ctrl + t
-	{kitty &, st &}
+	{kitty &, kitty &}
 super + Return
-	sh -c "st &"
+	sh -c "kitty &"
 # program launcher
 alt + space
-	bash -c "python .config/sxhkd/change_layout.py us; ~/.config/rofi/launcher/launcher.sh " &
+	bash -c "~/.config/rofi/launcher/launcher.sh " &
 {_,super} + Print
 	bash -c '$(cd {/tmp,~/Screenshots} && name=$(date +"%H:%M:%S_%d_%B").png && maim -m 9 -u -s -b 2 -c 0.75,0.8,0.96,1 $name && xclip -selection clipboard -target image/png -i $name &) &'
 
@@ -23,7 +23,7 @@ super + {_,shift} + c
 alt + {_, shift} + Tab
 	bspc node -f {next,last}.local.window
 super + {_,shift} + Tab
-	{bspc monitor -f next, bspc node -m next && bspc monitor -f next}
+	{bspc desktop -f last, bspc node -d last && bspc desktop -f last}
 
 # color picker
 super + n
@@ -145,3 +145,11 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-40 0,0 40,0 -40,40 0}
+
+
+# physical keys
+XF86MonBrightness{Up,Down}
+    brightnessctl set 10{+,-}%
+
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+    pamixer -{i 10,d 10,t}

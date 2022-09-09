@@ -104,13 +104,6 @@ ${{color1}}┌──────────────────────
 │ ${{color2}}Temperature:$alignr$color0${{hwmon temp 1}}°C $font${{color1}}│
 │ ${{color2}}Frequency:$alignr$color0${{freq_g}}GHz $font${{color1}}│
 ├────────────────────────────────────────────┤
-│ ${{color2}}GPU:$alignr$color0${{nvidia modelname}} $font${{color1}}│
-│ ${{color2}}Utilization:$alignr$color0${{nvidia gpuutil}}% $font${{color1}}│
-│ ${{color2}}VRAM:$alignr$color0${{nvidia memused}}MiB / ${{nvidia memmax}}MiB (${{nvidia memutil}}%) $font${{color1}}│
-│ ${{color2}}Temperature:$alignr$color0${{nvidia gputemp}}°C $font${{color1}}│
-│ ${{color2}}Frequency:$alignr$color0${{nvidia gpufreqcur}}MHz $font${{color1}}│
-│ ${{color2}}Fan speed:$alignr$color0${{nvidia fanspeed}}RPM $font${{color1}}│
-├────────────────────────────────────────────┤
 │${{color2}} Resolution:$color0${{alignr}}${{execi 60 xdpyinfo  | grep -oP 'dimensions:\s+\K\S+'}}${{color1}}$font │
 │${{color2}} Refresh rate:$color0${{alignr}}${{execi 60 xrandr --q12 | grep -A 1 " connected" | grep -e "[\[:digit:]\]*.[\[:digit:]\]*\*" -o | cut -d"." -f1 | sed ":a; N; \$!ba; s/\n/Hz, /g"}}Hz${{color1}}$font │
 │${{color2}} Theme:$color0${{alignr}}${{execi 60 gtk-query-settings gtk-theme-name | awk -F '"' '{{print $2}}'}}${{color1}}$font │

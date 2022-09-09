@@ -35,18 +35,18 @@ setxkbmap -option caps:none -layout us
 run_bg dunst
 
 #start Conky
-if ! test "$(pgrep conky | wc -l)" -gt 1; then
-	killall conky
-	nice -n 19 conky -c ~/.conkyrc &
-	nice -n 19 conky -c ~/.conkyglava &
-fi
+# if ! test "$(pgrep conky | wc -l)" -gt 0; then
+# 	killall conky
+# 	nice -n 19 conky -c ~/.conkyrc &
+# #	nice -n 19 conky -c ~/.conkyglava &
+# fi
 
 #start GLava
-if ! pgrep glava >/dev/null; then
-	killall glava
-	# python ~/.config/glava/coverthief.py | nice -n 19 glava -i &  # Enable dynamic visualizer color
-	sed "2q;d" ~/.cache/wal/colors | tee /tmp/.color | nice -n 19 glava -i &
-fi
+# if ! pgrep glava >/dev/null; then
+#	killall glava
+#	# python ~/.config/glava/coverthief.py | nice -n 19 glava -i &  # Enable dynamic visualizer color
+#	sed "2q;d" ~/.cache/wal/colors | tee /tmp/.color | nice -n 19 glava -i &
+#fi
 # ##############################################################################
 # #                             AUTOSTART POLYBAR(s)                           #
 # ##############################################################################
@@ -76,6 +76,6 @@ xset s 900
 xss-lock -n "$HOME"/.config/sxhkd/lock.sh
 xdo raise -a "Polybar tray window"
 
-xdo lower -r $(xdotool search --class glava)
-xdo lower -r $(xdotool search --class conky)
+# xdo lower -r $(xdotool search --class glava)
+#xdo lower -r $(xdotool search --class conky)
 #xdotool search --class 'splash' set_window --overrideredirect 1 windowunmap windowmap

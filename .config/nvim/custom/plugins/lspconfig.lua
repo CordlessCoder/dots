@@ -1,4 +1,3 @@
-local utils = require "core.utils"
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
@@ -9,14 +8,18 @@ local servers = {
   "cssls",
   "sumneko_lua",
   "emmet_ls",
+  "bashls",
+  "clangd",
+  "taplo",
+  "gopls",
 }
 
 for _, lsp in ipairs(servers) do
-  if lsp ~= "sumneko_lua" then
+  if lsp ~= "sumneko_lua" and lsp ~= "pylsp" then
     lspconfig[lsp].setup {
       on_attach = function(client, bufnr)
         on_attach(client, bufnr)
-        if lsp == "emmet_ls" then
+        if lsp == "emmet_ls" or lsp == "html" then
           capabilities.textDocument.completion.completionItem.snippetSupport = true
         end
       end,
@@ -24,6 +27,39 @@ for _, lsp in ipairs(servers) do
     }
   end
 end
+lspconfig.pylsp.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+
+  settings = {
+    pylsp = {
+      plugins = {
+        jedi_completion = {
+          fuzzy = true,
+        },
+        pyflakes = {
+          enabled = false,
+        },
+        yapf = {
+          enabled = false,
+        },
+        autopep8 = {
+          enabled = false,
+        },
+        flake8 = {
+          enabled = true,
+          maxLineLength = 129,
+          indentsize = 4,
+        },
+        pycodestyle = {
+          -- ignore = { "W391" },
+          enabled = false,
+          maxLineLength = 129,
+        },
+      },
+    },
+  },
+}
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -44,23 +80,17 @@ lspconfig.sumneko_lua.setup {
     },
   },
 }
-
--- local on_attach = function(client, bufnr)
---   client.server_capabilities.documentFormattingProvider = false
---   client.server_capabilities.documentRangeFormattingProvider = false
+-- lspconfig.rust_analyzer.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
 --
---   local lsp_mappings = utils.load_config().mappings.lspconfig
---   utils.load_mappings({ lsp_mappings }, { buffer = bufnr })
---
---   if client.supports_method "textDocument/signatureHelp" then
---     vim.api.nvim_create_autocmd({ "CursorHoldI" }, {
---       pattern = "*",
---       group = vim.api.nvim_create_augroup("LspSignature", {}),
---       callback = function()
---         vim.lsp.buf.signature_help()
---       end,
---     })
---   end
--- end
-
--- lspservers with default config
+--   settings = {
+--     ["rust_analyzer"] = {
+--       typing = {
+--         autoClosingAngleBrackets = {
+--           enable = true,
+--         },
+--       },
+--     },
+--   },
+-- }

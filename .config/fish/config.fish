@@ -9,6 +9,7 @@ if status is-interactive
     alias ip="ip -c"
     abbr pfetch paleofetch
     abbr polyfix 'xdo lower -N "Polybar"'
+    abbr rm "rm -I"
     alias v=nvim
     alias g=git
     alias ls="exa -l --icons --color=always"

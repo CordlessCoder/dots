@@ -2,8 +2,10 @@
 import os
 import sys
 
-layouts = ["us", "ru", "ua"]  # List of layouts to go through
-disable_caps = True  # Whether to disable CapsLock
+layouts = ["us", "colemak", "ua"]  # List of layouts to go through
+capslock_behaviour = (
+    2  # 0 to not change capslock behavour, 1 to disable it and 2 to use it as a backspace
+)
 
 
 def layout_walk(current, direction):
@@ -18,7 +20,7 @@ def layout_walk(current, direction):
 
 def set_layout(layout):
     os.system(
-        f"setxkbmap{' -option caps:none' * disable_caps}{' -option caps:capslock' * abs(disable_caps-1)} -layout {layout}"
+        f"setxkbmap {['-option caps:capslock', '-option caps:none', '-option caps:backspace'][capslock_behaviour]} -layout {layout}"
     )
 
 
