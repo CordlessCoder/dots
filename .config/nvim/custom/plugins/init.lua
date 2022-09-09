@@ -1,11 +1,50 @@
 -- custom/plugins/init.lua
+local pluginConfs = require "custom.plugins.configs"
 
 return {
+  ["williamboman/mason.nvim"] = {
+    override_options = {
+      ensure_installed = {
+        -- lua stuff
+        "lua-language-server",
+        "stylua",
+        "rust-analyzer",
+        "python-lsp-server",
+
+        -- web dev
+        "css-lsp",
+        "html-lsp",
+
+        -- shell
+        "shfmt",
+        "shellcheck",
+      },
+    },
+  },
+  ["NvChad/ui"] = {
+    override_options = {
+      statusline = {
+        separator_style = "block",
+        -- overriden_modules = function()
+        -- return require "custom.abc"
+        -- end,
+      },
+      tabufline = {
+        enabled = true,
+      },
+    },
+  },
+  ["nvim-treesitter/nvim-treesitter"] = {
+    override_options = pluginConfs.treesitter,
+  },
+  ["nvim-telescope/telescope.nvim"] = {
+    override_options = pluginConfs.telescope,
+  },
   ["mattn/webapi-vim"] = {},
   ["rust-lang/rust.vim"] = {},
   ["neovim/nvim-lspconfig"] = {
     config = function()
-      require "plugins.configs.lspconfig"
+      -- require "plugins.configs.lspconfig"
       require "custom.plugins.lspconfig"
     end,
   },
@@ -21,12 +60,12 @@ return {
       require("telescope").load_extension "urlview"
     end,
   },
-  ["NvChad/nvterm"] = {
-    module = "nvterm",
-    config = function()
-      require "custom.plugins.configs.nvterm"
-    end,
-  },
+  -- ["NvChad/nvterm"] = {
+  -- module = "nvterm",
+  -- config = function()
+  --   require "custom.plugins.configs.nvterm"
+  -- end,
+  -- },
   ["mg979/vim-visual-multi"] = {},
   ["wakatime/vim-wakatime"] = {
     -- setup = function()
