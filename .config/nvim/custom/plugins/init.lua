@@ -2,6 +2,34 @@
 local pluginConfs = require "custom.plugins.configs"
 
 return {
+  ["kyazdani42/nvim-tree.lua"] = {
+    override_options = {
+      view = {
+        adaptive_size = true,
+        mappings = {
+          list = {
+            { key = "u", action = "dir_up" },
+          },
+        },
+      },
+    },
+  },
+  ["karb94/neoscroll.nvim"] = {
+    config = function()
+      require("neoscroll").setup {
+        -- All these keys will be mapped to their corresponding default scrolling animation
+        mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
+        hide_cursor = true, -- Hide cursor while scrolling
+        stop_eof = true, -- Stop at <EOF> when scrolling downwards
+        respect_scrolloff = true, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+        easing_function = "cubic", -- Default easing function
+        pre_hook = nil, -- Function to run before the scrolling animation starts
+        post_hook = nil, -- Function to run after the scrolling animation ends
+        performance_mode = false, -- Disable "Performance Mode" on all buffers.
+      }
+    end,
+  },
   ["saecki/crates.nvim"] = {
     tag = "v0.2.1",
     requires = { "nvim-lua/plenary.nvim" },
@@ -12,103 +40,12 @@ return {
   ["rcarriga/nvim-dap-ui"] = {
     -- after = "nvim-dap",
     config = function()
-      require("dapui").setup {
-        icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
-        mappings = {
-          -- Use a table to apply multiple mappings
-          expand = { "<CR>", "<2-LeftMouse>" },
-          open = "o",
-          remove = "d",
-          edit = "e",
-          repl = "r",
-          toggle = "t",
-        },
-        -- Expand lines larger than the window
-        -- Requires >= 0.7
-        expand_lines = vim.fn.has "nvim-0.7",
-        -- Layouts define sections of the screen to place windows.
-        -- The position can be "left", "right", "top" or "bottom".
-        -- The size specifies the height/width depending on position. It can be an Int
-        -- or a Float. Integer specifies height/width directly (i.e. 20 lines/columns) while
-        -- Float value specifies percentage (i.e. 0.3 - 30% of available lines/columns)
-        -- Elements are the elements shown in the layout (in order).
-        -- Layouts are opened in order so that earlier layouts take priority in window sizing.
-        layouts = {
-          {
-            elements = {
-              -- Elements can be strings or table with id and size keys.
-              { id = "scopes", size = 0.25 },
-              "breakpoints",
-              "stacks",
-              "watches",
-            },
-            size = 40, -- 40 columns
-            position = "left",
-          },
-          {
-            elements = {
-              "repl",
-              "console",
-            },
-            size = 0.25, -- 25% of total lines
-            position = "bottom",
-          },
-        },
-        floating = {
-          max_height = nil, -- These can be integers or a float between 0 and 1.
-          max_width = nil, -- Floats will be treated as percentage of your screen.
-          border = "single", -- Border style. Can be "single", "double" or "rounded"
-          mappings = {
-            close = { "q", "<Esc>" },
-          },
-        },
-        windows = { indent = 1 },
-        render = {
-          max_type_length = nil, -- Can be integer or nil.
-          max_value_lines = 100, -- Can be integer or nil.
-        },
-      }
+      require "custom.plugins.configs.dapui"
     end,
   },
   ["mfussenegger/nvim-dap"] = {
     config = function()
-      local dap = require "dap"
-      dap.adapters.lldb = {
-        type = "executable",
-        command = "/usr/bin/lldb-vscode", -- adjust as needed, must be absolute path
-        name = "lldb",
-      }
-      dap.configurations.cpp = {
-        {
-          name = "Launch",
-          type = "lldb",
-          request = "launch",
-          program = function()
-            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-          end,
-          cwd = "${workspaceFolder}",
-          stopOnEntry = false,
-          args = {},
-
-          -- 💀
-          -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
-          --
-          --    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
-          --
-          -- Otherwise you might get the following error:
-          --
-          --    Error on launch: Failed to attach to the target process
-          --
-          -- But you should be aware of the implications:
-          -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
-          -- runInTerminal = false,
-        },
-      }
-
-      -- If you want to use this for Rust and C, add something like this:
-
-      dap.configurations.c = dap.configurations.cpp
-      dap.configurations.rust = dap.configurations.cpp
+      require "custom.plugins.configs.dap"
     end,
   },
   ["simrat39/rust-tools.nvim"] = {
@@ -174,7 +111,7 @@ return {
   ["neovim/nvim-lspconfig"] = {
     config = function()
       -- require "plugins.configs.lspconfig"
-      require "custom.plugins.lspconfig"
+      require "custom.plugins.configs.lspconfig"
     end,
   },
   ["axieax/urlview.nvim"] = {
@@ -245,7 +182,7 @@ return {
       "TZFocus",
     },
     config = function()
-      require "custom.plugins.truezen"
+      require "custom.plugins.custom.truezen"
     end,
   },
   ["justinmk/vim-sneak"] = {},
@@ -268,7 +205,7 @@ return {
   ["jose-elias-alvarez/null-ls.nvim"] = {
     after = "nvim-lspconfig",
     config = function()
-      require("custom.plugins.null-ls").setup()
+      require("custom.plugins.configs.null-ls").setup()
     end,
   },
 }

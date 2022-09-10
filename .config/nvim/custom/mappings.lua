@@ -6,6 +6,42 @@ M.editor = {
     ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.range_code_action()<CR>", "Perform code action on selection" },
   },
   n = {
+    ["<leader>dc"] = {
+      function()
+        require("dap").continue()
+      end,
+      "DAP continue",
+    },
+    ["<leader>db"] = {
+      function()
+        require("dap").toggle_breakpoint()
+      end,
+      "DAP toggle breakpoint",
+    },
+    ["<leader>do"] = {
+      function()
+        require("dap").step_over()
+      end,
+      "DAP step over",
+    },
+    ["<leader>di"] = {
+      function()
+        require("dap").step_into()
+      end,
+      "DAP step in",
+    },
+    ["<leader>dr"] = {
+      function()
+        require("dap").repl.open()
+      end,
+      "DAP step in",
+    },
+    ["<leader>dt"] = {
+      function()
+        require("dapui").toggle()
+      end,
+      "DAP step in",
+    },
     ["<leader>gb"] = { "<cmd>GitBlameToggle<CR>", "Toggle git blame" },
     ["<leader>a"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Perform code action" },
     ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Perform code action" },
