@@ -10,7 +10,7 @@ local servers = {
   "emmet_ls",
   "bashls",
   "clangd",
-  "taplo",
+  -- "taplo",
   "gopls",
 }
 

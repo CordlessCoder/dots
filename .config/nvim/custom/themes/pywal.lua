@@ -126,22 +126,22 @@ M.polish_hl = {
   TblineFill = { bg = M.base_30.black },
 }
 
-vim.g.terminal_color_0 = M.base_16.base00
-vim.g.terminal_color_1 = M.base_16.base01
-vim.g.terminal_color_2 = M.base_16.base02
-vim.g.terminal_color_3 = M.base_16.base03
-vim.g.terminal_color_4 = M.base_16.base04
-vim.g.terminal_color_5 = M.base_16.base05
-vim.g.terminal_color_6 = M.base_16.base06
-vim.g.terminal_color_7 = M.base_16.base07
-vim.g.terminal_color_8 = M.base_16.base08
-vim.g.terminal_color_9 = M.base_16.base09
-vim.g.terminal_color_10 = M.base_16.base0A
-vim.g.terminal_color_11 = M.base_16.base0B
-vim.g.terminal_color_12 = M.base_16.base0C
-vim.g.terminal_color_13 = M.base_16.base0D
-vim.g.terminal_color_14 = M.base_16.base0E
-vim.g.terminal_color_15 = M.base_16.base0F
+vim.g.terminal_color_0 = base30[32]
+vim.g.terminal_color_1 = base30[33]
+vim.g.terminal_color_2 = base30[34]
+vim.g.terminal_color_3 = base30[35]
+vim.g.terminal_color_4 = base30[36]
+vim.g.terminal_color_5 = base30[37]
+vim.g.terminal_color_6 = base30[38]
+vim.g.terminal_color_7 = base30[39]
+vim.g.terminal_color_8 = base30[40]
+vim.g.terminal_color_9 = base30[41]
+vim.g.terminal_color_10 = base30[42]
+vim.g.terminal_color_11 = base30[43]
+vim.g.terminal_color_12 = base30[44]
+vim.g.terminal_color_13 = base30[45]
+vim.g.terminal_color_14 = base30[46]
+vim.g.terminal_color_15 = base30[47]
 
 M = require("base46").override_theme(M, "pywal")
 
