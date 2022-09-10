@@ -4,30 +4,40 @@ import os
 
 
 # POLYWINS.py
+# A polywins alternative for BSPWM, written in python, listening to BSPC for low overhead and BSPWM integration.
 
 # SETTINGS
 
 
-name_style = None  # options: upper, lower, None
-separator = " "  # What to separate workspaces with
+name_style = str.capitalize  # what function to apply to the name
+separator = " "  # What to separate EVERYTHING with
 windowlist_prefix = " "  # prefix before listing windows, default is ":"
-show = "window_class"
-forbidden_classes = "Polybar Conky Gmrun Pavucontrol".casefold().split(" ")
+show = "window_class"  # one of: ["window_class", "window_classname", "window_title"]
+# icons are only properly supported with window_class
+forbidden_classes = ("polybar", "conky", "gmrun", "pavucontrol")  # Windows of what classes to not list
 hide_unpopulated_desktops = False
-iconize = True
+iconize = True  # Whether to convert known apps to their icon versions
+# DEFINITELY requires a font patched with Nerd Fonts, just like most of this
 hide_name = True  # Controls whether to hide window names when an icon is present
 
 char_limit = 10
 max_windows = 10
-add_spaces = "true"
 resize_increment = 16
 resize_offset = resize_increment / 2
 use_pywal = True
 
-override_names = ["", "", "ﱣ"]  # Either a list containing the focused and unfocused versions of workspace name, or False
+override_names = [
+    "",
+    "",
+    "ﱣ",
+]  # Either a list containing the focused, occupied and unfocused versions of workspace name, or False
 
 underline = False
+
+
 highlight_active_wps = False
+# Whether to highlight the active workspace, and if yes you can also specify the highlight color it'll use in hex
+# or if using pywal, the base16 color index
 
 if len(sys.argv) <= 2:
     try:
@@ -47,6 +57,8 @@ if len(sys.argv) <= 2:
         inactive_text_color = "#C0CAF5"
         inactive_underline = "#C0CAF5" if underline is not False else None
 
+    forbidden_classes = map(str.casefold, forbidden_classes)
+
     # WINDOW LIST SETUP
 
     active_left = "%{F" + active_text_color + "}"
@@ -55,14 +67,34 @@ if len(sys.argv) <= 2:
     inactive_right = "%{F-}"
     # separator = "%{F" + inactive_text_color + "}" + separator + "%{F-}"
 
-    wps_active_left = "%{F" + (inactive_text_color if highlight_active_wps is False else active_text_color) + "}"
+    wps_active_left = (
+        "%{F"
+        + (
+            inactive_text_color
+            if highlight_active_wps is False
+            else (
+                active_text_color
+                if highlight_active_wps is True
+                else (
+                    highlight_active_wps
+                    if isinstance(highlight_active_wps, str)
+                    else (colors[highlight_active_wps] if len(colors) > highlight_active_wps else active_text_color)
+                )
+            )
+        )
+        + "}"
+    )
     wps_active_right = "%{F-}"
     wps_inactive_left = "%{F" + inactive_text_color + "}"
     wps_inactive_right = "%{F-}"
     if active_underline is not None:
         active_left = active_left + "%{+u}%{u" + active_underline + "}"
         active_right = "%{-u}" + active_right
-        wps_active_left = "%{F" + inactive_text_color + "}%{+u}%{u" + inactive_underline + "}"
+        wps_active_left = (
+            "%{F" + inactive_text_color + "}%{+u}" + ("%{u" + inactive_underline + "}")
+            if isinstance(inactive_underline, str)
+            else ""
+        )
         wps_active_right = "%{-u}%{u}%{F-}"
 
     if inactive_underline is not None:
@@ -195,14 +227,12 @@ def wid_to_name(wid, cache={}):
     if not isinstance(wid, list):
         if show == "window_class":
             out = os.popen(f"xprop -id {wid} WM_CLASS 2> /dev/null").read().split('"')
-        if show == "window_classname":
+        elif show == "window_classname":
             out = os.popen(f"xprop -id {wid} WM_CLASS 2> /dev/null").read().split('"')[:-1][-1]
-        if show == "window_title":
+        else:
             out = os.popen(f"xprop -id {wid} _NET_WM_NAME 2> /dev/null").read().split('"')[1]
-        if name_style == "upper":
-            out = out.upper()
-        elif name_style == "lower":
-            out = out.lower()
+        if name_style is not None:
+            return name_style(out)
         return out
     else:
         out = {}
@@ -211,11 +241,11 @@ def wid_to_name(wid, cache={}):
             if id not in cached:
                 if show == "window_class":
                     name = os.popen(f"xprop -id {id} WM_CLASS 2> /dev/null").read().split('"')[1]
-                if show == "window_classname":
+                elif show == "window_classname":
                     name = os.popen(f"xprop -id {id} WM_CLASS 2> /dev/null").read().split('"')[-2]
-                if show == "window_title":
+                else:
                     name = os.popen(f"xprop -id {id} _NET_WM_NAME 2> /dev/null").read().split('"')[1]
-                if name.lower() not in forbidden_classes:
+                if name.casefold() not in forbidden_classes:
                     if iconize:
                         name = to_icon(name)
                     try:
@@ -293,9 +323,7 @@ def generate(workspaces, focused_desk, order):
                 )
                 printf(active_left if focused in windows[win_class] else inactive_left)
                 printf(separator if i == 0 else "")
-                printf(
-                    win_class.upper() if name_style == "upper" else (win_class.lower() if name_style == "lower" else win_class)
-                )
+                printf(name_style(win_class) if name_style is not None else win_class)
                 printf(
                     (separator if i < (win_length - 1) else "")
                     if len(windows[win_class]) <= 1
