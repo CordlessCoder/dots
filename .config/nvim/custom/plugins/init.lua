@@ -56,6 +56,8 @@ return {
           on_attach = function(_, bufnr)
             -- Hover actions
             vim.keymap.set("n", "<C-space>", require("rust-tools").hover_actions.hover_actions, { buffer = bufnr })
+            -- vim.keymap.set("n", "<A-Up>", require("rust-tools").move_item.move_item(true), { buffer = bufnr })
+            -- vim.keymap.set("n", "<A-Down>", require("rust-tools").move_item.move_item(false), { buffer = bufnr })
             -- Code action groups
             vim.keymap.set(
               "n",

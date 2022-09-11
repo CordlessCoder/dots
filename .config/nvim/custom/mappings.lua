@@ -1,11 +1,29 @@
 local M = {}
 M.editor = {
   v = {
+    ["<leader>e"] = {
+      function()
+        require("dapui").eval()
+      end,
+      "Evaluate selection",
+    },
     ["<Tab>"] = { ">", "   Indent selected lines" },
     ["<S-Tab>"] = { "<", "   Unindent selected lines" },
     ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.range_code_action()<CR>", "Perform code action on selection" },
   },
   n = {
+    ["K"] = {
+      function()
+        vim.lsp.buf.hover()
+      end,
+      "Hover action",
+    },
+    ["<leader>e"] = {
+      function()
+        require("dapui").eval()
+      end,
+      "Evaluate",
+    },
     ["<leader>dc"] = {
       function()
         require("dap").continue()
