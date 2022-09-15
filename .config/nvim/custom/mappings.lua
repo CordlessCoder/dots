@@ -1,6 +1,7 @@
 local M = {}
 M.editor = {
   v = {
+    ["<leader>p"] = { '"-dP', "paste without replacing buffer" },
     ["<leader>e"] = {
       function()
         require("dapui").eval()
@@ -12,6 +13,7 @@ M.editor = {
     ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.range_code_action()<CR>", "Perform code action on selection" },
   },
   n = {
+    ["<leader>p"] = { '"-dP', "paste without replacing buffer" },
     ["K"] = {
       function()
         vim.lsp.buf.hover()
