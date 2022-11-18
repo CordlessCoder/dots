@@ -12,6 +12,21 @@ M.cmp = {
 }
 
 M.treesitter = {
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+    max_file_lines = nil,
+    colors = {
+      "#B7C1EA",
+      "#F7768E",
+      "#97C566",
+      "#D6A764",
+      "#759BEC",
+      "#B393EC",
+      "#78C6F3",
+      "#AAB2D5",
+    },
+  },
   ensure_installed = {
     "lua",
     "html",
@@ -24,6 +39,7 @@ M.treesitter = {
 }
 
 M.telescope = {
+  -- after = "urlview",
   extensions = {
     -- fd is needed
     media_files = {

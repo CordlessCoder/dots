@@ -9,13 +9,15 @@ local servers = {
   "sumneko_lua",
   "emmet_ls",
   "bashls",
+  "html",
+  "tsserver",
   "clangd",
   -- "taplo",
   "gopls",
 }
 
 for _, lsp in ipairs(servers) do
-  if lsp ~= "sumneko_lua" and lsp ~= "pylsp" then
+  if lsp ~= "sumneko_lua" and lsp ~= "pylsp" and lsp ~= "rust_analyzer" then
     lspconfig[lsp].setup {
       on_attach = function(client, bufnr)
         on_attach(client, bufnr)
@@ -27,6 +29,33 @@ for _, lsp in ipairs(servers) do
     }
   end
 end
+lspconfig.rust_analyzer.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+
+  settings = {
+    ["rust_analyzer"] = {
+      semanticHighlighting = {
+        punctuation = {
+          enable = true,
+        },
+        --   operator = {
+        --     specialization = {
+        --       enable = true,
+        --     },
+        --   },
+      },
+      lru = {
+        capacity = 256,
+      },
+      typing = {
+        autoClosingAngleBrackets = {
+          enable = true,
+        },
+      },
+    },
+  },
+}
 lspconfig.pylsp.setup {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -80,17 +109,3 @@ lspconfig.sumneko_lua.setup {
     },
   },
 }
--- lspconfig.rust_analyzer.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---
---   settings = {
---     ["rust_analyzer"] = {
---       typing = {
---         autoClosingAngleBrackets = {
---           enable = true,
---         },
---       },
---     },
---   },
--- }

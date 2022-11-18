@@ -84,10 +84,10 @@ M.type = "dark"
 vim.opt.bg = "dark"
 
 M.polish_hl = {
-  Normal = { fg = M.base_30.light_grey },
-  Constant = { fg = M.base_30.light_grey },
-  Character = { fg = M.base_30.light_grey },
-  TSCharacter = { fg = M.base_30.light_grey },
+  Normal = { fg = M.base_30.white },
+  Constant = { fg = M.base_30.grey_fg2 },
+  Character = { fg = M.base_30.grey_fg },
+  TSCharacter = { fg = M.base_30.grey_fg },
   TSFieldKey = { fg = M.base_30.sun },
   Exception = { fg = M.base_30.dark_purple },
   Visual = { fg = M.base_30.white, bg = M.base_30.black2 },
@@ -124,6 +124,13 @@ M.polish_hl = {
   Structure = { bold = true },
   Macro = { bold = true, fg = M.base_30.baby_pink },
   TblineFill = { bg = M.base_30.black },
+  rainbowcol1 = { fg = base30[33], bold = true },
+  rainbowcol2 = { fg = base30[34], bold = true },
+  rainbowcol3 = { fg = base30[35], bold = true },
+  rainbowcol4 = { fg = base30[36], bold = true },
+  rainbowcol5 = { fg = base30[37], bold = true },
+  rainbowcol6 = { fg = base30[38], bold = true },
+  rainbowcol7 = { fg = base30[39], bold = true },
 }
 
 vim.g.terminal_color_0 = base30[32]

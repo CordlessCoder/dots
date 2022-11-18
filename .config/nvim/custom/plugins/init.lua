@@ -2,6 +2,9 @@
 local pluginConfs = require "custom.plugins.configs"
 
 return {
+  ["nanotee/zoxide.vim"] = {},
+  ["p00f/nvim-ts-rainbow"] = {},
+  ["kylechui/nvim-surround"] = {},
   ["kyazdani42/nvim-tree.lua"] = {
     override_options = {
       view = {
@@ -14,22 +17,22 @@ return {
       },
     },
   },
-  ["karb94/neoscroll.nvim"] = {
-    config = function()
-      require("neoscroll").setup {
-        -- All these keys will be mapped to their corresponding default scrolling animation
-        mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
-        hide_cursor = true, -- Hide cursor while scrolling
-        stop_eof = true, -- Stop at <EOF> when scrolling downwards
-        respect_scrolloff = true, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-        easing_function = "cubic", -- Default easing function
-        pre_hook = nil, -- Function to run before the scrolling animation starts
-        post_hook = nil, -- Function to run after the scrolling animation ends
-        performance_mode = false, -- Disable "Performance Mode" on all buffers.
-      }
-    end,
-  },
+  -- ["karb94/neoscroll.nvim"] = {
+  --   config = function()
+  --     require("neoscroll").setup {
+  --       -- All these keys will be mapped to their corresponding default scrolling animation
+  --       mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
+  --       hide_cursor = true, -- Hide cursor while scrolling
+  --       stop_eof = true, -- Stop at <EOF> when scrolling downwards
+  --       respect_scrolloff = true, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+  --       cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+  --       easing_function = "cubic", -- Default easing function
+  --       pre_hook = nil, -- Function to run before the scrolling animation starts
+  --       post_hook = nil, -- Function to run after the scrolling animation ends
+  --       performance_mode = false, -- Disable "Performance Mode" on all buffers.
+  --     }
+  --   end,
+  -- },
   ["saecki/crates.nvim"] = {
     tag = "v0.2.1",
     requires = { "nvim-lua/plenary.nvim" },
@@ -99,6 +102,7 @@ return {
       },
       tabufline = {
         enabled = true,
+        lazyload = false,
       },
     },
   },
@@ -108,8 +112,6 @@ return {
   ["nvim-telescope/telescope.nvim"] = {
     override_options = pluginConfs.telescope,
   },
-  ["mattn/webapi-vim"] = {},
-  ["rust-lang/rust.vim"] = {},
   ["neovim/nvim-lspconfig"] = {
     config = function()
       -- require "plugins.configs.lspconfig"
@@ -125,7 +127,7 @@ return {
         navigate_method = "system",
         unique = true,
       }
-      require("telescope").load_extension "urlview"
+      -- require("telescope").load_extension "urlview"
     end,
   },
   ["NvChad/nvterm"] = {
@@ -134,18 +136,11 @@ return {
       require "custom.plugins.configs.nvterm"
     end,
   },
-  ["mg979/vim-visual-multi"] = {},
-  ["wakatime/vim-wakatime"] = {
-    -- setup = function()
-    -- require("core.utils").packer_lazy_load "vim-wakatime"
-    -- end,
-  },
+  -- ["mg979/vim-visual-multi"] = {},
+  ["wakatime/vim-wakatime"] = {},
   ["nathom/filetype.nvim"] = {},
   -- ["mtoohey31/cmp-fish"] = { ft = "fish", after = "nvim-cmp" },
   ["hrsh7th/nvim-cmp"] = {
-    -- config = function()
-    --   require "custom.plugins.configs.cmp"
-    -- end,
     override_options = pluginConfs.cmp,
   },
   ["nvim-telescope/telescope-media-files.nvim"] = {
@@ -162,9 +157,6 @@ return {
   },
   ["elkowar/yuck.vim"] = {
     ft = "yuck",
-    -- setup = function()
-    -- require("core.utils").packer_lazy_load "yuck.vim"
-    -- end,
   },
   ["andweeb/presence.nvim"] = {
     config = function()
@@ -184,14 +176,11 @@ return {
       "TZFocus",
     },
     config = function()
-      require "custom.plugins.custom.truezen"
+      require "custom.plugins.configs.truezen"
     end,
   },
   ["justinmk/vim-sneak"] = {},
   ["f-person/git-blame.nvim"] = {},
-  ["ellisonleao/glow.nvim"] = {
-    branch = "main",
-  },
   ["iamcco/markdown-preview.nvim"] = {
     run = "cd app && npm install",
     setup = function()

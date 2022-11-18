@@ -140,7 +140,7 @@ M.editor = {
       "Reset font size (to 14)",
     },
     ["gz"] = {
-      "<cmd> Telescope urlview <CR>",
+      "<cmd> UrlView <CR>",
       "Open URL list in Telescope",
     },
     ["gx"] = {
