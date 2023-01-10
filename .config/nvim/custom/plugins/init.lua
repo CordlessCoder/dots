@@ -52,23 +52,23 @@ return {
     end,
   },
   ["simrat39/rust-tools.nvim"] = {
+    disable = true,
     after = "nvim-lspconfig",
     config = function()
-      require("rust-tools").setup {
+      local rt = require "rust-tools"
+      rt.setup {
         server = {
           on_attach = function(_, bufnr)
             -- Hover actions
-            vim.keymap.set("n", "<C-space>", require("rust-tools").hover_actions.hover_actions, { buffer = bufnr })
-            -- vim.keymap.set("n", "<A-Up>", require("rust-tools").move_item.move_item(true), { buffer = bufnr })
-            -- vim.keymap.set("n", "<A-Down>", require("rust-tools").move_item.move_item(false), { buffer = bufnr })
+            vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
             -- Code action groups
-            vim.keymap.set(
-              "n",
-              "<Leader>a",
-              require("rust-tools").code_action_group.code_action_group,
-              { buffer = bufnr }
-            )
+            vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
           end,
+          ["rust-analyzer"] = {
+            checkOnSave = {
+              command = "cargo clippy --all",
+            },
+          },
         },
       }
     end,
@@ -163,9 +163,11 @@ return {
       require("presence"):setup {
         neovim_image_text = "I am still in your walls.",
         buttons = {
-          { label = "I stole all of your code.", url = "https://github.com/CordlessCoder/dots" },
+          { label = "I stole all of your code.", url = "https://github.com/CordlessCoder/OxiiLink" },
           { label = "Pipe bomb is attached.", url = "https://github.com/CordlessCoder/Wallpapers" },
         },
+        enable_line_number = true,
+        line_number_text = "Line %s/%s",
       }
     end,
   },
