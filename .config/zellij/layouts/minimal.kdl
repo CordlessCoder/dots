@@ -1,0 +1,44 @@
+layout {
+    /* floating_panes { */
+    /*     pane name="floaty" focus=false { */
+    /*         x "5%" */
+    /*         y "10%" */
+    /*         width  "90%" */
+    /*         height "80%" */
+    /*     } */
+    /* } */
+    pane_template name="b_vsplit" split_direction="vertical" {
+        pane
+        pane
+    }
+    pane_template name="b_hsplit" split_direction="horizontal" {
+        pane
+        pane
+    }
+    swap_tiled_layout name="h2v" {
+        tab max_panes=2 {
+            pane size=1 borderless=true {
+                plugin location="zellij:compact-bar"
+            }
+            pane
+        }
+        tab {
+            pane size=1 borderless=true {
+                plugin location="zellij:compact-bar"
+            }
+            pane split_direction="vertical" {
+                pane
+                pane split_direction="horizontal" {
+                    pane
+                    pane
+                    b_vsplit
+                    b_vsplit
+                }
+            }
+        }
+    }
+    pane size=1 borderless=true {
+        plugin location="zellij:compact-bar"
+    }
+    pane focus=true
+}
