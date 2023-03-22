@@ -32,59 +32,59 @@ This configuration comes with a long list of those, some of which are shown in t
 
 <details><summary>Keybinds are probably here. Pipe bomb is attached</summary>
 
-| Keybind                     | Function                                                           |
-| :-------------------------- | ------------------------------------------------------------------ |
-| Alt+Ctrl+T                  | Open terminal emulator(st)                                         |
-| Meta+Enter                  | Alternative to ^                                                   |
-| Alt+Space                   | Application launcher(rofi)                                         |
-| Meta+C                      | Open NeoVide(the best NeoVim GUI)                                  |
-| Meta+Shift+C                | Open Firefox(developer edition)                                    |
-| Meta+E                      | Open File Manager(thunar)                                          |
-| Ctrl+Shift+Q                | Close the focused **window**                                       |
-| Meta+Ctrl+Shift+Q           | ^ but with all windows of the app                                  |
-| PrintScreen                 | Selection Screenshot(saved to **/tmp**)                            |
-| Meta+PrntScr                | ^ but saved to ~/Screenshots                                       |
-| Meta+N                      | Color picker(picked color is saved into the clipboard)             |
-| Meta+Space                  | Switch languages(configruable in ~/.config/sxhkd/change_layout.py) |
-| Alt+Tab                     | Somewhat Windows-like workspace local **window** switching         |
-| Meta+Tab                    | ^ but with workspaces                                              |
-| Meta+R                      | Rotates windows 90 degrees around the parent window                |
-| Meta+Y                      | Send the focused node to the (newest) preselection                 |
-| Meta+**T**                  | Set the node state to **tiled**                                    |
-| Meta+**Shift+T**            | ^ but to **pseudo_tiled**                                          |
-| Meta+**S**                  | ^ but to **floating(stacked)**                                     |
-| Meta+**F**                  | ^ but to **fullscreen**                                            |
-| Meta+Ctrl+M                 | Set the focused node's flags to **marked**                         |
-| Meta+Ctrl+X                 | ^ but to **locked**                                                |
-| Meta+Ctrl+Y                 | ^ but to **sticky**                                                |
-| Meta+Ctrl+Z                 | ^ but to **private**                                               |
+| Keybind                       | Function                                                           |
+| :---------------------------- | ------------------------------------------------------------------ |
+| Alt+Ctrl+T                    | Open terminal emulator(st)                                         |
+| Meta+Enter                    | Alternative to ^                                                   |
+| Alt+Space                     | Application launcher(rofi)                                         |
+| Meta+C                        | Open NeoVide(the best NeoVim GUI)                                  |
+| Meta+Shift+C                  | Open Firefox(developer edition)                                    |
+| Meta+E                        | Open File Manager(thunar)                                          |
+| Ctrl+Shift+Q                  | Close the focused **window**                                       |
+| Meta+Ctrl+Shift+Q             | ^ but with all windows of the app                                  |
+| PrintScreen                   | Selection Screenshot(saved to **/tmp**)                            |
+| Meta+PrntScr                  | ^ but saved to ~/Screenshots                                       |
+| Meta+N                        | Color picker(picked color is saved into the clipboard)             |
+| Meta+Space                    | Switch languages(configruable in ~/.config/sxhkd/change_layout.py) |
+| Alt+Tab                       | Somewhat Windows-like workspace local **window** switching         |
+| Meta+Tab                      | ^ but with workspaces                                              |
+| Meta+R                        | Rotates windows 90 degrees around the parent window                |
+| Meta+Y                        | Send the focused node to the (newest) preselection                 |
+| Meta+**T**                    | Set the node state to **tiled**                                    |
+| Meta+**Shift+T**              | ^ but to **pseudo_tiled**                                          |
+| Meta+**S**                    | ^ but to **floating(stacked)**                                     |
+| Meta+**F**                    | ^ but to **fullscreen**                                            |
+| Meta+Ctrl+M                   | Set the focused node's flags to **marked**                         |
+| Meta+Ctrl+X                   | ^ but to **locked**                                                |
+| Meta+Ctrl+Y                   | ^ but to **sticky**                                                |
+| Meta+Ctrl+Z                   | ^ but to **private**                                               |
 | Meta+\[HJKL\]                 | Focus the node in the given direction(vim-like)                    |
 | Meta+**Shift**+\[HJKL\]       | Send(move) the node in the given direction(vim-like)               |
-| Meta+P                      | Focus the **parent** of the currently selected node                |
-| Meta+B                      | ^ same but the **brother**                                         |
+| Meta+P                        | Focus the **parent** of the currently selected node                |
+| Meta+B                        | ^ same but the **brother**                                         |
 | Meta+`,`\[**comma**\]         | Focus the node for the path jump of **second**                     |
 | Meta+`.`\[**period**\]        | ^ same but to the **first**                                        |
 | Meta+`[`\[**left bracket**\]  | focus the **next** workspace of the current monitor                |
 | Meta+`]`\[**right bracket**\] | ^ but the **previous**                                             |
-| Meta+**O**                  | Focus the **older** node in the node history                       |
-| Meta+**I**                  | ^ but the **newer**                                                |
+| Meta+**O**                    | Focus the **older** node in the node history                       |
+| Meta+**I**                    | ^ but the **newer**                                                |
 | Meta+\[1-9,0\]                | Focus the given workspace                                          |
 | Meta+**Shift**+\[1-9,0\]      | Send the focused window to the given workspace                     |
 | Meta+Ctrl+\[HJKL\]            | Preselect in the given direction(vim-like)                         |
 | Meta+Ctrl+\[1-9\]             | Preselect the ratio                                                |
-| Meta+Ctrl+Space             | Cancel the preselection for the focused **node**                   |
-| Meta+Ctrl+**Shift**+Space   | Cancel the preselection for the focused **desktop**                |
+| Meta+Ctrl+Space               | Cancel the preselection for the focused **node**                   |
+| Meta+Ctrl+**Shift**+Space     | Cancel the preselection for the focused **desktop**                |
 | Meta+Alt+\[HJKL\]             | **Expand** a window by moving one of it's sides **outward**        |
 | Meta+Alt+**Shift**+\[HJKL\]   | **Contract** a window by moving one of it's sides **inward**       |
 | Meta+\[Left,Down,Up,Right\]   | Move a floating window in a given direction                        |
-| Meta+M                      | Alternate between tiled and monacle layouts                        |
-| Meta+G                      | Draw resize(send window to drawn rectangle)                        |
-| Meta+Alt+Plus/Equal         | Increase border size by 2                                          |
-| Meta+Alt+Minus              | Decrease border size by 2                                          |
-| Ctrl+Meta+Alt+L             | Lock the screen(with i3lock-color)                                 |
-| Meta+Escape                 | Reloads sxhkd config                                               |
-| Meta+Alt+R                  | Reload BSPWM                                                       |
-| Meta+Alt+Q                  | Quit BSPWM                                                         |
+| Meta+M                        | Alternate between tiled and monacle layouts                        |
+| Meta+G                        | Draw resize(send window to drawn rectangle)                        |
+| Meta+Alt+Plus/Equal           | Increase border size by 2                                          |
+| Meta+Alt+Minus                | Decrease border size by 2                                          |
+| Ctrl+Meta+Alt+L               | Lock the screen(with i3lock-color)                                 |
+| Meta+Escape                   | Reloads sxhkd config                                               |
+| Meta+Alt+R                    | Reload BSPWM                                                       |
+| Meta+Alt+Q                    | Quit BSPWM                                                         |
 
 </details>
 

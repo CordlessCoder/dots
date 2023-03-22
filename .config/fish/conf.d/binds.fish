@@ -3,6 +3,10 @@
 if not status is-interactive
     exit
 end
+if type -sq zoxide
+    zoxide init fish | source
+    alias cd z
+end
 if type -sq nvim
     bind \en nvim
 end
@@ -20,7 +24,7 @@ if type -sq xdo
         complete -c neovide -s h -l help -d "Prints help information"
         complete -c neovide -l log -d "Log to a file"
         complete -c neovide -l maximized -d "Maximize the window"
-        complete -c neovide -l multigrid -d "Enable Multigrid"
+        complete -c neovide -l multigrid -d "Enable Multigrid(enabled by default in n)"
         complete -c neovide -l nofork -d "Do not detach process from terminal"
         complete -c neovide -l noidle -d "Render every frame. Takes more power and cpu time but possibly fixes animation issues"
         complete -c neovide -l nosrgb -d "Do not use standard color space to initialize the window. Swapping this variable
@@ -38,11 +42,11 @@ sometimes fixes"
         function n -d "Window swallower function for NeoVide" -w neovide
             set windowpid (xdo pid -t $WINDOWID)
             xdo hide -p $windowpid
-            neovide --nofork $argv
+            neovide --multigrid --nofork -- $argv
             xdo show -p $windowpid
         end
         function ns -d "Open NeoVim without window swallowing" -w neovide
-            neovide $argv &
+            neovide --multigrid $argv &
         end
         # alias nvim n
     end
