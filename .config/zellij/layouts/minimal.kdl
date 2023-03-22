@@ -15,12 +15,12 @@ layout {
         pane
         pane
     }
-    swap_tiled_layout name="h2v" {
-        tab max_panes=2 {
+    swap_tiled_layout name="h&v" {
+        tab max_panes=2 focus=true {
             pane size=1 borderless=true {
                 plugin location="zellij:compact-bar"
             }
-            pane
+            pane borderless=true
         }
         tab {
             pane size=1 borderless=true {
@@ -33,6 +33,28 @@ layout {
                     pane
                     b_vsplit
                     b_vsplit
+                }
+            }
+        }
+    }
+    swap_tiled_layout name="bigLITTLE" {
+        tab {
+            pane size=1 borderless=true {
+                plugin location="zellij:compact-bar"
+            }
+            pane split_direction="horizontal" {
+                pane size="70%" split_direction="vertical" {
+                    pane size="80%"
+                    pane
+                }
+                pane split_direction="vertical" {
+                    b_vsplit
+                    pane split_direction="horizontal" {
+                        pane
+                        pane
+                        b_vsplit
+                        b_vsplit
+                    }
                 }
             }
         }
