@@ -26,6 +26,12 @@ if status is-interactive
             end
 
         end
+
+        complete -c za -f -a "(__fish_complete_sessions)" -d Session
+
+        function __fish_complete_sessions
+            zellij list-sessions 2>/dev/null
+        end
         abbr zc "zellij attach -c"
         abbr zz zellij
         # eval (zellij setup --generate-auto-start fish | string collect)
