@@ -38,7 +38,7 @@ if status is-interactive
                 if test -n "$sessions"
                     # If there are active sessions
                     set choice (echo "$sessions" | fzf --preview "" | string collect)
-                    set choice $(string replace --regex "[^\S\r\n]*\(current\)[^\S\r\n]*" "" "$choice")
+                    set choice (string replace --regex "[^\S\r\n]*\(current\)[^\S\r\n]*" "" "$choice" | string collect)
                     if test -n "$choice"
                         zellij kill-session "$choice"
                     else
