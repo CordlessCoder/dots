@@ -1,12 +1,4 @@
 layout {
-    /* floating_panes { */
-    /*     pane name="floaty" focus=false { */
-    /*         x "5%" */
-    /*         y "10%" */
-    /*         width  "90%" */
-    /*         height "80%" */
-    /*     } */
-    /* } */
     pane_template name="b_vsplit" split_direction="vertical" {
         pane
         pane
@@ -15,29 +7,13 @@ layout {
         pane
         pane
     }
-    swap_tiled_layout name="h&v" {
+    swap_tiled_layout name="bigLITTLE" {
         tab max_panes=2 focus=true {
             pane size=1 borderless=true {
                 plugin location="zellij:compact-bar"
             }
-            pane borderless=true
+            pane
         }
-        tab {
-            pane size=1 borderless=true {
-                plugin location="zellij:compact-bar"
-            }
-            pane split_direction="vertical" {
-                pane
-                pane split_direction="horizontal" {
-                    pane
-                    pane
-                    b_vsplit
-                    b_vsplit
-                }
-            }
-        }
-    }
-    swap_tiled_layout name="bigLITTLE" {
         tab {
             pane size=1 borderless=true {
                 plugin location="zellij:compact-bar"
@@ -59,8 +35,30 @@ layout {
             }
         }
     }
+    swap_tiled_layout name="h&v" {
+        tab max_panes=2 focus=true {
+            pane size=1 borderless=true {
+                plugin location="zellij:compact-bar"
+            }
+            pane
+        }
+        tab {
+            pane size=1 borderless=true {
+                plugin location="zellij:compact-bar"
+            }
+            pane split_direction="vertical" {
+                pane
+                pane split_direction="horizontal" {
+                    pane
+                    pane
+                    b_vsplit
+                    b_vsplit
+                }
+            }
+        }
+    }
     pane size=1 borderless=true {
         plugin location="zellij:compact-bar"
     }
-    pane focus=true
+    pane
 }

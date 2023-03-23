@@ -12,10 +12,11 @@ if status is-interactive
                 zellij attach -c "$argv[1]"
             else
                 set sessions "$(zellij list-sessions 2> /dev/null)"
-                set sessions $(string replace --regex "^.*\(current\)[^\S\r\n]*[\r\n]*" "" "$sessions")
+                set sessions $(string replace --regex '^.*\(current\)[^\S\r\n]*' '' "$sessions")
                 if test -n "$sessions"
                     # If there are active sessions
-                    set choice $(echo "$sessions" | fzf --preview "")
+                    set choice $(echo "$(string replace " " '
+' "$sessions")" | fzf --preview "")
                     if test -n "$choice"
                         zellij attach "$choice"
                     else
