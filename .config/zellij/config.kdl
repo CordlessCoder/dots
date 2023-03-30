@@ -18,6 +18,9 @@ themes {
     }
 }
 
+mouse_mode true
+copy_on_select true
+
 theme "default"
 // If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
 keybinds clear-defaults=true {
@@ -42,7 +45,11 @@ keybinds clear-defaults=true {
         bind "Alt 6" { GoToTab 6; }
         bind "Alt 7" { GoToTab 7; }
         bind "Alt 8" { GoToTab 8; }
+        bind "Alt f" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
         bind "Alt 9" { GoToTab 9; }
+    }
+    shared_except "locked" "normal" {
+        bind "Space" { SwitchToMode "normal"; }
     }
     normal {
         bind "Alt x" { ToggleFloatingPanes; SwitchToMode "Normal"; }
@@ -78,7 +85,7 @@ keybinds clear-defaults=true {
         bind "L" { MovePane "Right"; }
         bind "w" { SwitchFocus; }
         bind "q" "Alt q" { CloseFocus; SwitchToMode "Normal"; }
-        bind "f" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
+        bind "f" "Alt f" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
         bind "z" { TogglePaneFrames; SwitchToMode "Normal"; }
         bind "n" { NewPane; SwitchToMode "Normal"; }
     }
