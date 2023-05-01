@@ -1,9 +1,13 @@
 #!/bin/sh
 
-sxhkd &
+cd "$HOME" || exit
+
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+sxhkd & # start the hotkey daemon
 
 bash "${HOME}/.config/bspwm/scripts/autostart.sh" &
-xrdb -override "${HOME}/.Xresources"
+xrdb -override "${HOME}/.Xresources" &
 
 bspc config ignore_ewmh_struts true
 bspc config border_width 2
@@ -17,34 +21,25 @@ bspc config top_padding 40
 bspc config remove_unplugged_monitors true
 
 # source the colors.
-. "${HOME}/.cache/wal/colors.sh"
+. "$HOME/.cache/wal/colors.sh" || . ./backupcolors.sh
 
 # Set the border colors.
-bspc config normal_border_color "$color8"
-bspc config active_border_color "$color1"
-bspc config focused_border_color "$color15"
+bspc config normal_border_color "$color8" &
+bspc config active_border_color "$color1" &
+bspc config focused_border_color "$color15" &
 # Use the line below if you are on bspwm >= 0.9.4
-bspc config presel_feedback_color "$color15"
+bspc config presel_feedback_color "$color15" &
 
 python "$HOME/.config/bspwm/scripts/span_monitors.py" &
 
-bspc rule -a Zathura state=tiled
-bspc rule -a "zoom " state=floating border=off
-bspc rule -a GLava state=floating manage=off
-bspc rule -a pavucontrol state=floating
-# Splash Float
-#bspc rule -a SPLASH:SPLASH border=off layer=below state=floating sticky=on follow=on locked=on manage=on
-#pkill splash
-#splash fidget --bg -a -p 2120 1080 440 360 &
+bspc rule -a GLava state=floating layer=below &
+bspc rule -a conky state=floating layer=below &
+bspc rule -a Zathura state=tiled &
+bspc rule -a "zoom " state=floating border=off &
+bspc rule -a pavucontrol state=floating &
 
-xsetroot -cursor_name left_ptr
-feh --bg-fill ~/.config/bspwm/wallpaper.png &
+xsetroot -cursor_name left_ptr &
+feh --bg-fill ~/.config/bspwm/catppuccin.png &
 
 #bspc config external_rules_command ~/.config/bspwm/scripts/external_rules.sh
 setxkbmap -option caps:none -layout us &
-
-#$HOME/.config/polybar/launch.sh &
-
-#xinput set-prop 'Glorious Model D' 'libinput Accel Speed' -.7 &
-#xsetroot -cursor_name left_ptr &
-#dunst &

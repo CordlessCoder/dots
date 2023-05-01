@@ -2,7 +2,7 @@
 /* Center line thickness (pixels) */
 #define C_LINE 0
 /* Width (in pixels) of each bar */
-#define BAR_WIDTH 8
+#define BAR_WIDTH 7
 /* Width (in pixels) of each bar gap */
 #define BAR_GAP 3
 /* Outline color */
@@ -31,4 +31,4 @@
 #define FLIP 0
 /* Whether to mirror output along `Y = X`, causing output to render on the left side of the window */
 /* Use with `FLIP 1` to render on the right side */
-#define MIRROR_YX 1
+#define MIRROR_YX 0

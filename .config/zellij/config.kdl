@@ -3,7 +3,7 @@
 // Default: default
 //
 themes {
-    default {
+    terminal {
         fg 15
         bg 0
         black 0
@@ -21,7 +21,8 @@ themes {
 mouse_mode true
 copy_on_select true
 
-theme "default"
+theme "terminal"
+pane_frames false
 // If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
 keybinds clear-defaults=true {
     shared_except "locked" "tab" {
@@ -142,6 +143,18 @@ keybinds clear-defaults=true {
         bind "c" { SearchToggleOption "CaseSensitivity"; }
         bind "w" { SearchToggleOption "Wrap"; }
         bind "o" { SearchToggleOption "WholeWord"; }
+    }
+
+    scroll {
+        bind "Ctrl s" { SwitchToMode "Normal"; }
+        bind "Ctrl c" "Esc" { ScrollToBottom; SwitchToMode "Normal"; }
+        bind "j" "Down" { ScrollDown; }
+        bind "k" "Up" { ScrollUp; }
+        bind "Ctrl f" "PageDown" "Right" "l" { PageScrollDown; }
+        bind "Ctrl b" "PageUp" "Left" "h" { PageScrollUp; }
+        bind "d" { HalfPageScrollDown; }
+        bind "u" { HalfPageScrollUp; }
+        bind "s" { SwitchToMode "EnterSearch"; SearchInput 0; }
     }
     entersearch {
         bind "Ctrl c" "Esc" { SwitchToMode "Scroll"; }

@@ -1,3 +1,3 @@
 #!/bin/sh
 
-xdotool search --onlyvisible --name ' \- NVIM' windowactivate || neovide
+xdotool search --name '( \- NVIM|^nvim )' windowactivate || kitty nvim

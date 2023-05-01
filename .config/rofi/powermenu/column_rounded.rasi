@@ -8,7 +8,7 @@
  */
 
 configuration {
-	font:							"FantasqueSansMono Nerd Font 14";
+	font:							"FiraCode Nerd Font Mono 14";
     show-icons:                     false;
 	icon-theme: 					"Papirus";
     drun-display-format:            "{name}";
@@ -26,8 +26,10 @@ window {
     background-color:               @background;
     text-color:                     @foreground;
     border-radius:                  0px;
+    border:                         2px;
+    border-color:                   @base9;
     height:                         100%;
-    width:                          12.25%;
+    width:                          12.50%;
     location:                       east;
     x-offset:                       0;
     y-offset:                       0;
@@ -41,16 +43,16 @@ prompt {
 }
 
 textbox-prompt-colon {
-	expand: 						true;
+	expand: 						false;
 	str: 							"System";
-	background-color: 				@border;
+	background-color: 				@base1;
 	text-color: 					@background;
     padding:                        1% 1% 1% 2.2%;
 }
 
 inputbar {
 	children: 						[ textbox-prompt-colon ];
-    background-color:               @border;
+    background-color:               @base1;
     text-color:                     @foreground;
     expand:                         false;
     border:                  		0% 0% 0% 0%;
@@ -66,7 +68,7 @@ listview {
     margin:                         0% 0% 0% 0%;
     spacing:                        3%;
     cycle:                          true;
-    dynamic:                        true;
+    dynamic:                        false;
     layout:                         vertical;
 }
 
@@ -87,11 +89,11 @@ element {
 element-text {
     background-color: 				#00000000;
     text-color:       				inherit;
-	font:							"feather 32";
-    expand:                         true;
-    horizontal-align:               0.5;
+	font:							"FiraCode Nerd Font Mono 50";
+    expand:                         false;
+    horizontal-align:               0.48;
     vertical-align:                 0.5;
-    margin:                         5% 0% 5% 0%;
+    margin:                         4% 0% 3% 0%;
 }
 
 element normal.urgent,

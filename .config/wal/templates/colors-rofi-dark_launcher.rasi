@@ -5,4 +5,20 @@
     background-bar:                 #f2{background.strip};
     foreground:                     #f2{foreground.strip};
     accent:			            	#ff{color4.strip};
+    base0:                          {color0};
+    base1:                          {color1};
+    base2:                          {color2};
+    base3:                          {color3};
+    base4:                          {color4};
+    base5:                          {color5};
+    base6:                          {color6};
+    base7:                          {color7};
+    base8:                          {color8};
+    base9:                          {color9};
+    base10:                          {color10};
+    base11:                          {color11};
+    base12:                          {color12};
+    base13:                          {color13};
+    base14:                          {color14};
+    base15:                          {color15};
 }}

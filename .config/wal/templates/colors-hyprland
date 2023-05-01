@@ -1,0 +1,145 @@
+monitor=,addreserved,20,0,0,0,preferred,auto,1
+monitor=eDP-1,addreserved,20,0,0,0,preferred,auto,1
+
+exec-once=~/.config/hypr/start.sh
+
+input {{
+    kb_file=
+    kb_layout=us,us,ru
+    kb_variant=colemak_dh_iso,,
+    kb_model=
+    kb_options=grp:win_space_toggle
+    kb_rules=
+
+    follow_mouse=2
+
+    touchpad {{
+        natural_scroll=yes
+    }}
+
+    sensitivity=-0.7 # -1.0 - 1.0, 0 means no modification.
+    accel_profile=flat
+}}
+
+misc {{
+    disable_hyprland_logo=1
+    disable_splash_rendering=1
+    enable_swallow=1
+    swallow_regex=(kitty|alacritty)
+    animate_manual_resizes=yes
+}}
+
+
+general {{
+
+    exec-once=swaybg -m fill -i ~/.config/bspwm/wallpaper.png
+    main_mod=SUPER
+
+    gaps_in=3
+    gaps_out=5
+    border_size=2
+    col.active_border=0x77{color1.strip}
+    col.inactive_border=0x77{color7.strip}
+
+    apply_sens_to_raw=1 # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
+
+    # damage_tracking=full # leave it on full unless you hate your GPU and want to make it suffer */
+}}
+
+decoration {{
+    rounding=8
+    blur=0
+    blur_size=3 # minimum 1
+    blur_passes=1 # minimum 1
+    blur_new_optimizations=1
+}}
+
+animations {{
+    enabled=1
+    animation=windows,1,7,default,popin 30%
+    animation=border,1,10,default
+    animation=fade,1,10,default
+    animation=workspaces,1,4,default,slide
+}}
+
+dwindle {{
+    pseudotile=0 # enable pseudotiling on dwindle
+}}
+
+gestures {{
+    workspace_swipe=yes
+    workspace_swipe_distance=200
+}}
+
+# example window rules
+# for windows named/classed as abc and xyz
+#windowrule=move 69 420,abc
+#windowrule=size 420 69,abc
+#windowrule=tile,xyz
+#windowrule=float,abc
+#windowrule=pseudo,abc
+#windowrule=monitor 0,xyz
+
+# some nice mouse binds
+bindm=SUPER,mouse:272,movewindow
+bindm=SUPER,mouse:273,resizewindow
+
+bind=,XF86MonBrightnessDown,exec,brightnessctl set 5-%
+bind=,XF86MonBrightnessUp,exec,brightnessctl set 5+%
+
+# exec binds
+bind=SUPER,Q,exec,kitty
+bind=CTRL_ALT,T,exec,kitty
+bind=SUPER,E,exec,thunar
+bind=ALT,SPACE,exec,wofi --show drun
+
+bind=SUPER,TAB,workspace,e+1
+bind=SUPER_SHIFT,TAB,workspace,e-1
+bind=ALT,TAB,cyclenext
+bind=ALT_SHIFT,TAB,cyclenext,prev
+
+bind=SUPER,F,fullscreen,0
+bind=SUPER,S,togglefloating,active
+bind=SUPER,P,pseudo,
+bind=CTRL_SHIFT,Q,killactive,
+bind=SUPER_SHIFT,Q,exit,
+
+bind=SUPER,h,movefocus,l
+bind=SUPER,j,movefocus,d
+bind=SUPER,k,movefocus,u
+bind=SUPER,l,movefocus,r
+
+# bind=SUPER_ALT,h,resizewindow,l
+# bind=SUPER_ALT,j,resizewindow,d
+# bind=SUPER_ALT,k,resizewindow,u
+# bind=SUPER_ALT,l,resizewindow,r
+
+bind=SUPER_SHIFT,h,movewindow,l
+bind=SUPER_SHIFT,j,movewindow,d
+bind=SUPER_SHIFT,k,movewindow,u
+bind=SUPER_SHIFT,l,movewindow,r
+
+bind=SUPER,1,workspace,1
+bind=SUPER,2,workspace,2
+bind=SUPER,3,workspace,3
+bind=SUPER,4,workspace,4
+bind=SUPER,5,workspace,5
+bind=SUPER,6,workspace,6
+bind=SUPER,7,workspace,7
+bind=SUPER,8,workspace,8
+bind=SUPER,9,workspace,9
+bind=SUPER,0,workspace,10
+
+bind=SUPER_SHIFT,1,movetoworkspace,1
+bind=SUPER_SHIFT,2,movetoworkspace,2
+bind=SUPER_SHIFT,3,movetoworkspace,3
+bind=SUPER_SHIFT,4,movetoworkspace,4
+bind=SUPER_SHIFT,5,movetoworkspace,5
+bind=SUPER_SHIFT,6,movetoworkspace,6
+bind=SUPER_SHIFT,7,movetoworkspace,7
+bind=SUPER_SHIFT,8,movetoworkspace,8
+bind=SUPER_SHIFT,9,movetoworkspace,9
+bind=SUPER_SHIFT,0,movetoworkspace,10
+
+bind=SUPER,mouse_down,workspace,e+1
+bind=SUPER,mouse_up,workspace,e-1

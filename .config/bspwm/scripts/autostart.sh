@@ -2,7 +2,7 @@
 # ---
 # Use "run program" to run it only if it is not already running
 # Use "run_bg program" to run it with low priority, only if it is not already running
-# Use "program &" to run it regardless
+# Use "program &" to run it regardless if it's already running
 # ---
 # NOTE: This script runs with every restart of BSPWM[Binary Space Partitioning Window Manager]
 # If you would like to run a command *once* on login,
@@ -28,25 +28,28 @@ function run {
 xsetroot -cursor_name left_ptr
 
 # Desktop effects
-# run picom
+run picom
 setxkbmap -option caps:none -layout us
 
 #start the Dunst daemon
 run_bg dunst
 
-#start Conky
+# # start Conky
+# # if ! test "$(pgrep conky | wc -l)" -gt 2; then
 # if ! test "$(pgrep conky | wc -l)" -gt 0; then
 # 	killall conky
-# 	nice -n 19 conky -c ~/.conkyrc &
-# #	nice -n 19 conky -c ~/.conkyglava &
+# 	# nice -n 19 conky -c ~/.conkyrc &
+# 	nice -n 19 conky -c ~/.conkyglava &
 # fi
 
 #start GLava
-# if ! pgrep glava >/dev/null; then
-#	killall glava
-#	# python ~/.config/glava/coverthief.py | nice -n 19 glava -i &  # Enable dynamic visualizer color
-#	sed "2q;d" ~/.cache/wal/colors | tee /tmp/.color | nice -n 19 glava -i &
-#fi
+if ! pgrep glava >/dev/null; then
+	killall glava
+	# python ~/.config/glava/coverthief.py | nice -n 19 glava -i & # Enable dynamic visualizer color
+	# sed "8q;d" ~/.cache/wal/colors | tee /tmp/.color | nice -n 19 glava -i &
+	# custom color for catppuccin
+	echo "#3C395B" | nice -n 19 glava -i &
+fi
 # ##############################################################################
 # #                             AUTOSTART POLYBAR(s)                           #
 # ##############################################################################
@@ -65,17 +68,16 @@ xdo raise -a "Polybar tray window"
 xdo raise -a "Polybar tray window"
 xdo raise -a "Polybar tray window"
 xdo hide -a "Polybar tray window"
-sleep .1
-xdo hide "$(xdotool search --onlyvisible --name "^polybar-tray_" || echo "none")"
 #xdo raise $(xdotool search --onlyvisible --name "^polybar-resources_*")
 #xdo raise $(xdotool search --onlyvisible --name "^polybar-resources_*")
 #xdo hide $(xdotool search --onlyvisible --name "^polybar-resources_*" || echo "none")
 
+xdo lower -r "$(xdotool search --class glava)"
 # lock screen
-xset s 900
+xset s 9000
 xss-lock -n "$HOME"/.config/sxhkd/lock.sh
 xdo raise -a "Polybar tray window"
 
-# xdo lower -r $(xdotool search --class glava)
-#xdo lower -r $(xdotool search --class conky)
-#xdotool search --class 'splash' set_window --overrideredirect 1 windowunmap windowmap
+xdo hide $(xdotool search --onlyvisible --name "^polybar-tray_" || echo "none")
+xdo lower -r $(xdotool search --class conky)
+# xdotool search --class 'splash' set_window --overrideredirect 1 windowunmap windowmap

@@ -10,6 +10,7 @@
 
 window {
     width:      			360px;
+    background-color:       @background;
     padding:    			25px;
     border:					1px;
     border-radius:          0px;

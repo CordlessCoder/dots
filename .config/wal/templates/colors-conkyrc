@@ -38,7 +38,7 @@ conky.config = {{
 	--Graphical
 	border_inner_margin = 0, 					-- margin between border and text
 	border_outer_margin = 0, 					-- margin between border and edge of window
-	border_width = 0, 							-- border width in pixels
+	border_width = 7, 							-- border width in pixels
 	default_bar_width = 300,					-- default is 0 - full width
 	default_bar_height = 10,					-- default is 6
 	default_gauge_height = 25,					-- default is 25
@@ -76,7 +76,7 @@ conky.config = {{
 	own_window_argb_visual = false,				-- use ARGB - composite manager required
 	own_window_class = 'conky',					-- manually set the WM_CLASS name for use with xprop
 	own_window_colour = '{background}',				-- set colour if own_window_transparent no
-	own_window_transparent = true,				-- if own_window_argb_visual is true sets background opacity 0%
+	own_window_transparent = false,				-- if own_window_argb_visual is true sets background opacity 0%
 	own_window_title = 'conky',			-- set the name manually
 	own_window_type = 'desktop',				-- if own_window true options are: normal/override/dock/desktop/panel
 	own_window_hints = 'below,sticky,skip_taskbar,skip_pager',  -- if own_window true - just hints - own_window_type sets it
@@ -89,31 +89,29 @@ conky.config = {{
 
 
 conky.text = [[
-${{color1}}┌────────────────────────────────────────────┐
-│${{color2}} Kernel:$color0${{alignr}}${{kernel}}${{color1}}$font │
-│${{color2}} Uptime:$color0${{alignr}}${{uptime}}${{color1}}$font │
-│${{color2}} UTC Time:$color0${{alignr}}${{utime}}${{color1}}$font │
-├────────────────────────────────────────────┤
-│${{color2}} CPU:$color0${{alignr}}${{execi 60 cat /proc/cpuinfo | grep "model name" | head -1 | cut -d":" -f2 | cut -d" " -f-5}}${{color1}}$font │
-│ ${{color2}}${{top name 1}}$alignr$color0${{top cpu 1}}% $font${{color1}}│
-│ ${{color2}}${{top name 2}}$alignr$color0${{top cpu 2}}% $font${{color1}}│
-│ ${{color2}}${{top name 3}}$alignr$color0${{top cpu 3}}% $font${{color1}}│
-│ ${{color2}}${{top name 4}}$alignr$color0${{top cpu 4}}% $font${{color1}}│
-│ ${{color2}}${{top name 5}}$alignr$color0${{top cpu 5}}% $font${{color1}}│
-│ ${{color2}}Load average:$alignr$color0${{loadavg}} $font${{color1}}│
-│ ${{color2}}Temperature:$alignr$color0${{hwmon temp 1}}°C $font${{color1}}│
-│ ${{color2}}Frequency:$alignr$color0${{freq_g}}GHz $font${{color1}}│
-├────────────────────────────────────────────┤
-│${{color2}} Resolution:$color0${{alignr}}${{execi 60 xdpyinfo  | grep -oP 'dimensions:\s+\K\S+'}}${{color1}}$font │
-│${{color2}} Refresh rate:$color0${{alignr}}${{execi 60 xrandr --q12 | grep -A 1 " connected" | grep -e "[\[:digit:]\]*.[\[:digit:]\]*\*" -o | cut -d"." -f1 | sed ":a; N; \$!ba; s/\n/Hz, /g"}}Hz${{color1}}$font │
-│${{color2}} Theme:$color0${{alignr}}${{execi 60 gtk-query-settings gtk-theme-name | awk -F '"' '{{print $2}}'}}${{color1}}$font │
-│${{color2}} Font:$color0${{alignr}}${{execi 60 gtk-query-settings gtk-font-name | awk -F '"' '{{print $2}}'}}${{color1}}$font │
-│${{color2}} WM:$color0${{alignr}}${{execi 60 xprop -id `xprop -root -notype _NET_SUPPORTING_WM_CHECK | awk '{{print $5}}'` | tail -n 1 | awk '{{print toupper($4)}}' | tr -d '\"'}}${{color1}}$font │
-│${{color2}} Shell:$color0${{alignr}}${{execi 60 echo $SHELL | awk -F / 'NF>1{{print $NF}}'}}${{color1}}$font │
-├────────────────────────────────────────────┤
-│ ${{color2}}Memory:$alignr$color0${{mem}} / ${{memmax}} (${{memperc}}%) $font${{color1}}│
-│ ${{color2}}Disk(/):$alignr$color0${{fs_used}} / ${{fs_size}} (${{fs_used_perc}}%) $font${{color1}}│
-└────────────────────────────────────────────┘
+${{color2}}Kernel:$color0${{alignr}}${{kernel}}${{color1}}$font
+${{color2}}Uptime:$color0${{alignr}}${{uptime}}${{color1}}$font
+${{color2}}UTC Time:$color0${{alignr}}${{utime}}${{color1}}$font
+
+${{color2}}CPU:$color0${{alignr}}${{execi 60 cat /proc/cpuinfo | grep "model name" | head -1 | cut -d":" -f2 | cut -d" " -f-5}}${{color1}}$font
+${{color2}}${{top name 1}}$alignr$color0${{top cpu 1}}% $font${{color1}}
+${{color2}}${{top name 2}}$alignr$color0${{top cpu 2}}% $font${{color1}}
+${{color2}}${{top name 3}}$alignr$color0${{top cpu 3}}% $font${{color1}}
+${{color2}}${{top name 4}}$alignr$color0${{top cpu 4}}% $font${{color1}}
+${{color2}}${{top name 5}}$alignr$color0${{top cpu 5}}% $font${{color1}}
+${{color2}}Load average:$alignr$color0${{loadavg}} $font${{color1}}
+${{color2}}Temperature:$alignr$color0${{hwmon 4 temp 1}}°C $font${{color1}}
+${{color2}}Frequency:$alignr$color0${{freq_g}}GHz $font${{color1}}
+
+${{color2}}Resolution:$color0${{alignr}}${{execi 60 xdpyinfo  | grep -oP 'dimensions:\s+\K\S+'}}${{color1}}$font
+${{color2}}Refresh rate:$color0${{alignr}}${{execi 60 xrandr --q12 | grep -A 1 " connected" | grep -e "[\[:digit:]\]*.[\[:digit:]\]*\*" -o | cut -d"." -f1 | sed ":a; N; \$!ba; s/\n/Hz, /g"}}Hz${{color1}}$font
+${{color2}}Theme:$color0${{alignr}}${{execi 60 gtk-query-settings gtk-theme-name | awk -F '"' '{{print $2}}'}}${{color1}}$font
+${{color2}}Font:$color0${{alignr}}${{execi 60 gtk-query-settings gtk-font-name | awk -F '"' '{{print $2}}'}}${{color1}}$font
+${{color2}}WM:$color0${{alignr}}${{execi 60 xprop -id `xprop -root -notype _NET_SUPPORTING_WM_CHECK | awk '{{print $5}}'` | tail -n 1 | awk '{{print toupper($4)}}' | tr -d '\"'}}${{color1}}$font
+${{color2}}Shell:$color0${{alignr}}${{execi 60 echo $SHELL | awk -F / 'NF>1{{print $NF}}'}}${{color1}}$font
+
+${{color2}}Memory:$alignr$color0${{mem}} / ${{memmax}} (${{memperc}}%) $font${{color1}}
+${{color2}}Disk(/):$alignr$color0${{fs_used}} / ${{fs_size}} (${{fs_used_perc}}%) $font${{color1}}
 ]]
 -- ${{alignc}}$color0${{uid_name 1000}}@${{color2}}${{nodename}}
 --conky.text = [[

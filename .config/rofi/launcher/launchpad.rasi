@@ -7,6 +7,8 @@
  *
  */
 
+@import "../colors-rofi-dark.rasi"
+
 configuration {
 	font:							"Noto Sans Bold 10";
     show-icons:                     true;
@@ -18,39 +20,31 @@ configuration {
 }
 
 
-* {
-    background:                     #00000060;
-    background-alt:              	#00000000;
-    background-bar:                 #f2f2f215;
-    foreground:                     #f2f2f2EE;
-    accent:			            	#ffffff66;
-}
 
 window {
-    transparency:                   "screenshot";
-    background-color:               @background;
-    text-color:                     @foreground;
+    transparency:                   "none";
+    background-color:               @base0;
+    text-color:                     @base1;
 	border:							0px;
-	border-color:					@border;
+	border-color:					@base1;
     border-radius:                  0px;
 	width:							100%;
 	height:							100%;
 }
 
-@import "launcher"
 
 prompt {
     enabled: 						true;
 	padding: 						0.30% 1% 0% -0.5%;
-	background-color: 				@background-alt;
-	text-color: 					@foreground;
-	font:							"FantasqueSansMono Nerd Font 12";
+	background-color: 				@base8;
+	text-color: 					@base1;
+	font:							"FiraCode Nerd Font 12";
 }
 
 entry {
-    background-color:               @background-alt;
+    background-color:               @base8;
     text-color:                     @foreground;
-    placeholder-color:              @foreground;
+    placeholder-color:              @base8;
     expand:                         true;
     horizontal-align:               0;
     placeholder:                    "Search";
@@ -60,18 +54,18 @@ entry {
 
 inputbar {
 	children: 						[ prompt, entry ];
-    background-color:               @background-bar;
-    text-color:                     @foreground;
+    background-color:               @base8;
+    text-color:                     @base1;
     expand:                         false;
 	border:							0.1%;
     border-radius:                  6px;
-	border-color:					@accent;
+	border-color:					@base1;
     margin:                         0% 30% 0% 30%;
     padding:                        1%;
 }
 
 listview {
-    background-color:               @background-alt;
+    background-color:               @background;
     columns:                        7;
     lines:                          4;
     spacing:                        2%;
@@ -81,7 +75,7 @@ listview {
 }
 
 mainbox {
-    background-color:               @background-alt;
+    background-color:               @background;
 	border:							0% 0% 0% 0%;
     border-radius:                  0% 0% 0% 0%;
 	border-color:					@accent;
@@ -91,10 +85,10 @@ mainbox {
 }
 
 element {
-    background-color:               @background-alt;
+    background-color:               @base8;
     text-color:                     @foreground;
     orientation:                    vertical;
-    border-radius:                  0%;
+    border-radius:                  12px;
     padding:                        2.5% 0% 2.5% 0%;
 }
 
@@ -106,9 +100,13 @@ element-icon {
     size:                           81px;
     border:                         0px;
 }
+element-icon selected {
+    background-color: 				@base7;
+}
+
 
 element-text {
-    background-color: 				@background-alt;
+    background-color: 				@base8;
     text-color:       				inherit;
     expand:                         true;
     horizontal-align:               0.5;
@@ -116,8 +114,13 @@ element-text {
     margin:                         0.5% 0.5% -0.5% 0.5%;
 }
 
+
+element-text selected {
+    background-color: 				@base7;
+    text-color:       				@base15;
+}
 element selected {
-    background-color:               @background-bar;
+    background-color:               @base7;
     text-color:                     @foreground;
 	border:							0% 0% 0% 0%;
     border-radius:                  12px;

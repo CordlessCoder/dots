@@ -26,6 +26,7 @@ resize_increment = 16
 resize_offset = resize_increment / 2
 use_pywal = True
 
+
 override_names = [
     "",
     "",
@@ -109,6 +110,9 @@ if len(sys.argv) <= 2:
     superscript = str.maketrans("0123456789", "⁰¹²³⁴⁵⁶⁷⁸⁹")
 
     class_icons = {
+        "obs": "",
+        "obsidian": "",
+        "qbittorrent": "",
         "alacritty": "",
         "atom": "",
         "vscode": "",
@@ -184,6 +188,7 @@ if len(sys.argv) <= 2:
         "zenity": "",
         "zoom": "",
         "telegram": "",
+        "telegram-desktop": "",
         "kotatogram": "",
         "lunarclient": "",
         "viber": "",
@@ -333,6 +338,8 @@ def generate(workspaces, focused_desk, order):
             printf(wps_active_right)
             if len(windows.keys()) > max_windows:
                 printf(f"+{len(windows.keys())-max_windows}")
+
+    # printf(suffix)
 
 
 def main():

@@ -48,7 +48,8 @@
 #request settitle "GLava"
 
 /* Window geometry (x, y, width, height) */
-#request setgeometry 2571 199 494 1102
+// #request setgeometry 12 199 493 1102
+#request setgeometry 0 840 2560 600
 
 /* Window background color (RGB format).
    Does not work with `setopacity "xroot"` */
@@ -226,4 +227,4 @@
    since it applies (crude) averaging to the data when shrinking
    the buffer. It is reccommended to use `setsamplerate` and
    `setsamplesize` to improve performance or accuracy instead. */
-#request setbufscale 1
+// #request setbufscale 1

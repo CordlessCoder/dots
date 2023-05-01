@@ -1,16 +1,34 @@
-#!/bin/bash
-
+#!/bin/sh
 # wm independent hotkeys
+hyper + v
+    xdotool keyup v key --clearmodifiers vertbar
+hyper + s
+    xdotool keyup h key --clearmodifiers hairspace
+hyper + d
+   xdotool keyup d keyup Hyper_L keydown control key Delete keyup control
+hyper + h
+    xdotool keyup h key --clearmodifiers Left
+hyper + j
+    xdotool keyup j key --clearmodifiers Down
+hyper + k
+    xdotool keyup k key --clearmodifiers Up
+hyper + l
+    xdotool keyup l key --clearmodifiers Right
+hyper + p
+    xdotool type --delay 3 --clearmodifiers "$(xclip -o )"
 
 # terminal emulator
 alt + {shift,_} + ctrl + t
 	{kitty &, kitty &}
 super + Return
-	sh -c "kitty &"
+	sh -c "kitty -e zellij &"
 # program launcher
 alt + space
 	bash -c "~/.config/rofi/launcher/launcher.sh " &
 {_,super} + Print
+	bash -c '$(cd {/tmp,~/Screenshots} && name=$(date +"%H:%M:%S_%d_%B").png && maim -m 9 -u -s -b 2 -c 0.75,0.8,0.96,1 $name && xclip -selection clipboard -target image/png -i $name &) &'
+
+super + shift + p
 	bash -c '$(cd {/tmp,~/Screenshots} && name=$(date +"%H:%M:%S_%d_%B").png && maim -m 9 -u -s -b 2 -c 0.75,0.8,0.96,1 $name && xclip -selection clipboard -target image/png -i $name &) &'
 
 # file manager
@@ -19,6 +37,8 @@ super + e
 # app hotkeys
 super + {_,shift} + c
 	sh {~/.config/sxhkd/NeoVim.sh, ~/.config/sxhkd/FirefoxDevEd.sh &}
+# hyper + n
+#     xdotool keyup n && sh ~/.config/sxhkd/NeoVim.sh
 # switching
 alt + {_, shift} + Tab
 	bspc node -f {next,last}.local.window
@@ -73,8 +93,11 @@ super + g
 #
 
 # set the window state
-super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+mod4 + {t,f}
+	bspc node -t {tiled,fullscreen}
+
+mod4 + shift + f
+    bspc node -t floating
 
 # set the node flags
 super + ctrl + {m,x,y,z}
@@ -149,7 +172,7 @@ super + {Left,Down,Up,Right}
 
 # physical keys
 XF86MonBrightness{Up,Down}
-    brightnessctl set 10{+,-}%
+    brightnessctl set 5{+,-}%
 
 XF86Audio{RaiseVolume,LowerVolume,Mute}
     pamixer -{i 10,d 10,t}

@@ -8,7 +8,7 @@
 #define GRADIENT_SCALE 75
 /* Color definition. By default this is a gradient formed by mixing two colors.
    `pos` represents the pixel position relative to the visualizer baseline. */
-#define COLOR #F7768E
+#define COLOR STDIN
 /* 1 to draw outline, 0 to disable */
 #define DRAW_OUTLINE 0
 /* 1 to draw edge highlight, 0 to disable */
