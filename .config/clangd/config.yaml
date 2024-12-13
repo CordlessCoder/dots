@@ -1,0 +1,8 @@
+CompileFlags:
+  Add: [-Wall, -Wpedantic, -Wextra]
+---
+
+If:
+  PathMatch: .*\.(hpp|cpp)
+CompileFlags:
+  Add: [-xc++, -std=c++20]
