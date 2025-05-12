@@ -3,10 +3,6 @@
 if not status is-interactive
     exit
 end
-if type -sq zoxide
-    zoxide init fish | source
-    alias cd z
-end
 if type -sq nvim
     bind \en nvim
 end
@@ -14,9 +10,6 @@ if type -sq fzf_key_bindings
     fzf_key_bindings
 else
     echo "WARNING: FZF not installed?"
-end
-if type -sq startx
-    alias sex startx
 end
 if type -sq xdo
     and test -n "$DISPLAY"
@@ -39,23 +32,35 @@ sometimes fixes"
         complete -c neovide -l remote-tcp -d "Connect to Remote TCP"
         complete -c neovide -l wayland-app-id -d "Specify an App ID for Wayland"
         complete -c neovide -l waylx11-wm-class -d "Specify an X11 WM class"
-        function n -d "Window swallower function for NeoVide" -w neovide
-            set windowpid (xdo pid -t $WINDOWID)
-            xdo hide -p $windowpid
-            neovide --multigrid --nofork -- $argv
-            xdo show -p $windowpid
+        if test -n "$WAYLAND_DISPLAY"
+            alias n nvim
+        else
+            function n -d "Window swallower function for NeoVide" -w neovide
+                set windowpid (xdo pid -t $WINDOWID)
+                xdo hide -p $windowpid
+                neovide --multigrid --nofork -- $argv
+                xdo show -p $windowpid
+            end
+            function ns -d "Open NeoVim without window swallowing" -w neovide
+                neovide --multigrid $argv &
+            end
         end
-        function ns -d "Open NeoVim without window swallowing" -w neovide
-            neovide --multigrid $argv &
-        end
-        # alias nvim n
     end
     if type -sq zathura
-        function zath -d "Window swallower function for zathura" -w zathura
-            set windowpid (xdo pid -t $WINDOWID)
-            xdo hide -p $windowpid
-            zathura $argv && xdo show -p $windowpid
-            xdo show -p $windowpid
+        if type -sq zathura-pywal
+            alias "zathura"="zathura-pywal"
+        end
+        if test "$XDG_CURRENT_DESKTOP" = bspwm
+            function zath -d "Window swallower function for zathura" -w zathura
+                set windowpid (xdo pid -t $WINDOWID)
+                xdo hide -p $windowpid
+                zathura $argv && xdo show -p $windowpid
+                xdo show -p $windowpid
+            end
+        else
+            function zath -d zathura -w zathura
+                zathura $argv
+            end
         end
     end
 end

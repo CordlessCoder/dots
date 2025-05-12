@@ -1,3 +1,3 @@
 #!/bin/bash
-./closeall.sh
-hyprctl dispatch exit >>/tmp/hypr/hyprexitwithgrace.log 2>&1
+~/.config/hypr/closeall.sh
+hyprctl dispatch exit >> /tmp/hyprexitwithgrace.log 2>&1

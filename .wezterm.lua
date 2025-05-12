@@ -38,8 +38,8 @@ local read_pywal_colors = function()
 				foreground = color_lines[16],
 				background = color_lines[1],
 
-				cursor_bg = color_lines[8],
-				cursor_fg = color_lines[8],
+				cursor_bg = color_lines[16],
+				cursor_fg = color_lines[1],
 				cursor_border = color_lines[8],
 
 				selection_fg = color_lines[8],
@@ -57,8 +57,8 @@ local read_pywal_colors = function()
 				foreground = color_lines[16],
 				background = color_lines[1],
 
-				cursor_bg = color_lines[8],
-				cursor_fg = color_lines[8],
+				cursor_bg = color_lines[16],
+				cursor_fg = color_lines[1],
 				cursor_border = color_lines[8],
 
 				selection_fg = color_lines[8],
@@ -101,6 +101,7 @@ config.font_size = 16.0
 config.window_background_opacity = 0.8
 config.enable_tab_bar = false
 local pywal_colors = read_pywal_colors()
+-- pywal_colors = false
 if pywal_colors then
 	config.colors = pywal_colors
 else

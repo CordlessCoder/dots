@@ -1,0 +1,21 @@
+font=monospace 14
+background-color=#12131C
+text-color=#c0caf5
+default-timeout=5000
+on-notify=exec cvlc ~/Downloads/system-notification-199277.mp3 --play-and-exit
+
+border-radius=10
+
+[urgency=low]
+border-color=#414868
+
+[urgency=normal]
+border-color=#a9b1d6
+
+[urgency=high]
+border-color=#f7768e
+default-timeout=0
+
+[category=mpd]
+default-timeout=2000
+group-by=category

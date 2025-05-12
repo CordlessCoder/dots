@@ -1,3 +1,3 @@
 #!/bin/bash
 ./closeall.sh
-shutdown now >>/tmp/hypr/hyprexitwithgrace.log 2>&1
+shutdown now >>/tmp/hyprexitwithgrace.log 2>&1
