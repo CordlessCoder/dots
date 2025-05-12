@@ -25,4 +25,3 @@ function __has_double_dash
 end
 complete -c robotssh -s h -l help -d 'Print help'
 complete -c robotssh -s V -l version -d 'Print version'
-echo (complete -c ssh | sed "s/ssh/robotssh -n __has_double_dash/")

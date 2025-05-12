@@ -6,11 +6,6 @@ end
 if type -sq nvim
     bind \en nvim
 end
-if type -sq fzf_key_bindings
-    fzf_key_bindings
-else
-    echo "WARNING: FZF not installed?"
-end
 if type -sq xdo
     and test -n "$DISPLAY"
     if type -sq neovide
